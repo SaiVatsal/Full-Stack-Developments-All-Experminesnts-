@@ -1,0 +1,590 @@
+{
+  "student": "SaiVatsal",
+  "collegeId": "2500040224",
+  "deployedAt": "2026-09-21T18:28:04.903Z",
+  "total": 58,
+  "passed": 58,
+  "failed": 0,
+  "deployments": [
+    {
+      "id": 1,
+      "name": "Nexus E-Commerce Platform",
+      "folder": "01-ecommerce-platform",
+      "category": "E-Commerce & Retail",
+      "liveUrl": "https://01-ecommerce-platform-67tnexag3-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/01-ecommerce-platform/FWcf5QPs3rAPVa6VPiZfw9zBLW7a",
+      "githubUrl": "https://github.com/SaiVatsal/01-ecommerce-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 2,
+      "name": "BistroBite Food Delivery Network",
+      "folder": "02-food-delivery-system",
+      "category": "Food & Beverage",
+      "liveUrl": "https://02-food-delivery-system-69lvtxsoq-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/02-food-delivery-system/FLh2PT7jaLwtSuaFbJ8qk6G1PWqW",
+      "githubUrl": "https://github.com/SaiVatsal/02-food-delivery-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 3,
+      "name": "StockMaster Pro Inventory System",
+      "folder": "03-inventory-management-system",
+      "category": "Logistics & Supply Chain",
+      "liveUrl": "https://03-inventory-management-system-7q1zyet8v-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/03-inventory-management-system/5ULkzBFiXU6Avjnavrs6yNGPxUmj",
+      "githubUrl": "https://github.com/SaiVatsal/03-inventory-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 4,
+      "name": "EduVanguard LMS Platform",
+      "folder": "04-learning-management-system",
+      "category": "EdTech & Training",
+      "liveUrl": "https://04-learning-management-system-hgapjmpaz-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/04-learning-management-system/2CvUMRH9nYvEDJzSyS1csNqU5SEj",
+      "githubUrl": "https://github.com/SaiVatsal/04-learning-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 5,
+      "name": "PulseNet Community Platform",
+      "folder": "05-social-media-platform",
+      "category": "Social Networking",
+      "liveUrl": "https://05-social-media-platform-50trknpqx-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/05-social-media-platform/GCzk95RR2nHZVQdbLeo8CamMEeJ7",
+      "githubUrl": "https://github.com/SaiVatsal/05-social-media-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 6,
+      "name": "MediCare Specialist Appointment Portal",
+      "folder": "06-healthcare-appointment-system",
+      "category": "Healthcare & Telemedicine",
+      "liveUrl": "https://06-healthcare-appointment-system-ei12exz91.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/06-healthcare-appointment-system/HtDWW82yfw7zpSJKyqYT9k6vvEN9",
+      "githubUrl": "https://github.com/SaiVatsal/06-healthcare-appointment-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 7,
+      "name": "WorkforceHR Enterprise Suite",
+      "folder": "07-employee-management-system",
+      "category": "Human Resources",
+      "liveUrl": "https://07-employee-management-system-nj8ld8ujj-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/07-employee-management-system/HZ2Xs2y4F4xU7paLfK9uCuM9iHQH",
+      "githubUrl": "https://github.com/SaiVatsal/07-employee-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 8,
+      "name": "StreamCrest Cinema & Video Hub",
+      "folder": "08-video-streaming-platform",
+      "category": "Digital Media & Streaming",
+      "liveUrl": "https://08-video-streaming-platform-e0t0vdme3-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/08-video-streaming-platform/D1enBG5oqrzxoiy99LC3hW5GGraD",
+      "githubUrl": "https://github.com/SaiVatsal/08-video-streaming-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 9,
+      "name": "SmartLedger Personal Expense Tracker",
+      "folder": "09-expense-tracker",
+      "category": "Finance & Budgeting",
+      "liveUrl": "https://09-expense-tracker-70zpjqoit-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/09-expense-tracker/9TTNecG55zR78Q5e4yyBYQwnvEzM",
+      "githubUrl": "https://github.com/SaiVatsal/09-expense-tracker",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 10,
+      "name": "TestMaster Pro Online Examination Portal",
+      "folder": "10-online-examination-system",
+      "category": "Assessment & Testing",
+      "liveUrl": "https://10-online-examination-system-7pv27his7-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/10-online-examination-system/4SmsWeUiSSGAVWC1VZhtyYXG11Lm",
+      "githubUrl": "https://github.com/SaiVatsal/10-online-examination-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 11,
+      "name": "Velocity Auto Fleet & Rental System",
+      "folder": "11-car-rental-system",
+      "category": "Automotive & Travel",
+      "liveUrl": "https://11-car-rental-system-4keso1j55-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/11-car-rental-system/BL3D5Dsx4Ya8Enc9CZpekP5ELp6U",
+      "githubUrl": "https://github.com/SaiVatsal/11-car-rental-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 12,
+      "name": "AeroCast Meteorological Intelligence",
+      "folder": "12-weather-app",
+      "category": "Weather & Meteorology",
+      "liveUrl": "https://12-weather-9613q5gxn-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/12-weather-app/5h6PwGQLpp9hpmhj3tpaTaW9C65K",
+      "githubUrl": "https://github.com/SaiVatsal/12-weather-app",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 13,
+      "name": "CivicTrust Secure E-Voting Portal",
+      "folder": "13-online-voting-system",
+      "category": "Governance & E-Voting",
+      "liveUrl": "https://13-online-voting-system-8k927tnc4-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/13-online-voting-system/Em8Snp9DLU9oVfMWYKkui52GJNJj",
+      "githubUrl": "https://github.com/SaiVatsal/13-online-voting-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 14,
+      "name": "FitPulse Athletic & Nutrition Suite",
+      "folder": "14-fitness-tracker",
+      "category": "Health & Fitness",
+      "liveUrl": "https://14-fitness-tracker-j1nep0wfy-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/14-fitness-tracker/8mijqM8caxgK6nGcztkV4257abR5",
+      "githubUrl": "https://github.com/SaiVatsal/14-fitness-tracker",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 15,
+      "name": "CloudVault Secure File Sharing Platform",
+      "folder": "15-file-sharing-platform",
+      "category": "Cloud Storage & Security",
+      "liveUrl": "https://15-file-sharing-platform-izkgiz0az-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/15-file-sharing-platform/2tt1HcpXctiLCuW7uuLsDs99CXGe",
+      "githubUrl": "https://github.com/SaiVatsal/15-file-sharing-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 16,
+      "name": "OmniPress Enterprise CMS",
+      "folder": "16-content-management-system",
+      "category": "Content Management",
+      "liveUrl": "https://16-content-management-system-rof8et1fn-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/16-content-management-system/FkxnSJCMFWV7V6ygnaqPMvs6riMq",
+      "githubUrl": "https://github.com/SaiVatsal/16-content-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 17,
+      "name": "AuraBank Educational Digital Banking Suite",
+      "folder": "17-online-banking-system",
+      "category": "FinTech & Banking Simulation",
+      "liveUrl": "https://17-online-banking-system-mohdh3p4v-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/17-online-banking-system/8NwCYogNQK5camMCFNf4Ce983vAg",
+      "githubUrl": "https://github.com/SaiVatsal/17-online-banking-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 18,
+      "name": "Vanguard EventHub & Conference Suite",
+      "folder": "18-event-management-system",
+      "category": "Events & Hospitality",
+      "liveUrl": "https://18-event-management-system-6l8v8anyq-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/18-event-management-system/JXVQaH1cRCwYyoH87eUfRWswt2VM",
+      "githubUrl": "https://github.com/SaiVatsal/18-event-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 19,
+      "name": "EHR-Nexus Electronic Health Records",
+      "folder": "19-health-records-system",
+      "category": "Healthcare & EHR",
+      "liveUrl": "https://19-health-records-system-4od6jkbms-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/19-health-records-system/CmRkYrqv1JkDLEErZ71iFchAKoGz",
+      "githubUrl": "https://github.com/SaiVatsal/19-health-records-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 20,
+      "name": "WanderLust Global Travel & Flight Booking",
+      "folder": "20-travel-booking-platform",
+      "category": "Travel & Tourism",
+      "liveUrl": "https://20-travel-booking-platform-mjt88khmw-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/20-travel-booking-platform/Hb8vnvNCQnMALWtmu8vV3cq25UFj",
+      "githubUrl": "https://github.com/SaiVatsal/20-travel-booking-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 21,
+      "name": "SkillCore Student Learning Hub",
+      "folder": "21-learning-hub",
+      "category": "Education",
+      "liveUrl": "https://21-learning-n8v1yu683-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/21-learning-hub/vPL6JXK8hhZhRtZVsjURggnQNzzH",
+      "githubUrl": "https://github.com/SaiVatsal/21-learning-hub",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 22,
+      "name": "ApexCare Hospital Management Suite",
+      "folder": "22-hospital-management-system",
+      "category": "Healthcare",
+      "liveUrl": "https://22-hospital-management-system-plx5ex444-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/22-hospital-management-system/489385akCSz8pc2JKPER2Jk1Sp2q",
+      "githubUrl": "https://github.com/SaiVatsal/22-hospital-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 23,
+      "name": "Lumina Online Art & Auction Gallery",
+      "folder": "23-online-art-gallery",
+      "category": "Art & Auctions",
+      "liveUrl": "https://23-online-art-gallery-1avbjmhmb-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/23-online-art-gallery/Eu3XaYDD98y3HrxxeHUeGdzL9id8",
+      "githubUrl": "https://github.com/SaiVatsal/23-online-art-gallery",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 24,
+      "name": "PipelinePro Enterprise CRM",
+      "folder": "24-crm-system",
+      "category": "Sales & CRM",
+      "liveUrl": "https://24-crm-system-nicfln1w1-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/24-crm-system/6Mi1mv1XkNYdxXaL2fDraUnBC6Nc",
+      "githubUrl": "https://github.com/SaiVatsal/24-crm-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 25,
+      "name": "GlobalPulse News Aggregator",
+      "folder": "25-news-aggregator",
+      "category": "News & Media",
+      "liveUrl": "https://25-news-aggregator-a6iz0m74w-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/25-news-aggregator/9V5WAWTLtcxAuNoUC4Kpuk1JEeow",
+      "githubUrl": "https://github.com/SaiVatsal/25-news-aggregator",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 26,
+      "name": "SplitFair Group Expense App",
+      "folder": "26-expense-sharing-app",
+      "category": "FinTech",
+      "liveUrl": "https://26-expense-sharing-g9xwofo0c-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/26-expense-sharing-app/5325NCfvKCgBv9UadqzEi6SddbQS",
+      "githubUrl": "https://github.com/SaiVatsal/26-expense-sharing-app",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 27,
+      "name": "GourmetCraft Recipe & Cooking App",
+      "folder": "27-food-recipe-app",
+      "category": "Food & Culinary",
+      "liveUrl": "https://27-food-recipe-34ewgdmz7-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/27-food-recipe-app/2yLnG7eM8gowFKABYJpYNghmthhA",
+      "githubUrl": "https://github.com/SaiVatsal/27-food-recipe-app",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 28,
+      "name": "EstatePrime Property Management",
+      "folder": "28-property-management-system",
+      "category": "Real Estate",
+      "liveUrl": "https://28-property-management-system-g0ysxoqjp-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/28-property-management-system/7qsgtucmAARiWcJG7qRiRsE2CyJf",
+      "githubUrl": "https://github.com/SaiVatsal/28-property-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 29,
+      "name": "BidMaster Real-Time Auction Hub",
+      "folder": "29-online-auction-system",
+      "category": "Auctions & Commerce",
+      "liveUrl": "https://29-online-auction-system-6hgyu6x9g-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/29-online-auction-system/BJtG2Mno4eVUpzrh8L5QujvBQA3a",
+      "githubUrl": "https://github.com/SaiVatsal/29-online-auction-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 30,
+      "name": "DevCraft Masterclass Portfolio",
+      "folder": "30-personal-portfolio-website",
+      "category": "Portfolio & Career",
+      "liveUrl": "https://30-personal-portfolio-website-e9im4upri-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/30-personal-portfolio-website/9iUd2NK86ALJUkFL6UZ1GP9gW4MH",
+      "githubUrl": "https://github.com/SaiVatsal/30-personal-portfolio-website",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 31,
+      "name": "SwiftRide Mobility Platform",
+      "folder": "31-ride-sharing-app",
+      "category": "Transportation",
+      "liveUrl": "https://31-ride-sharing-3jxg2ktd7-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/31-ride-sharing-app/AKh4Uozgi5USusdbr8smZniJdNYq",
+      "githubUrl": "https://github.com/SaiVatsal/31-ride-sharing-app",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 32,
+      "name": "FreshPantry Supermarket & Grocer",
+      "folder": "32-online-grocery-store",
+      "category": "Retail & Grocery",
+      "liveUrl": "https://32-online-grocery-store-vuzixkvn7-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/32-online-grocery-store/CGKNMMQdRCN8sToTzpaPBZGKW7kQ",
+      "githubUrl": "https://github.com/SaiVatsal/32-online-grocery-store",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 33,
+      "name": "SoundWave Music Player & Catalog",
+      "folder": "33-music-streaming-app",
+      "category": "Media & Audio",
+      "liveUrl": "https://33-music-streaming-2y62mm5b8-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/33-music-streaming-app/6aVVCkH2Mmqk4dhYVnbhNbStSaoG",
+      "githubUrl": "https://github.com/SaiVatsal/33-music-streaming-app",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 34,
+      "name": "DevAgora Discussion Forum",
+      "folder": "34-forum-application",
+      "category": "Community & Discussions",
+      "liveUrl": "https://34-forum-application-3ot0wb8fz-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/34-forum-application/Ahi9GNWmcZJfMUXW6MQ9U2URarX2",
+      "githubUrl": "https://github.com/SaiVatsal/34-forum-application",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 35,
+      "name": "BoxOffice Cine & Event Ticketing",
+      "folder": "35-online-ticket-booking",
+      "category": "Entertainment",
+      "liveUrl": "https://35-online-ticket-booking-lr7uo4vpo-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/35-online-ticket-booking/EiJP14pkGsPGt8DvLwxeEEHnk4u3",
+      "githubUrl": "https://github.com/SaiVatsal/35-online-ticket-booking",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 36,
+      "name": "AcademiaPlus Student Report System",
+      "folder": "36-student-report-system",
+      "category": "Academic ERP",
+      "liveUrl": "https://36-student-report-system-qyfdtlf2y-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/36-student-report-system/Eqz6n6J1kU7jFtRR5QAhL9Syr6Bm",
+      "githubUrl": "https://github.com/SaiVatsal/36-student-report-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 37,
+      "name": "KanbanFlow Agile Task Manager",
+      "folder": "37-task-management-system",
+      "category": "Productivity",
+      "liveUrl": "https://37-task-management-system-g61a1b8sp-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/37-task-management-system/HSYt2Do87nW22Ju7KWn481D64H8C",
+      "githubUrl": "https://github.com/SaiVatsal/37-task-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 38,
+      "name": "QuizCraft Assessment Builder",
+      "folder": "38-quiz-builder",
+      "category": "E-Learning",
+      "liveUrl": "https://38-quiz-builder-h1ccejahb-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/38-quiz-builder/EsPyK9fm8QdZe1Zvj7F2YM2Liqvn",
+      "githubUrl": "https://github.com/SaiVatsal/38-quiz-builder",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 39,
+      "name": "SurplusFeed Waste Prevention System",
+      "folder": "39-food-waste-management-system",
+      "category": "Sustainability",
+      "liveUrl": "https://39-food-waste-management-system-awrtt6dxz.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/39-food-waste-management-system/ASsFQHkYjuBxStSdb33gsiJtTySk",
+      "githubUrl": "https://github.com/SaiVatsal/39-food-waste-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 40,
+      "name": "PawsHaven Pet Adoption Network",
+      "folder": "40-pet-adoption-platform",
+      "category": "Animals & Welfare",
+      "liveUrl": "https://40-pet-adoption-platform-85gfxcdhg-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/40-pet-adoption-platform/AfDytTSaVZ48X8yW8mDPKN3eLuCH",
+      "githubUrl": "https://github.com/SaiVatsal/40-pet-adoption-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 41,
+      "name": "KindredHeart Charitable Giving Platform",
+      "folder": "41-online-donation-platform",
+      "category": "Charity & Philanthropy",
+      "liveUrl": "https://41-online-donation-platform-hid9dumwe-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/41-online-donation-platform/9sBFJiNcLgC6Ms55DEGHsdeBnHjU",
+      "githubUrl": "https://github.com/SaiVatsal/41-online-donation-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 42,
+      "name": "ResQNet Disaster Coordination Center",
+      "folder": "42-disaster-management-system",
+      "category": "Emergency Management",
+      "liveUrl": "https://42-disaster-management-system-hxxkf4ieu-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/42-disaster-management-system/5yQKawJxdb9M95sRkmPaysEGiye6",
+      "githubUrl": "https://github.com/SaiVatsal/42-disaster-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 43,
+      "name": "CapitalWise Personal Budget Planner",
+      "folder": "43-budget-planner",
+      "category": "Personal Finance",
+      "liveUrl": "https://43-budget-planner-ioxq61382-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/43-budget-planner/2pjThrhXLW52ybJT7GJEbJMPUvX3",
+      "githubUrl": "https://github.com/SaiVatsal/43-budget-planner",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 44,
+      "name": "LifeDrop Blood Bank Registry",
+      "folder": "44-blood-banking-system",
+      "category": "Medical & Blood Banking",
+      "liveUrl": "https://44-blood-banking-system-48lb4ru1y-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/44-blood-banking-system/7ukNJg5cUp4LvReZ5RHG7CKa79tV",
+      "githubUrl": "https://github.com/SaiVatsal/44-blood-banking-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 45,
+      "name": "KisanDirect Farmer-Buyer Marketplace",
+      "folder": "45-agriculture-farmer-app",
+      "category": "Agriculture & AgriTech",
+      "liveUrl": "https://45-agriculture-farmer-lkucbs90p-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/45-agriculture-farmer-app/8vBe5uwnMn3Uox1QjuvUiGiejqN7",
+      "githubUrl": "https://github.com/SaiVatsal/45-agriculture-farmer-app",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 46,
+      "name": "GrandStay Luxury Hotel Booking",
+      "folder": "46-hotel-booking-platform",
+      "category": "Hospitality",
+      "liveUrl": "https://46-hotel-booking-platform-3z83bt40a-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/46-hotel-booking-platform/AdmVcnxJU92iGqikvp38PhNXBhPk",
+      "githubUrl": "https://github.com/SaiVatsal/46-hotel-booking-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 47,
+      "name": "BiblioTech Library Management System",
+      "folder": "47-online-library-management",
+      "category": "Library & Archival",
+      "liveUrl": "https://47-online-library-management-ou9xi8ngh-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/47-online-library-management/69US8RVt69SybcA9hmG7p56eATue",
+      "githubUrl": "https://github.com/SaiVatsal/47-online-library-management",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 48,
+      "name": "VoiceMetrics Enterprise Feedback Hub",
+      "folder": "48-feedback-management-system",
+      "category": "Customer Intelligence",
+      "liveUrl": "https://48-feedback-management-system-4thdlka0r-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/48-feedback-management-system/97JJkHVo2ZoF7RRdXPeREaQdfZoE",
+      "githubUrl": "https://github.com/SaiVatsal/48-feedback-management-system",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 49,
+      "name": "TutorConnect Academic Mentor Finder",
+      "folder": "49-home-tutor-finder",
+      "category": "Tutoring & Education",
+      "liveUrl": "https://49-home-tutor-finder-3qpsxfigq-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/49-home-tutor-finder/3KsfgwLJ95tTdCjZQ5LpWYoLi1aj",
+      "githubUrl": "https://github.com/SaiVatsal/49-home-tutor-finder",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 50,
+      "name": "AuraHarmonics Cloud Audio Streaming",
+      "folder": "50-music-streaming-platform",
+      "category": "Streaming & Music",
+      "liveUrl": "https://50-music-streaming-platform-35k946nlb-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/50-music-streaming-platform/2rEGwdWaFxeipJ42sU8oRCqh9oT8",
+      "githubUrl": "https://github.com/SaiVatsal/50-music-streaming-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 51,
+      "name": "GigSphere Freelancer & Client Marketplace",
+      "folder": "51-freelancer-marketplace",
+      "category": "Freelance & Gig Economy",
+      "liveUrl": "https://51-freelancer-marketplace-3jw0w1q0g-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/51-freelancer-marketplace/E1mzMaov8DiScGEbSEtcEPL89eHK",
+      "githubUrl": "https://github.com/SaiVatsal/51-freelancer-marketplace",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 52,
+      "name": "CareerPulse Job Application Tracker",
+      "folder": "52-job-application-tracker",
+      "category": "Career Management",
+      "liveUrl": "https://52-job-application-tracker-2vh2q0ob5-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/52-job-application-tracker/DzA1XKTZEjQA8S8DuTWZreFFpCtV",
+      "githubUrl": "https://github.com/SaiVatsal/52-job-application-tracker",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 53,
+      "name": "ScholarPeer Academic Journal Workflow",
+      "folder": "53-research-journal-management",
+      "category": "Academic Research",
+      "liveUrl": "https://53-research-journal-management-aflqajl0p-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/53-research-journal-management/3Kysj8BY8etH5s5baCvWNGNfDiX8",
+      "githubUrl": "https://github.com/SaiVatsal/53-research-journal-management",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 54,
+      "name": "VentureForge Crowdfunding Platform",
+      "folder": "54-crowdfunding-platform",
+      "category": "Crowdfunding & Startups",
+      "liveUrl": "https://54-crowdfunding-platform-owdocthna-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/54-crowdfunding-platform/CHgSeGwYFcPh57r4VmNS1fKuJbHc",
+      "githubUrl": "https://github.com/SaiVatsal/54-crowdfunding-platform",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 55,
+      "name": "ArenaPro Sports League Management",
+      "folder": "55-sports-league-management",
+      "category": "Sports Management",
+      "liveUrl": "https://55-sports-league-management-evbvgfnxj-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/55-sports-league-management/Hsua2NdAXrKXcJvYPt9RdezztZPG",
+      "githubUrl": "https://github.com/SaiVatsal/55-sports-league-management",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 56,
+      "name": "PaySwift Digital Wallet Simulation",
+      "folder": "56-digital-wallet-app",
+      "category": "Digital Payments",
+      "liveUrl": "https://56-digital-wallet-5lqar0vyl-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/56-digital-wallet-app/EMMg6zJ5AUZ13HJkHyKB47RD74Qh",
+      "githubUrl": "https://github.com/SaiVatsal/56-digital-wallet-app",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 57,
+      "name": "EsportsGrid Tournament Portal",
+      "folder": "57-gaming-tournament-portal",
+      "category": "Esports & Gaming",
+      "liveUrl": "https://57-gaming-tournament-portal-9x31xdsnc-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/57-gaming-tournament-portal/BhndKbKRhg3UU5Wjs5CpKhuu91fJ",
+      "githubUrl": "https://github.com/SaiVatsal/57-gaming-tournament-portal",
+      "status": "SUCCESS"
+    },
+    {
+      "id": 58,
+      "name": "TradeVision Virtual Stock Trading Sim",
+      "folder": "58-virtual-stock-trading-app",
+      "category": "FinTech & Stock Trading",
+      "liveUrl": "https://58-virtual-stock-trading-igyhuism7-sais-projects-d9375997.vercel.app",
+      "inspectorUrl": "https://vercel.com/sais-projects-d9375997/58-virtual-stock-trading-app/76gydHdQJLeEGzax9QcZDmtQ3Hgz",
+      "githubUrl": "https://github.com/SaiVatsal/58-virtual-stock-trading-app",
+      "status": "SUCCESS"
+    }
+  ]
+}

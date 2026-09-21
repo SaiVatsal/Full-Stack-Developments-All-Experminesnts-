@@ -7,6 +7,17 @@ const fs = require('fs');
 const path = require('path');
 const { allProjects } = require('./master-catalog.js');
 
+const reportPath = path.join(__dirname, 'vercel-deployment-report.json');
+let deploymentsMap = {};
+if (fs.existsSync(reportPath)) {
+  const rep = JSON.parse(fs.readFileSync(reportPath, 'utf8'));
+  if (rep.deployments) {
+    rep.deployments.forEach(d => {
+      deploymentsMap[d.folder] = d.liveUrl;
+    });
+  }
+}
+
 const categories = [...new Set(allProjects.map(p => p.category))];
 
 const html = `<!DOCTYPE html>
@@ -60,103 +71,105 @@ const html = `<!DOCTYPE html>
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
       border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
+      color: #93c5fd;
       font-size: 0.875rem;
       font-weight: 600;
-      color: #60a5fa;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 0 20px var(--primary-glow);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     .hero h1 {
-      font-size: 2.75rem;
+      font-size: 3rem;
       font-weight: 800;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      color: var(--text-muted);
       font-size: 1.125rem;
-      max-width: 750px;
-      margin: 0 auto 1.5rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 2rem;
     }
 
-    /* Stats Ribbon */
+    /* Stats Grid */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
     }
     .stat-card {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
-      padding: 1.25rem;
-      border-radius: 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
       text-align: center;
-      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
     .stat-card:hover {
-      border-color: var(--border);
       transform: translateY(-2px);
+      border-color: var(--primary);
     }
     .stat-card .val {
-      font-size: 1.85rem;
-      font-weight: 700;
-      color: #60a5fa;
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #ffffff;
       font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.25rem;
     }
     .stat-card .lbl {
-      font-size: 0.813rem;
       color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-top: 0.25rem;
     }
 
     /* Search & Filter Bar */
     .filter-section {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 1.25rem;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
     .search-box {
       position: relative;
-      width: 100%;
+      margin-bottom: 1.25rem;
     }
     .search-box i {
       position: absolute;
-      left: 1.1rem;
+      left: 1.25rem;
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
+      font-size: 1.1rem;
     }
     .search-box input {
       width: 100%;
-      padding: 0.85rem 1rem 0.85rem 2.8rem;
-      background: var(--surface-2);
+      padding: 0.875rem 1.25rem 0.875rem 3.25rem;
+      border-radius: 12px;
+      background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 10px;
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 1rem;
       outline: none;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .search-box input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 2px var(--primary-glow);
+      box-shadow: 0 0 0 3px var(--primary-glow);
     }
-
     .category-pills {
       display: flex;
       flex-wrap: wrap;
@@ -166,75 +179,88 @@ const html = `<!DOCTYPE html>
       background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 0.4rem 0.85rem;
-      border-radius: 8px;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
       font-size: 0.813rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    .pill-btn:hover, .pill-btn.active {
+    .pill-btn:hover {
+      background: var(--surface-hover);
+      color: var(--text);
+      border-color: #64748b;
+    }
+    .pill-btn.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+      box-shadow: 0 2px 8px var(--primary-glow);
     }
 
     /* Projects Grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 1.5rem;
     }
     .project-card {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
     .project-card:hover {
-      border-color: var(--primary);
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5), 0 0 20px var(--primary-glow);
+      border-color: #475569;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
     }
     .card-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.85rem;
     }
     .card-id {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-      font-weight: 600;
-      color: #93c5fd;
-      background: rgba(59, 130, 246, 0.12);
-      padding: 0.2rem 0.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.25rem 0.6rem;
       border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
     }
     .card-cat {
       font-size: 0.75rem;
-      color: var(--text-muted);
-      background: var(--surface-2);
-      padding: 0.2rem 0.6rem;
+      font-weight: 600;
+      color: #c084fc;
+      background: rgba(192, 132, 252, 0.1);
+      padding: 0.25rem 0.6rem;
       border-radius: 6px;
+      border: 1px solid rgba(192, 132, 252, 0.2);
     }
     .project-title {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 0.5rem;
+      line-height: 1.3;
     }
     .project-desc {
       font-size: 0.875rem;
       color: var(--text-muted);
       margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
       line-height: 1.5;
-      flex-grow: 1;
     }
     .tech-stack {
       display: flex;
@@ -243,10 +269,10 @@ const html = `<!DOCTYPE html>
       margin-bottom: 1.25rem;
     }
     .tech-tag {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-family: 'JetBrains Mono', monospace;
-      color: #cbd5e1;
-      background: var(--surface-2);
+      background: var(--bg);
+      color: #94a3b8;
       padding: 0.15rem 0.5rem;
       border-radius: 4px;
       border: 1px solid var(--border-subtle);
@@ -309,14 +335,16 @@ const html = `<!DOCTYPE html>
 </head>
 <body>
   <div class="container">
-    <!-- Hero Header -->
+    <!-- Hero -->
     <header class="hero">
       <div class="badge-student">
         <i class="fa-solid fa-graduation-cap"></i>
-        <span>Done By SaiVatsal • Roll / College ID: 2500040224</span>
+        <span>Done By SaiVatsal (2500040224)</span>
       </div>
-      <h1>58 Full-Stack Applications Portfolio</h1>
-      <p>Production-Grade Full-Stack Solutions featuring RESTful APIs, Dynamic Glassmorphic Frontends, In-Memory/Persistent Database Engines, and Vercel Serverless Architecture.</p>
+      <h1>58 Full-Stack Web Applications</h1>
+      <p>
+        A comprehensive portfolio of 58 production-grade web applications with dedicated REST APIs, reactive glassmorphic UI, responsive layouts, automated test suites, and live Vercel Serverless deployments.
+      </p>
     </header>
 
     <!-- Stats -->
@@ -334,8 +362,8 @@ const html = `<!DOCTYPE html>
         <div class="lbl">Dedicated GitHub Repos</div>
       </div>
       <div class="stat-card">
-        <div class="val">Vercel Ready</div>
-        <div class="lbl">Serverless Deployment</div>
+        <div class="val">58 / 58</div>
+        <div class="lbl">Live on Vercel</div>
       </div>
     </div>
 
@@ -353,7 +381,9 @@ const html = `<!DOCTYPE html>
 
     <!-- Project Cards Grid -->
     <div class="projects-grid" id="projectsGrid">
-      ${allProjects.map((p, idx) => `
+      ${allProjects.map((p) => {
+        const liveVercelUrl = deploymentsMap[p.folder] || `./${p.folder}/public/index.html`;
+        return `
       <div class="project-card" data-cat="${p.category}" data-search="${p.name.toLowerCase()} ${p.description.toLowerCase()} ${p.category.toLowerCase()} ${p.folder.toLowerCase()}">
         <div>
           <div class="card-header">
@@ -366,18 +396,19 @@ const html = `<!DOCTYPE html>
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">${p.fields.length} Data Fields</span>
+            <span class="tech-tag">${p.fields.length} Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./${p.folder}/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="${liveVercelUrl}" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/${p.folder}" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
           </a>
         </div>
-      </div>`).join('\n')}
+      </div>`;
+      }).join('\n')}
     </div>
 
     <!-- Footer -->
@@ -430,4 +461,4 @@ const html = `<!DOCTYPE html>
 `;
 
 fs.writeFileSync(path.join(__dirname, 'index.html'), html, 'utf8');
-console.log('✔ Master Showcase index.html generated successfully!');
+console.log('✔ Master Showcase index.html generated successfully with direct Vercel live URLs!');

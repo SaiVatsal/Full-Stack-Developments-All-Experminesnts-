@@ -49,103 +49,105 @@
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
+      padding: 0.5rem 1.25rem;
+      border-radius: 9999px;
       background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
       border: 1px solid rgba(59, 130, 246, 0.3);
-      padding: 0.4rem 1rem;
-      border-radius: 9999px;
+      color: #93c5fd;
       font-size: 0.875rem;
       font-weight: 600;
-      color: #60a5fa;
-      margin-bottom: 1.25rem;
-      box-shadow: 0 0 20px var(--primary-glow);
+      margin-bottom: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     }
     .hero h1 {
-      font-size: 2.75rem;
+      font-size: 3rem;
       font-weight: 800;
-      letter-spacing: -0.025em;
-      margin-bottom: 0.75rem;
-      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      letter-spacing: -0.03em;
+      line-height: 1.15;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 50%, #94a3b8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
     .hero p {
-      color: var(--text-muted);
       font-size: 1.125rem;
-      max-width: 750px;
-      margin: 0 auto 1.5rem;
+      color: var(--text-muted);
+      max-width: 760px;
+      margin: 0 auto 2rem;
     }
 
-    /* Stats Ribbon */
+    /* Stats Grid */
     .stats-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-bottom: 2.5rem;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-bottom: 3rem;
     }
     .stat-card {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
-      padding: 1.25rem;
-      border-radius: 12px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 1.5rem;
       text-align: center;
-      transition: all 0.2s ease;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, border-color 0.2s ease;
     }
     .stat-card:hover {
-      border-color: var(--border);
       transform: translateY(-2px);
+      border-color: var(--primary);
     }
     .stat-card .val {
-      font-size: 1.85rem;
-      font-weight: 700;
-      color: #60a5fa;
+      font-size: 2.25rem;
+      font-weight: 800;
+      color: #ffffff;
       font-family: 'JetBrains Mono', monospace;
+      margin-bottom: 0.25rem;
     }
     .stat-card .lbl {
-      font-size: 0.813rem;
       color: var(--text-muted);
+      font-size: 0.875rem;
+      font-weight: 500;
       text-transform: uppercase;
       letter-spacing: 0.05em;
-      margin-top: 0.25rem;
     }
 
     /* Search & Filter Bar */
     .filter-section {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      padding: 1.25rem;
-      margin-bottom: 2rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
     }
     .search-box {
       position: relative;
-      width: 100%;
+      margin-bottom: 1.25rem;
     }
     .search-box i {
       position: absolute;
-      left: 1.1rem;
+      left: 1.25rem;
       top: 50%;
       transform: translateY(-50%);
       color: var(--text-muted);
+      font-size: 1.1rem;
     }
     .search-box input {
       width: 100%;
-      padding: 0.85rem 1rem 0.85rem 2.8rem;
-      background: var(--surface-2);
+      padding: 0.875rem 1.25rem 0.875rem 3.25rem;
+      border-radius: 12px;
+      background: var(--bg);
       border: 1px solid var(--border);
-      border-radius: 10px;
       color: var(--text);
-      font-size: 0.95rem;
+      font-size: 1rem;
       outline: none;
-      transition: border-color 0.2s ease;
+      transition: border-color 0.2s, box-shadow 0.2s;
     }
     .search-box input:focus {
       border-color: var(--primary);
-      box-shadow: 0 0 0 2px var(--primary-glow);
+      box-shadow: 0 0 0 3px var(--primary-glow);
     }
-
     .category-pills {
       display: flex;
       flex-wrap: wrap;
@@ -155,75 +157,88 @@
       background: var(--surface-2);
       border: 1px solid var(--border);
       color: var(--text-muted);
-      padding: 0.4rem 0.85rem;
-      border-radius: 8px;
+      padding: 0.4rem 0.9rem;
+      border-radius: 9999px;
       font-size: 0.813rem;
       font-weight: 500;
       cursor: pointer;
       transition: all 0.2s ease;
     }
-    .pill-btn:hover, .pill-btn.active {
+    .pill-btn:hover {
+      background: var(--surface-hover);
+      color: var(--text);
+      border-color: #64748b;
+    }
+    .pill-btn.active {
       background: var(--primary);
       color: #ffffff;
       border-color: var(--primary);
+      box-shadow: 0 2px 8px var(--primary-glow);
     }
 
     /* Projects Grid */
     .projects-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
       gap: 1.5rem;
     }
     .project-card {
       background: var(--surface);
-      border: 1px solid var(--border-subtle);
-      border-radius: 14px;
+      border: 1px solid var(--border);
+      border-radius: 16px;
       padding: 1.5rem;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      transition: all 0.25s ease;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
     }
     .project-card:hover {
-      border-color: var(--primary);
       transform: translateY(-4px);
-      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5), 0 0 20px var(--primary-glow);
+      border-color: #475569;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 8px 10px -6px rgba(0, 0, 0, 0.5);
     }
     .card-header {
       display: flex;
       justify-content: space-between;
-      align-items: flex-start;
-      margin-bottom: 0.75rem;
+      align-items: center;
+      margin-bottom: 0.85rem;
     }
     .card-id {
       font-family: 'JetBrains Mono', monospace;
       font-size: 0.75rem;
-      font-weight: 600;
-      color: #93c5fd;
-      background: rgba(59, 130, 246, 0.12);
-      padding: 0.2rem 0.5rem;
+      font-weight: 700;
+      color: #38bdf8;
+      background: rgba(56, 189, 248, 0.1);
+      padding: 0.25rem 0.6rem;
       border-radius: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.2);
     }
     .card-cat {
       font-size: 0.75rem;
-      color: var(--text-muted);
-      background: var(--surface-2);
-      padding: 0.2rem 0.6rem;
+      font-weight: 600;
+      color: #c084fc;
+      background: rgba(192, 132, 252, 0.1);
+      padding: 0.25rem 0.6rem;
       border-radius: 6px;
+      border: 1px solid rgba(192, 132, 252, 0.2);
     }
     .project-title {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #ffffff;
       margin-bottom: 0.5rem;
+      line-height: 1.3;
     }
     .project-desc {
       font-size: 0.875rem;
       color: var(--text-muted);
       margin-bottom: 1.25rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
       line-height: 1.5;
-      flex-grow: 1;
     }
     .tech-stack {
       display: flex;
@@ -232,10 +247,10 @@
       margin-bottom: 1.25rem;
     }
     .tech-tag {
-      font-size: 0.7rem;
+      font-size: 0.72rem;
       font-family: 'JetBrains Mono', monospace;
-      color: #cbd5e1;
-      background: var(--surface-2);
+      background: var(--bg);
+      color: #94a3b8;
       padding: 0.15rem 0.5rem;
       border-radius: 4px;
       border: 1px solid var(--border-subtle);
@@ -298,14 +313,16 @@
 </head>
 <body>
   <div class="container">
-    <!-- Hero Header -->
+    <!-- Hero -->
     <header class="hero">
       <div class="badge-student">
         <i class="fa-solid fa-graduation-cap"></i>
-        <span>Done By SaiVatsal • Roll / College ID: 2500040224</span>
+        <span>Done By SaiVatsal (2500040224)</span>
       </div>
-      <h1>58 Full-Stack Applications Portfolio</h1>
-      <p>Production-Grade Full-Stack Solutions featuring RESTful APIs, Dynamic Glassmorphic Frontends, In-Memory/Persistent Database Engines, and Vercel Serverless Architecture.</p>
+      <h1>58 Full-Stack Web Applications</h1>
+      <p>
+        A comprehensive portfolio of 58 production-grade web applications with dedicated REST APIs, reactive glassmorphic UI, responsive layouts, automated test suites, and live Vercel Serverless deployments.
+      </p>
     </header>
 
     <!-- Stats -->
@@ -323,8 +340,8 @@
         <div class="lbl">Dedicated GitHub Repos</div>
       </div>
       <div class="stat-card">
-        <div class="val">Vercel Ready</div>
-        <div class="lbl">Serverless Deployment</div>
+        <div class="val">58 / 58</div>
+        <div class="lbl">Live on Vercel</div>
       </div>
     </div>
 
@@ -412,12 +429,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">7 Data Fields</span>
+            <span class="tech-tag">7 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./01-ecommerce-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://01-ecommerce-platform-67tnexag3-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/01-ecommerce-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -437,12 +454,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">7 Data Fields</span>
+            <span class="tech-tag">7 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./02-food-delivery-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://02-food-delivery-system-69lvtxsoq-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/02-food-delivery-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -462,12 +479,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./03-inventory-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://03-inventory-management-system-7q1zyet8v-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/03-inventory-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -487,12 +504,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">7 Data Fields</span>
+            <span class="tech-tag">7 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./04-learning-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://04-learning-management-system-hgapjmpaz-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/04-learning-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -512,12 +529,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./05-social-media-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://05-social-media-platform-50trknpqx-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/05-social-media-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -537,12 +554,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">7 Data Fields</span>
+            <span class="tech-tag">7 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./06-healthcare-appointment-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://06-healthcare-appointment-system-ei12exz91.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/06-healthcare-appointment-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -562,12 +579,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./07-employee-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://07-employee-management-system-nj8ld8ujj-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/07-employee-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -587,12 +604,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./08-video-streaming-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://08-video-streaming-platform-e0t0vdme3-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/08-video-streaming-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -612,12 +629,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./09-expense-tracker/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://09-expense-tracker-70zpjqoit-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/09-expense-tracker" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -637,12 +654,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./10-online-examination-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://10-online-examination-system-7pv27his7-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/10-online-examination-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -662,12 +679,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./11-car-rental-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://11-car-rental-system-4keso1j55-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/11-car-rental-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -687,12 +704,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">9 Data Fields</span>
+            <span class="tech-tag">9 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./12-weather-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://12-weather-9613q5gxn-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/12-weather-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -712,12 +729,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">7 Data Fields</span>
+            <span class="tech-tag">7 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./13-online-voting-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://13-online-voting-system-8k927tnc4-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/13-online-voting-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -737,12 +754,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./14-fitness-tracker/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://14-fitness-tracker-j1nep0wfy-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/14-fitness-tracker" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -762,12 +779,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./15-file-sharing-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://15-file-sharing-platform-izkgiz0az-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/15-file-sharing-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -787,12 +804,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./16-content-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://16-content-management-system-rof8et1fn-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/16-content-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -812,12 +829,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">7 Data Fields</span>
+            <span class="tech-tag">7 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./17-online-banking-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://17-online-banking-system-mohdh3p4v-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/17-online-banking-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -837,12 +854,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">9 Data Fields</span>
+            <span class="tech-tag">9 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./18-event-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://18-event-management-system-6l8v8anyq-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/18-event-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -862,12 +879,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./19-health-records-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://19-health-records-system-4od6jkbms-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/19-health-records-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -887,12 +904,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">8 Data Fields</span>
+            <span class="tech-tag">8 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./20-travel-booking-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://20-travel-booking-platform-mjt88khmw-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/20-travel-booking-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -912,12 +929,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./21-learning-hub/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://21-learning-n8v1yu683-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/21-learning-hub" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -937,12 +954,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./22-hospital-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://22-hospital-management-system-plx5ex444-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/22-hospital-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -962,12 +979,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./23-online-art-gallery/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://23-online-art-gallery-1avbjmhmb-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/23-online-art-gallery" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -987,12 +1004,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./24-crm-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://24-crm-system-nicfln1w1-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/24-crm-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1012,12 +1029,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./25-news-aggregator/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://25-news-aggregator-a6iz0m74w-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/25-news-aggregator" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1037,12 +1054,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./26-expense-sharing-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://26-expense-sharing-g9xwofo0c-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/26-expense-sharing-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1062,12 +1079,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./27-food-recipe-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://27-food-recipe-34ewgdmz7-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/27-food-recipe-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1087,12 +1104,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./28-property-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://28-property-management-system-g0ysxoqjp-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/28-property-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1112,12 +1129,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./29-online-auction-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://29-online-auction-system-6hgyu6x9g-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/29-online-auction-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1137,12 +1154,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./30-personal-portfolio-website/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://30-personal-portfolio-website-e9im4upri-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/30-personal-portfolio-website" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1162,12 +1179,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./31-ride-sharing-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://31-ride-sharing-3jxg2ktd7-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/31-ride-sharing-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1187,12 +1204,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./32-online-grocery-store/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://32-online-grocery-store-vuzixkvn7-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/32-online-grocery-store" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1212,12 +1229,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./33-music-streaming-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://33-music-streaming-2y62mm5b8-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/33-music-streaming-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1237,12 +1254,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./34-forum-application/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://34-forum-application-3ot0wb8fz-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/34-forum-application" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1262,12 +1279,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./35-online-ticket-booking/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://35-online-ticket-booking-lr7uo4vpo-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/35-online-ticket-booking" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1287,12 +1304,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./36-student-report-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://36-student-report-system-qyfdtlf2y-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/36-student-report-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1312,12 +1329,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./37-task-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://37-task-management-system-g61a1b8sp-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/37-task-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1337,12 +1354,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./38-quiz-builder/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://38-quiz-builder-h1ccejahb-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/38-quiz-builder" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1362,12 +1379,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./39-food-waste-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://39-food-waste-management-system-awrtt6dxz.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/39-food-waste-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1387,12 +1404,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./40-pet-adoption-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://40-pet-adoption-platform-85gfxcdhg-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/40-pet-adoption-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1412,12 +1429,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./41-online-donation-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://41-online-donation-platform-hid9dumwe-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/41-online-donation-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1437,12 +1454,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./42-disaster-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://42-disaster-management-system-hxxkf4ieu-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/42-disaster-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1462,12 +1479,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./43-budget-planner/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://43-budget-planner-ioxq61382-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/43-budget-planner" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1487,12 +1504,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./44-blood-banking-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://44-blood-banking-system-48lb4ru1y-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/44-blood-banking-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1512,12 +1529,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./45-agriculture-farmer-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://45-agriculture-farmer-lkucbs90p-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/45-agriculture-farmer-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1537,12 +1554,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./46-hotel-booking-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://46-hotel-booking-platform-3z83bt40a-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/46-hotel-booking-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1562,12 +1579,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./47-online-library-management/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://47-online-library-management-ou9xi8ngh-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/47-online-library-management" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1587,12 +1604,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./48-feedback-management-system/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://48-feedback-management-system-4thdlka0r-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/48-feedback-management-system" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1612,12 +1629,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./49-home-tutor-finder/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://49-home-tutor-finder-3qpsxfigq-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/49-home-tutor-finder" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1637,12 +1654,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./50-music-streaming-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://50-music-streaming-platform-35k946nlb-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/50-music-streaming-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1662,12 +1679,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./51-freelancer-marketplace/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://51-freelancer-marketplace-3jw0w1q0g-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/51-freelancer-marketplace" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1687,12 +1704,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./52-job-application-tracker/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://52-job-application-tracker-2vh2q0ob5-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/52-job-application-tracker" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1712,12 +1729,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./53-research-journal-management/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://53-research-journal-management-aflqajl0p-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/53-research-journal-management" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1737,12 +1754,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./54-crowdfunding-platform/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://54-crowdfunding-platform-owdocthna-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/54-crowdfunding-platform" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1762,12 +1779,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./55-sports-league-management/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://55-sports-league-management-evbvgfnxj-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/55-sports-league-management" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1787,12 +1804,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./56-digital-wallet-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://56-digital-wallet-5lqar0vyl-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/56-digital-wallet-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1812,12 +1829,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./57-gaming-tournament-portal/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://57-gaming-tournament-portal-9x31xdsnc-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/57-gaming-tournament-portal" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub
@@ -1837,12 +1854,12 @@
             <span class="tech-tag">Express.js</span>
             <span class="tech-tag">REST API</span>
             <span class="tech-tag">Vercel Serverless</span>
-            <span class="tech-tag">5 Data Fields</span>
+            <span class="tech-tag">5 Fields</span>
           </div>
         </div>
         <div class="card-actions">
-          <a href="./58-virtual-stock-trading-app/public/index.html" class="btn btn-primary" target="_blank">
-            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          <a href="https://58-virtual-stock-trading-igyhuism7-sais-projects-d9375997.vercel.app" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Live App
           </a>
           <a href="https://github.com/SaiVatsal/58-virtual-stock-trading-app" class="btn btn-secondary" target="_blank">
             <i class="fa-brands fa-github"></i> GitHub

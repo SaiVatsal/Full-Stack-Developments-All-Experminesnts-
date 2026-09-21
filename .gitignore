@@ -4,3 +4,8 @@ package-lock.json
 Thumbs.db
 *.log
 .claude/
+.env*
+vercel.token
+*.secret
+
+.vercel

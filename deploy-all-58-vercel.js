@@ -1,60 +1,29 @@
 /**
- * 58 Vercel Projects Automated Deployer & Health Verifier
+ * 58 Vercel Projects Automated Deployer
  * Student: SaiVatsal (2500040224)
  *
  * This script automates deploying all 58 projects to Vercel:
- * 1. Deploys each project folder directly to Vercel production
- * 2. Uses either a Vercel Token (process.env.VERCEL_TOKEN) or local Vercel CLI login
+ * 1. Reads authentication securely from vercel.token or process.env.VERCEL_TOKEN
+ * 2. Deploys each project folder directly to Vercel production
  * 3. Captures the generated live production URLs
  * 4. Generates a deployment report and markdown catalog with live links
- *
- * Usage:
- *   Option A (With Token):
- *     $env:VERCEL_TOKEN = "your_vercel_token_here"
- *     node deploy-all-58-vercel.js
- *
- *   Option B (With Vercel CLI Login):
- *     npx vercel login
- *     node deploy-all-58-vercel.js
  */
 
 const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const https = require('https');
 const { allProjects } = require('./master-catalog.js');
 
 const rootDir = __dirname;
-const VERCEL_TOKEN = process.env.VERCEL_TOKEN || process.env.VERCEL_AUTH_TOKEN || '';
+const tokenPath = path.join(rootDir, 'vercel.token');
+let VERCEL_TOKEN = process.env.VERCEL_TOKEN || process.env.VERCEL_AUTH_TOKEN || '';
+
+if (!VERCEL_TOKEN && fs.existsSync(tokenPath)) {
+  VERCEL_TOKEN = fs.readFileSync(tokenPath, 'utf8').trim();
+}
 
 function sleep(ms) {
   return new Promise(resolve => setTimeout(resolve, ms));
-}
-
-function checkLiveUrl(url) {
-  return new Promise((resolve) => {
-    try {
-      const fullUrl = url.endsWith('/') ? `${url}api/health` : `${url}/api/health`;
-      const req = https.get(fullUrl, { timeout: 8000 }, (res) => {
-        let body = '';
-        res.on('data', chunk => body += chunk);
-        res.on('end', () => {
-          if (res.statusCode >= 200 && res.statusCode < 400) {
-            resolve({ ok: true, status: res.statusCode });
-          } else {
-            resolve({ ok: false, status: res.statusCode });
-          }
-        });
-      });
-      req.on('error', (e) => resolve({ ok: false, error: e.message }));
-      req.on('timeout', () => {
-        req.destroy();
-        resolve({ ok: false, error: 'Timeout' });
-      });
-    } catch (err) {
-      resolve({ ok: false, error: err.message });
-    }
-  });
 }
 
 async function deployProject(project, index, total) {
@@ -64,14 +33,12 @@ async function deployProject(project, index, total) {
   console.log(`\n================================================================`);
   console.log(`[${index + 1}/${total}] 🚀 Deploying to Vercel: ${project.name}`);
   console.log(`Directory: ${project.folder}`);
-  console.log(`Student: SaiVatsal (2500040224)`);
+  console.log(`Student Attribution: Done By SaiVatsal (2500040224)`);
   console.log(`================================================================`);
 
   try {
-    const tokenFlag = VERCEL_TOKEN ? `--token ${VERCEL_TOKEN}` : '';
-    const deployCmd = `npx --yes vercel deploy --prod --yes --name ${repoName} ${tokenFlag}`;
+    const deployCmd = `npx --yes vercel deploy --prod --yes --token=${VERCEL_TOKEN}`;
 
-    console.log(`Executing Vercel CLI deployment...`);
     const output = execSync(deployCmd, {
       cwd: projectDir,
       stdio: ['pipe', 'pipe', 'pipe'],
@@ -79,24 +46,28 @@ async function deployProject(project, index, total) {
       timeout: 180000 // 3 minutes max per project
     });
 
-    // Vercel outputs the deployment URL as the last non-empty line or stdout URL
-    const lines = output.trim().split(/\r?\n/).map(l => l.trim()).filter(Boolean);
-    let liveUrl = lines.find(l => l.startsWith('https://') && l.includes('.vercel.app')) || lines[lines.length - 1];
+    let liveUrl = '';
+    let inspectorUrl = '';
 
-    if (!liveUrl.startsWith('http')) {
+    try {
+      const parsed = JSON.parse(output.trim());
+      if (parsed && parsed.deployment && parsed.deployment.url) {
+        liveUrl = parsed.deployment.url.startsWith('http') ? parsed.deployment.url : `https://${parsed.deployment.url}`;
+        inspectorUrl = parsed.deployment.inspectorUrl || '';
+      }
+    } catch (e) {
+      // Fallback text parsing if not JSON
+      const lines = output.trim().split(/\r?\n/).map(l => l.trim()).filter(Boolean);
+      const urlLine = lines.find(l => l.startsWith('https://') && l.includes('.vercel.app')) || lines[lines.length - 1];
+      liveUrl = urlLine.startsWith('http') ? urlLine : `https://${urlLine}`;
+    }
+
+    if (!liveUrl) {
       liveUrl = `https://${repoName}.vercel.app`;
     }
 
-    console.log(`  ✅ Successfully Deployed to Vercel: ${liveUrl}`);
-
-    // Quick Health Verification
-    console.log(`  🔍 Verifying API Health at ${liveUrl}/api/health...`);
-    const health = await checkLiveUrl(liveUrl);
-    if (health.ok) {
-      console.log(`  ✔ API Health Verified (Status ${health.status})`);
-    } else {
-      console.log(`  ℹ️ Deployment live at ${liveUrl}`);
-    }
+    console.log(`  ✅ Successfully Deployed: ${liveUrl}`);
+    if (inspectorUrl) console.log(`  🔍 Vercel Dashboard: ${inspectorUrl}`);
 
     return {
       id: project.id,
@@ -104,13 +75,13 @@ async function deployProject(project, index, total) {
       folder: repoName,
       category: project.category,
       liveUrl: liveUrl,
+      inspectorUrl: inspectorUrl,
       githubUrl: `https://github.com/SaiVatsal/${repoName}`,
-      status: 'SUCCESS',
-      health: health.ok ? 'HEALTHY' : 'DEPLOYED'
+      status: 'SUCCESS'
     };
   } catch (err) {
     const errMsg = err.stderr ? err.stderr.toString() : err.message;
-    console.error(`  ❌ Deployment error for ${repoName}:`, errMsg.trim());
+    console.error(`  ❌ Deployment notice for ${repoName}:`, errMsg.trim());
     return {
       id: project.id,
       name: project.name,
@@ -127,8 +98,12 @@ async function run() {
   console.log(`🌟 58 VERCEL PROJECTS AUTOMATED DEPLOYMENT ORCHESTRATOR`);
   console.log(`Student: SaiVatsal (2500040224)`);
   console.log(`Total Projects: ${allProjects.length}`);
-  console.log(`Mode: ${VERCEL_TOKEN ? 'Vercel API Token Auth' : 'Local Vercel CLI Auth'}`);
   console.log(`================================================================\n`);
+
+  if (!VERCEL_TOKEN) {
+    console.error('❌ Error: VERCEL_TOKEN not found in environment or vercel.token file!');
+    process.exit(1);
+  }
 
   const results = [];
   let passed = 0;
@@ -140,8 +115,8 @@ async function run() {
     if (res.status === 'SUCCESS') passed++;
     else failed++;
 
-    // Small cooldown between deployments
-    await sleep(1000);
+    // Small delay between deployments to prevent API rate limiting
+    await sleep(800);
   }
 
   console.log(`\n================================================================`);
