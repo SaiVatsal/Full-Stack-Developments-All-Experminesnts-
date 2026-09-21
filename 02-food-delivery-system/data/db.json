@@ -1,0 +1,74 @@
+{
+  "restaurants": [
+    {
+      "id": "1",
+      "name": "Bella Italia Trattoria",
+      "cuisine": "Italian",
+      "rating": 4.9,
+      "deliveryTime": "25-35 min",
+      "minOrder": 15,
+      "status": "Open",
+      "featuredItem": "Woodfired Truffle Pizza ($18.50)"
+    },
+    {
+      "id": "2",
+      "name": "Tokyo Ramen House",
+      "cuisine": "Japanese",
+      "rating": 4.8,
+      "deliveryTime": "20-30 min",
+      "minOrder": 12,
+      "status": "Open",
+      "featuredItem": "Tonkotsu Chashu Ramen ($14.99)"
+    },
+    {
+      "id": "3",
+      "name": "Spice Boulevard Bistro",
+      "cuisine": "Indian",
+      "rating": 4.7,
+      "deliveryTime": "30-45 min",
+      "minOrder": 20,
+      "status": "Open",
+      "featuredItem": "Butter Chicken & Garlic Naan ($16.99)"
+    },
+    {
+      "id": "4",
+      "name": "Green Garden Harvest",
+      "cuisine": "Vegan / Healthy",
+      "rating": 4.9,
+      "deliveryTime": "15-25 min",
+      "minOrder": 10,
+      "status": "Open",
+      "featuredItem": "Avocado Quinoa Protein Bowl ($13.50)"
+    },
+    {
+      "id": "5",
+      "name": "The Burger Forge",
+      "cuisine": "American",
+      "rating": 4.6,
+      "deliveryTime": "25-40 min",
+      "minOrder": 14,
+      "status": "Busy",
+      "featuredItem": "Smoked Bacon Double Smash ($15.00)"
+    }
+  ],
+  "dispatches": [
+    {
+      "id": "DISP-401",
+      "customer": "Liam Thorne",
+      "restaurant": "Bella Italia Trattoria",
+      "items": "2x Truffle Pizza",
+      "total": "$37.00",
+      "courier": "Carlos M. (Bike #12)",
+      "status": "On The Way"
+    },
+    {
+      "id": "DISP-402",
+      "customer": "Emma Watson",
+      "restaurant": "Tokyo Ramen House",
+      "items": "1x Spicy Ramen, 1x Gyoza",
+      "total": "$22.99",
+      "courier": "Pending Assign",
+      "status": "Cooking"
+    }
+  ]
+}

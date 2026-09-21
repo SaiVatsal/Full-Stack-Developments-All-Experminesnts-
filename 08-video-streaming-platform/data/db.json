@@ -1,0 +1,64 @@
+{
+  "videos": [
+    {
+      "id": "1",
+      "title": "The Quantum Frontier: Beyond Spacetime",
+      "creator": "Cosmos Media / SaiVatsal (2500040224)",
+      "category": "Science & Sci-Fi",
+      "duration": "1h 48m",
+      "resolution": "4K Ultra HD",
+      "views": "2.4M",
+      "rating": 4.9,
+      "status": "Published"
+    },
+    {
+      "id": "2",
+      "title": "Silicon Horizon: The Architecture of Future AI",
+      "creator": "TechVision Studio",
+      "category": "Technology",
+      "duration": "54m",
+      "resolution": "4K Ultra HD",
+      "views": "890K",
+      "rating": 4.8,
+      "status": "Published"
+    },
+    {
+      "id": "3",
+      "title": "Alpine Ascents: Solitude at 8000 Meters",
+      "creator": "Peak Expeditions",
+      "category": "Documentary",
+      "duration": "1h 22m",
+      "resolution": "1080p Full HD",
+      "views": "1.2M",
+      "rating": 4.9,
+      "status": "Published"
+    },
+    {
+      "id": "4",
+      "title": "Cyberpunk Metropolis 2088 Episode 1",
+      "creator": "NeoTokyo Productions",
+      "category": "Action & Drama",
+      "duration": "46m",
+      "resolution": "4K Ultra HD",
+      "views": "3.1M",
+      "rating": 4.7,
+      "status": "Published"
+    }
+  ],
+  "watchlist": [
+    {
+      "id": "WL-201",
+      "user": "Alex Sanders",
+      "video": "The Quantum Frontier: Beyond Spacetime",
+      "progress": "Watched 45m (In Progress)",
+      "date": "2026-09-20"
+    },
+    {
+      "id": "WL-202",
+      "user": "Morgan Freeman Jr.",
+      "video": "Silicon Horizon: The Architecture of Future AI",
+      "progress": "Saved to Queue",
+      "date": "2026-09-21"
+    }
+  ]
+}

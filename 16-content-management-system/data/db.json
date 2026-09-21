@@ -1,0 +1,53 @@
+{
+  "articles": [
+    {
+      "id": "1",
+      "title": "Designing Resilient Distributed Web Platforms in 2026",
+      "slug": "designing-resilient-distributed-platforms",
+      "author": "SaiVatsal (2500040224)",
+      "category": "Engineering",
+      "status": "Published",
+      "views": 4850,
+      "readTime": "6 min read",
+      "publishedAt": "2026-09-18"
+    },
+    {
+      "id": "2",
+      "title": "The Evolution of Modern JavaScript: Node 24 and Beyond",
+      "slug": "evolution-modern-javascript-node-24",
+      "author": "SaiVatsal (2500040224)",
+      "category": "Programming",
+      "status": "Published",
+      "views": 3200,
+      "readTime": "5 min read",
+      "publishedAt": "2026-09-19"
+    },
+    {
+      "id": "3",
+      "title": "Why Micro-Frontends Are Shaping Enterprise Portals",
+      "slug": "micro-frontends-shaping-enterprise",
+      "author": "Rachel Evans",
+      "category": "Architecture",
+      "status": "Under Review",
+      "views": 0,
+      "readTime": "8 min read",
+      "publishedAt": "Draft"
+    }
+  ],
+  "revisions": [
+    {
+      "id": "REV-901",
+      "articleRef": "Why Micro-Frontends Are Shaping Enterprise Portals",
+      "editor": "Chief Editor James",
+      "comments": "Requested additions on Module Federation v2.",
+      "status": "Pending Changes"
+    },
+    {
+      "id": "REV-902",
+      "articleRef": "Designing Resilient Distributed Web Platforms in 2026",
+      "editor": "SaiVatsal (2500040224)",
+      "comments": "Final grammar pass and asset references updated.",
+      "status": "Approved"
+    }
+  ]
+}

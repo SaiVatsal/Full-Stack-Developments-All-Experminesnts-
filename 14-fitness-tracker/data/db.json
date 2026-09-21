@@ -1,0 +1,68 @@
+{
+  "workouts": [
+    {
+      "id": "1",
+      "title": "High-Intensity Calisthenics & Sprints",
+      "category": "HIIT & Cardio",
+      "durationMin": 45,
+      "caloriesBurned": 520,
+      "heartRateAvg": 154,
+      "date": "2026-09-21",
+      "athlete": "SaiVatsal (2500040224)",
+      "status": "Completed"
+    },
+    {
+      "id": "2",
+      "title": "Heavy Compound Deadlifts & Pull-ups",
+      "category": "Strength Training",
+      "durationMin": 60,
+      "caloriesBurned": 460,
+      "heartRateAvg": 138,
+      "date": "2026-09-20",
+      "athlete": "SaiVatsal (2500040224)",
+      "status": "Completed"
+    },
+    {
+      "id": "3",
+      "title": "10km Road Endurance Run",
+      "category": "Running",
+      "durationMin": 50,
+      "caloriesBurned": 680,
+      "heartRateAvg": 162,
+      "date": "2026-09-19",
+      "athlete": "SaiVatsal (2500040224)",
+      "status": "Completed"
+    },
+    {
+      "id": "4",
+      "title": "Vinyasa Flow Mobility & Core",
+      "category": "Flexibility & Yoga",
+      "durationMin": 35,
+      "caloriesBurned": 180,
+      "heartRateAvg": 110,
+      "date": "2026-09-18",
+      "athlete": "SaiVatsal (2500040224)",
+      "status": "Completed"
+    }
+  ],
+  "nutrition": [
+    {
+      "id": "NUT-101",
+      "date": "2026-09-21",
+      "meal": "Grilled Salmon & Quinoa Bowl",
+      "protein": "48g",
+      "carbs": "54g",
+      "fats": "18g",
+      "calories": "570 kcal"
+    },
+    {
+      "id": "NUT-102",
+      "date": "2026-09-21",
+      "meal": "Greek Yogurt with Whey & Berries",
+      "protein": "36g",
+      "carbs": "28g",
+      "fats": "6g",
+      "calories": "310 kcal"
+    }
+  ]
+}

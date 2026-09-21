@@ -1,0 +1,75 @@
+{
+  "employees": [
+    {
+      "id": "1",
+      "empId": "EMP-101",
+      "name": "SaiVatsal (2500040224)",
+      "role": "Lead Full-Stack Architect",
+      "department": "Engineering",
+      "salary": 145000,
+      "email": "saivatsal@enterprise.org",
+      "status": "Active",
+      "joinDate": "2024-01-15"
+    },
+    {
+      "id": "2",
+      "empId": "EMP-102",
+      "name": "Jessica Taylor",
+      "role": "Senior Product Designer",
+      "department": "Design & UX",
+      "salary": 118000,
+      "email": "jessica.t@enterprise.org",
+      "status": "Active",
+      "joinDate": "2024-03-01"
+    },
+    {
+      "id": "3",
+      "empId": "EMP-103",
+      "name": "Michael Chang",
+      "role": "DevOps & Reliability Engineer",
+      "department": "Infrastructure",
+      "salary": 125000,
+      "email": "m.chang@enterprise.org",
+      "status": "Active",
+      "joinDate": "2024-05-10"
+    },
+    {
+      "id": "4",
+      "empId": "EMP-104",
+      "name": "Rachel Green",
+      "role": "Talent Acquisition Manager",
+      "department": "Human Resources",
+      "salary": 95000,
+      "email": "rachel.g@enterprise.org",
+      "status": "Active",
+      "joinDate": "2023-11-20"
+    },
+    {
+      "id": "5",
+      "empId": "EMP-105",
+      "name": "David Kim",
+      "role": "Financial Analyst",
+      "department": "Finance & Accounts",
+      "salary": 105000,
+      "email": "d.kim@enterprise.org",
+      "status": "On Leave",
+      "joinDate": "2024-02-18"
+    }
+  ],
+  "leaves": [
+    {
+      "id": "LV-501",
+      "employee": "David Kim (EMP-105)",
+      "type": "Medical Leave",
+      "duration": "3 Days (Sep 21 - Sep 24)",
+      "status": "Approved"
+    },
+    {
+      "id": "LV-502",
+      "employee": "Jessica Taylor (EMP-102)",
+      "type": "Annual Paid Time Off",
+      "duration": "5 Days (Oct 10 - Oct 15)",
+      "status": "Pending Review"
+    }
+  ]
+}

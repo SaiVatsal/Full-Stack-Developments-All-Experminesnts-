@@ -1,0 +1,37 @@
+{
+  "events": [
+    {
+      "id": "1",
+      "code": "CONF-2026",
+      "title": "Global Full-Stack & AI Summit 2026",
+      "venue": "Metropolitan Convention Center, Hall A",
+      "date": "2026-10-15",
+      "capacity": 1500,
+      "registered": 1340,
+      "ticketPrice": 299,
+      "status": "Active",
+      "organizer": "SaiVatsal (2500040224)"
+    },
+    {
+      "id": "2",
+      "code": "DEV-90",
+      "title": "Cloud-Native Distributed Systems Forum",
+      "venue": "Innovation Tech Hub & Virtual Stage",
+      "date": "2026-11-02",
+      "capacity": 800,
+      "registered": 760,
+      "ticketPrice": 199,
+      "status": "Active",
+      "organizer": "SaiVatsal (2500040224)"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "BADGE-101",
+      "attendee": "Nathaniel Drake",
+      "event": "Global Full-Stack & AI Summit 2026",
+      "ticketType": "VIP All-Access",
+      "checkIn": "Confirmed"
+    }
+  ]
+}

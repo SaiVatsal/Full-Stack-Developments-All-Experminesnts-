@@ -1,0 +1,44 @@
+{
+  "donations": [
+    {
+      "id": "1",
+      "title": "SurplusFeed Waste Prevention System Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for SurplusFeed Waste Prevention System. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "SurplusFeed Waste Prevention System Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Sustainability."
+    },
+    {
+      "id": "3",
+      "title": "SurplusFeed Waste Prevention System Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Sustainability module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for SurplusFeed Waste Prevention System",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Sustainability",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

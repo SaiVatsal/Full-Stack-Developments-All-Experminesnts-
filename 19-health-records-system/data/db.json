@@ -1,0 +1,36 @@
+{
+  "records": [
+    {
+      "id": "1",
+      "mrn": "MRN-77401",
+      "patientName": "Alexander Hayes",
+      "dob": "1988-04-12",
+      "bloodGroup": "O Positive",
+      "doctor": "Dr. SaiVatsal (2500040224), MD",
+      "diagnosis": "Mild Hypertension (Stage 1)",
+      "lastVisit": "2026-09-18",
+      "status": "Under Care"
+    },
+    {
+      "id": "2",
+      "mrn": "MRN-77402",
+      "patientName": "Beatrice Wood",
+      "dob": "1995-11-23",
+      "bloodGroup": "A Positive",
+      "doctor": "Dr. Sarah Mitchell, MD",
+      "diagnosis": "Exercise-Induced Asthma",
+      "lastVisit": "2026-09-15",
+      "status": "Stable"
+    }
+  ],
+  "prescriptions": [
+    {
+      "id": "RX-901",
+      "patient": "Alexander Hayes (MRN-77401)",
+      "drug": "Lisinopril 10mg Oral Daily",
+      "duration": "90 Days",
+      "prescriber": "Dr. SaiVatsal (2500040224)",
+      "status": "Dispensed"
+    }
+  ]
+}

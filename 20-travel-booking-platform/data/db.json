@@ -1,0 +1,36 @@
+{
+  "packages": [
+    {
+      "id": "1",
+      "code": "TRV-TYO-01",
+      "destination": "Tokyo & Kyoto Cultural Odyssey",
+      "country": "Japan",
+      "durationDays": 10,
+      "price": 2490,
+      "flightIncluded": "ANA All Nippon Airways",
+      "status": "Available",
+      "rating": 4.9
+    },
+    {
+      "id": "2",
+      "code": "TRV-SWZ-02",
+      "destination": "Swiss Alps & Zermatt Glacier Express",
+      "country": "Switzerland",
+      "durationDays": 7,
+      "price": 3150,
+      "flightIncluded": "Swiss International Air",
+      "status": "Available",
+      "rating": 4.9
+    }
+  ],
+  "bookings": [
+    {
+      "id": "BKG-501",
+      "traveler": "SaiVatsal (2500040224)",
+      "tour": "Tokyo & Kyoto Cultural Odyssey",
+      "passengers": 2,
+      "totalPaid": "$4,980.00",
+      "status": "Ticketed & Confirmed"
+    }
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "books": [
+    {
+      "id": "1",
+      "title": "BiblioTech Library Management System Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for BiblioTech Library Management System. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "BiblioTech Library Management System Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Library & Archival."
+    },
+    {
+      "id": "3",
+      "title": "BiblioTech Library Management System Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Library & Archival module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for BiblioTech Library Management System",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Library & Archival",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

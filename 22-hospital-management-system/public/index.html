@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ApexCare Hospital Management Suite | Done By SaiVatsal 2500040224</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Inter', sans-serif; }
+    [x-cloak] { display: none !important; }
+  </style>
+</head>
+<body class="bg-slate-900/5 text-slate-800 min-h-screen flex flex-col antialiased">
+
+  <!-- Navigation Header -->
+  <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-md border-b border-slate-800">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        <div class="flex items-center space-x-3">
+          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-600/30">
+            <i class="fa-solid fa-layer-group text-lg"></i>
+          </div>
+          <div>
+            <h1 class="text-base font-bold leading-tight flex items-center gap-2">
+              ApexCare Hospital Management Suite
+              <span class="text-[11px] font-medium bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded border border-indigo-400/30">Healthcare</span>
+            </h1>
+            <p class="text-xs text-slate-400">Project #22 • Production Architecture</p>
+          </div>
+        </div>
+
+        <!-- Student Attribution Badge -->
+        <div class="flex items-center space-x-4">
+          <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+            Done By SaiVatsal 2500040224
+          </div>
+          <button onclick="openModal()" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-semibold shadow-sm transition">
+            <i class="fa-solid fa-plus text-xs"></i>
+            <span>Add Inpatient Record</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
+
+    <!-- Hero Banner & Overview -->
+    <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="space-y-1.5">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Enterprise Solution</span>
+            <span class="text-xs text-slate-500">Node.js + Express REST API</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">ApexCare Hospital Management Suite</h2>
+          <p class="text-slate-600 text-sm max-w-3xl leading-relaxed">Full-stack production-style application for ApexCare Hospital Management Suite. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+        </div>
+        <div class="flex items-center gap-2 shrink-0">
+          <button onclick="fetchData()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-2 transition">
+            <i class="fa-solid fa-arrows-rotate"></i>
+            <span>Refresh</span>
+          </button>
+          <a href="/api/inpatients" target="_blank" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-2 transition">
+            <i class="fa-solid fa-code"></i>
+            <span>Raw JSON</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- KPI Stat Tiles -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-100">
+        
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500">Total inpatients</span>
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+          </div>
+          <p class="text-xl font-bold text-slate-900 mt-2">3 Tracked</p>
+        </div>
+        
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500">System Health</span>
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-circle-check"></i>
+            </div>
+          </div>
+          <p class="text-xl font-bold text-slate-900 mt-2">100% Operational</p>
+        </div>
+        
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500">Module Valuation</span>
+            <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-dollar-sign"></i>
+            </div>
+          </div>
+          <p class="text-xl font-bold text-slate-900 mt-2">$4,190.50</p>
+        </div>
+        
+        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-medium text-slate-500">Compliance Status</span>
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-sm">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+          </div>
+          <p class="text-xl font-bold text-slate-900 mt-2">Verified Tier 1</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Management Data Workspace -->
+    <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
+
+      <!-- Table Filter Bar -->
+      <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div class="flex items-center gap-2">
+          <h3 class="text-base font-bold text-slate-900">Inpatient Record Directory</h3>
+          <span id="itemCountBadge" class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-0.5 rounded-full">0 Entries</span>
+        </div>
+        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+          <div class="relative min-w-[220px]">
+            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+            <input type="text" id="searchInput" oninput="debounceSearch()" placeholder="Search records..." class="w-full pl-9 pr-3.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" />
+          </div>
+          <button onclick="openModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-plus text-[10px]"></i>
+            <span>New Inpatient Record</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Main Data Table -->
+      <div class="overflow-x-auto">
+        <table class="w-full text-left border-collapse">
+          <thead>
+            <tr class="bg-slate-50/75 border-b border-slate-200/60">
+              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Item Name / Title</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Category / Domain</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Current Status</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Metric Value / Cost ($)</th>
+              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Description & Parameters</th>
+              <th class="px-4 py-3 text-right text-xs font-semibold text-slate-600 uppercase tracking-wider">Actions</th>
+            </tr>
+          </thead>
+          <tbody id="dataTableBody" class="divide-y divide-slate-100 text-sm text-slate-700">
+            <!-- Dynamic Rows Injected by JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Empty State -->
+      <div id="emptyState" class="hidden p-12 text-center">
+        <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center text-lg mb-3">
+          <i class="fa-regular fa-folder-open"></i>
+        </div>
+        <h4 class="text-sm font-bold text-slate-800">No records found</h4>
+        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Get started by creating your first entry or adjust your search filter.</p>
+        <button onclick="openModal()" class="mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-lg">Create New</button>
+      </div>
+    </div>
+
+    <!-- Secondary Domain Entity Section -->
+    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
+      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+        <div>
+          <h3 class="text-base font-bold text-slate-900">Ward Bed Allocations</h3>
+          <p class="text-xs text-slate-500">Live synchronized records from secondary domain service</p>
+        </div>
+        <span class="text-xs bg-slate-100 text-slate-700 font-semibold px-2.5 py-1 rounded-md">Live Stream</span>
+      </div>
+      <div id="secondaryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <!-- Injected secondary items -->
+      </div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
+    <div class="max-w-7xl mx-auto px-4 space-y-2">
+      <p class="font-bold text-slate-800">ApexCare Hospital Management Suite • Project #22</p>
+      <p class="text-indigo-600 font-semibold">Done By SaiVatsal (Roll / College ID: 2500040224)</p>
+      <p>© 2026 Advanced Full-Stack Software Engineering Repository</p>
+    </div>
+  </footer>
+
+  <!-- Modal Dialog -->
+  <div id="crudModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
+      <div class="p-5 bg-slate-900 text-white flex items-center justify-between">
+        <div>
+          <h3 id="modalTitle" class="text-base font-bold">Add Inpatient Record</h3>
+          <p class="text-xs text-slate-400">SaiVatsal (2500040224) Management Portal</p>
+        </div>
+        <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form id="crudForm" onsubmit="saveItem(event)" class="p-6 overflow-y-auto space-y-4 flex-1">
+        <input type="hidden" id="editItemId" value="" />
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Item Name / Title</label>
+            <input type="text" id="field_title" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter item name / title..." required />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Category / Domain</label>
+            <select id="field_category" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" required>
+              <option value="General">General</option>
+              <option value="Premium">Premium</option>
+              <option value="Standard">Standard</option>
+              <option value="Enterprise">Enterprise</option>
+              <option value="Specialized">Specialized</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Current Status</label>
+            <select id="field_status" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" required>
+              <option value="Active">Active</option>
+              <option value="Pending">Pending</option>
+              <option value="In Progress">In Progress</option>
+              <option value="Completed">Completed</option>
+              <option value="Approved">Approved</option>
+            </select>
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Metric Value / Cost ($)</label>
+            <input type="number" id="field_value" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter metric value / cost ($)..." required />
+          </div>
+
+          <div class="col-span-full">
+            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Description & Parameters</label>
+            <textarea id="field_details" rows="3" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter description & parameters..."></textarea>
+          </div>
+        </div>
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition">Cancel</button>
+          <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold transition shadow-sm">Save Entry</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl text-xs font-medium transform translate-y-20 opacity-0 transition duration-200 flex items-center gap-2 border border-slate-800">
+    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
+    <span id="toastMsg">Operation successful</span>
+  </div>
+
+  <!-- Client JavaScript Logic -->
+  <script>
+    const API_URL = '/api/inpatients';
+    const SEC_API_URL = '/api/activityRecords';
+    const fields = [{"key":"title","label":"Item Name / Title","type":"text","required":true},{"key":"category","label":"Category / Domain","type":"select","options":["General","Premium","Standard","Enterprise","Specialized"],"required":true},{"key":"status","label":"Current Status","type":"select","options":["Active","Pending","In Progress","Completed","Approved"],"required":true},{"key":"value","label":"Metric Value / Cost ($)","type":"number","required":true},{"key":"details","label":"Description & Parameters","type":"textarea","required":true}];
+    let allData = [];
+
+    async function fetchData() {
+      try {
+        const res = await fetch(API_URL);
+        allData = await res.json();
+        renderTable(allData);
+        fetchSecondary();
+      } catch (err) {
+        showToast('Error loading data: ' + err.message, true);
+      }
+    }
+
+    async function fetchSecondary() {
+      try {
+        const res = await fetch(SEC_API_URL);
+        const secData = await res.json();
+        const grid = document.getElementById('secondaryGrid');
+        if (!grid) return;
+        if (secData.length === 0) {
+          grid.innerHTML = '<p class="text-xs text-slate-400 col-span-full">No active secondary entries.</p>';
+          return;
+        }
+        grid.innerHTML = secData.map(item => `
+          <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-slate-800">${item.id || item.code || 'Record'}</span>
+              <span class="text-[11px] font-semibold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded">${item.status || 'Active'}</span>
+            </div>
+            <p class="text-xs text-slate-600">${item.items || item.customer || item.tour || item.patient || item.entry || item.comments || item.drug || JSON.stringify(item)}</p>
+            <div class="text-[11px] text-slate-400 flex items-center justify-between pt-2 border-t border-slate-200/60">
+              <span>Author: SaiVatsal (2500040224)</span>
+              <span>${item.date || 'Synchronized'}</span>
+            </div>
+          </div>
+        `).join('');
+      } catch (err) {
+        console.error('Secondary error', err);
+      }
+    }
+
+    function renderTable(data) {
+      const tbody = document.getElementById('dataTableBody');
+      const empty = document.getElementById('emptyState');
+      const badge = document.getElementById('itemCountBadge');
+
+      badge.textContent = `${data.length} Entries`;
+
+      if (data.length === 0) {
+        tbody.innerHTML = '';
+        empty.classList.remove('hidden');
+        return;
+      }
+
+      empty.classList.add('hidden');
+      tbody.innerHTML = data.map(row => {
+        const cells = fields.map(f => {
+          let val = row[f.key] || '—';
+          if (f.key === 'status') {
+            return `<td class="px-4 py-3"><span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/50">${val}</span></td>`;
+          }
+          if (f.key === 'price' || f.key === 'salary' || f.key === 'fee' || f.key === 'unitCost' || f.key === 'dailyRate' || f.key === 'amount' || f.key === 'balance' || f.key === 'ticketPrice' || f.key === 'value') {
+            return `<td class="px-4 py-3 font-semibold text-slate-900">$${Number(val).toLocaleString()}</td>`;
+          }
+          return `<td class="px-4 py-3 text-slate-700">${val}</td>`;
+        }).join('');
+
+        return `
+          <tr class="hover:bg-slate-50/80 transition group">
+            ${cells}
+            <td class="px-4 py-3 text-right space-x-2">
+              <button onclick="editItem('${row.id}')" class="px-2.5 py-1 text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 rounded-md transition">Edit</button>
+              <button onclick="deleteItem('${row.id}')" class="px-2.5 py-1 text-xs font-semibold text-rose-600 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 rounded-md transition">Delete</button>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    let searchTimeout;
+    function debounceSearch() {
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        const q = document.getElementById('searchInput').value.toLowerCase();
+        const filtered = allData.filter(item =>
+          Object.values(item).some(val => String(val).toLowerCase().includes(q))
+        );
+        renderTable(filtered);
+      }, 200);
+    }
+
+    function openModal(editId = null) {
+      document.getElementById('crudForm').reset();
+      document.getElementById('editItemId').value = editId || '';
+      document.getElementById('modalTitle').textContent = editId ? 'Edit Inpatient Record' : 'Add Inpatient Record';
+
+      if (editId) {
+        const item = allData.find(i => String(i.id) === String(editId));
+        if (item) {
+          fields.forEach(f => {
+            const el = document.getElementById('field_' + f.key);
+            if (el) el.value = item[f.key] || '';
+          });
+        }
+      }
+      document.getElementById('crudModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+      document.getElementById('crudModal').classList.add('hidden');
+    }
+
+    async function saveItem(e) {
+      e.preventDefault();
+      const editId = document.getElementById('editItemId').value;
+      const payload = {};
+      fields.forEach(f => {
+        const el = document.getElementById('field_' + f.key);
+        if (el) payload[f.key] = el.value;
+      });
+
+      try {
+        if (editId) {
+          const res = await fetch(`${API_URL}/${editId}`, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error('Update failed');
+          showToast('Inpatient Record updated successfully!');
+        } else {
+          const res = await fetch(API_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+          });
+          if (!res.ok) throw new Error('Creation failed');
+          showToast('Inpatient Record created successfully!');
+        }
+        closeModal();
+        fetchData();
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    }
+
+    async function deleteItem(id) {
+      if (!confirm('Are you sure you want to delete this inpatient record?')) return;
+      try {
+        const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
+        if (!res.ok) throw new Error('Delete failed');
+        showToast('Inpatient Record deleted successfully');
+        fetchData();
+      } catch (err) {
+        showToast(err.message, true);
+      }
+    }
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toast');
+      const text = document.getElementById('toastMsg');
+      text.textContent = msg;
+      toast.classList.remove('translate-y-20', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-20', 'opacity-0');
+      }, 3000);
+    }
+
+    // Auto-load on startup
+    window.addEventListener('DOMContentLoaded', fetchData);
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+{
+  "recipes": [
+    {
+      "id": "1",
+      "title": "GourmetCraft Recipe & Cooking App Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for GourmetCraft Recipe & Cooking App. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "GourmetCraft Recipe & Cooking App Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Food & Culinary."
+    },
+    {
+      "id": "3",
+      "title": "GourmetCraft Recipe & Cooking App Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Food & Culinary module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for GourmetCraft Recipe & Cooking App",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Food & Culinary",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

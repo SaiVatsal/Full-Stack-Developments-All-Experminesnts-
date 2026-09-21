@@ -1,0 +1,66 @@
+{
+  "exams": [
+    {
+      "id": "1",
+      "code": "CS-401",
+      "title": "Advanced Full-Stack Engineering & Microservices",
+      "duration": "90 Minutes",
+      "questions": 40,
+      "maxMarks": 100,
+      "passingMarks": 60,
+      "status": "Live",
+      "instructor": "SaiVatsal (2500040224)"
+    },
+    {
+      "id": "2",
+      "code": "CS-302",
+      "title": "Distributed Systems & Cloud Architecture",
+      "duration": "60 Minutes",
+      "questions": 30,
+      "maxMarks": 75,
+      "passingMarks": 45,
+      "status": "Live",
+      "instructor": "Prof. Helen Vance"
+    },
+    {
+      "id": "3",
+      "code": "SEC-201",
+      "title": "Network Security & Penetration Testing Protocols",
+      "duration": "75 Minutes",
+      "questions": 35,
+      "maxMarks": 100,
+      "passingMarks": 70,
+      "status": "Live",
+      "instructor": "Marcus Sterling, CISSP"
+    },
+    {
+      "id": "4",
+      "code": "DS-105",
+      "title": "Relational Database Architecture & Indexing",
+      "duration": "60 Minutes",
+      "questions": 25,
+      "maxMarks": 50,
+      "passingMarks": 30,
+      "status": "Draft",
+      "instructor": "Anita Rao, Data Architect"
+    }
+  ],
+  "attempts": [
+    {
+      "id": "ATT-701",
+      "candidate": "Ethan Bradley",
+      "exam": "CS-401 (Advanced Full-Stack)",
+      "score": "94 / 100",
+      "percentage": "94%",
+      "result": "PASSED (Distinction)"
+    },
+    {
+      "id": "ATT-702",
+      "candidate": "Sophia Martinez",
+      "exam": "SEC-201 (Network Security)",
+      "score": "88 / 100",
+      "percentage": "88%",
+      "result": "PASSED (First Class)"
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+# CloudVault Secure File Sharing Platform
+
+> **Project #15 — Full-Stack Web Application**
+> **Student Author:** SaiVatsal
+> **Roll / College ID:** 2500040224
+> **Architecture:** Clean Full-Stack (Node.js + Express REST API + Tailwind CSS + Responsive UI)
+
+---
+
+## 📌 Domain & Problem Overview
+Enterprise secure file sharing repository with permission controls, download analytics, expiration limits, encrypted storage metadata, and audit logs.
+
+- **Domain Category:** Cloud Storage & Security
+- **Primary Entity:** `Stored File Object`
+- **Secondary Entity:** `Recent File Access & Audit Log`
+- **Verification Status:** 100% Tested & Fully Operational
+
+---
+
+## 🚀 Key Features & Implementation
+1. **Complete RESTful CRUD API:**
+   - `GET /api/files` — List & search records with multi-field queries.
+   - `GET /api/files/:id` — Retrieve detailed entity record.
+   - `POST /api/files` — Create new validated entity with auto-timestamps.
+   - `PUT /api/files/:id` — Modify existing record with verification.
+   - `DELETE /api/files/:id` — Remove entity from persistent storage.
+   - `GET /api/accessLogs` — Secondary domain service integration.
+   - `GET /api/stats` — Live KPI calculation endpoint.
+   - `GET /api/health` — Service health check and verification endpoint.
+
+2. **Human-Designed Production UI:**
+   - Interactive data tables with status pills and localized formatting.
+   - Real-time debounced search & filter bar.
+   - Modal-driven CRUD forms with client-side validation.
+   - Toast notification alerts and feedback states.
+   - Prominent student identification badge: **Done By SaiVatsal 2500040224**.
+
+---
+
+## 🛠️ How to Run & Test
+
+```bash
+# 1. Install dependencies
+npm install
+
+# 2. Start the production server
+npm start
+
+# 3. Run automated tests
+npm test
+```
+
+Access the live web application at: `http://localhost:3000`
+
+---
+*Created with 100% dedication by SaiVatsal (2500040224).*

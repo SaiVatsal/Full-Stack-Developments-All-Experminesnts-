@@ -1,0 +1,66 @@
+{
+  "vehicles": [
+    {
+      "id": "1",
+      "vin": "VIN-9081",
+      "model": "Tesla Model S Plaid 2026",
+      "type": "Electric Sedan",
+      "dailyRate": 189,
+      "seats": 5,
+      "fuel": "Electric (400 mi range)",
+      "status": "Available",
+      "location": "Downtown Hub 1"
+    },
+    {
+      "id": "2",
+      "vin": "VIN-9082",
+      "model": "BMW M4 Competition Coupe",
+      "type": "Sports / Luxury",
+      "dailyRate": 220,
+      "seats": 4,
+      "fuel": "Premium Gasoline",
+      "status": "Rented",
+      "location": "Airport Terminal 2"
+    },
+    {
+      "id": "3",
+      "vin": "VIN-9083",
+      "model": "Range Rover Sport Autobiography",
+      "type": "Luxury SUV",
+      "dailyRate": 245,
+      "seats": 7,
+      "fuel": "Hybrid",
+      "status": "Available",
+      "location": "Downtown Hub 1"
+    },
+    {
+      "id": "4",
+      "vin": "VIN-9084",
+      "model": "Porsche Taycan 4S Cross Turismo",
+      "type": "Electric Luxury",
+      "dailyRate": 210,
+      "seats": 5,
+      "fuel": "Electric (310 mi range)",
+      "status": "Available",
+      "location": "Westside Terminal"
+    }
+  ],
+  "reservations": [
+    {
+      "id": "RES-881",
+      "customer": "Gregory House",
+      "vehicle": "BMW M4 Competition Coupe",
+      "period": "3 Days (Sep 20 - Sep 23)",
+      "totalAmount": "$660.00",
+      "status": "Active (On Trip)"
+    },
+    {
+      "id": "RES-882",
+      "customer": "Victoria Chase",
+      "vehicle": "Tesla Model S Plaid",
+      "period": "2 Days (Sep 24 - Sep 26)",
+      "totalAmount": "$378.00",
+      "status": "Confirmed (Upcoming)"
+    }
+  ]
+}

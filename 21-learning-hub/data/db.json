@@ -1,0 +1,44 @@
+{
+  "resources": [
+    {
+      "id": "1",
+      "title": "SkillCore Student Learning Hub Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for SkillCore Student Learning Hub. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "SkillCore Student Learning Hub Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Education."
+    },
+    {
+      "id": "3",
+      "title": "SkillCore Student Learning Hub Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Education module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for SkillCore Student Learning Hub",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Education",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

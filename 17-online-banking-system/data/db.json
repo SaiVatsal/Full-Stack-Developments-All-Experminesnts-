@@ -1,0 +1,45 @@
+{
+  "accounts": [
+    {
+      "id": "1",
+      "accountNo": "ACC-8921-001",
+      "holder": "SaiVatsal (2500040224)",
+      "type": "Premier Checking",
+      "balance": 28450.75,
+      "currency": "USD",
+      "status": "Active",
+      "tier": "Platinum Executive"
+    },
+    {
+      "id": "2",
+      "accountNo": "ACC-8921-002",
+      "holder": "SaiVatsal (2500040224)",
+      "type": "High-Yield Savings (4.8% APY)",
+      "balance": 65200,
+      "currency": "USD",
+      "status": "Active",
+      "tier": "Platinum Executive"
+    },
+    {
+      "id": "3",
+      "accountNo": "ACC-3410-101",
+      "holder": "Evelyn Sterling",
+      "type": "Standard Checking",
+      "balance": 4210.5,
+      "currency": "USD",
+      "status": "Active",
+      "tier": "Gold"
+    }
+  ],
+  "transfers": [
+    {
+      "id": "TRX-5510",
+      "fromAcc": "ACC-8921-001 (SaiVatsal)",
+      "toAcc": "ACC-3410-101 (Evelyn Sterling)",
+      "amount": "$750.00",
+      "purpose": "Consulting Settlement",
+      "status": "Success / Settled",
+      "date": "2026-09-21"
+    }
+  ]
+}

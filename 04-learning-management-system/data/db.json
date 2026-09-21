@@ -1,0 +1,72 @@
+{
+  "courses": [
+    {
+      "id": "1",
+      "title": "Advanced Full-Stack Web Engineering",
+      "instructor": "Dr. SaiVatsal (2500040224)",
+      "level": "Advanced",
+      "enrolled": 1420,
+      "modules": 12,
+      "rating": 4.9,
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "title": "Modern Cloud Architecture & DevOps",
+      "instructor": "Prof. Helen Vance",
+      "level": "Intermediate",
+      "enrolled": 980,
+      "modules": 10,
+      "rating": 4.8,
+      "status": "Active"
+    },
+    {
+      "id": "3",
+      "title": "Cybersecurity Fundamentals & Threat Defense",
+      "instructor": "Marcus Sterling, CISSP",
+      "level": "Beginner",
+      "enrolled": 2150,
+      "modules": 8,
+      "rating": 4.9,
+      "status": "Active"
+    },
+    {
+      "id": "4",
+      "title": "Microservices Design with Node.js & Docker",
+      "instructor": "Dr. SaiVatsal (2500040224)",
+      "level": "Advanced",
+      "enrolled": 850,
+      "modules": 14,
+      "rating": 4.7,
+      "status": "Active"
+    },
+    {
+      "id": "5",
+      "title": "Database Design & High-Throughput SQL",
+      "instructor": "Anita Rao, Data Architect",
+      "level": "Intermediate",
+      "enrolled": 1120,
+      "modules": 9,
+      "rating": 4.8,
+      "status": "Active"
+    }
+  ],
+  "submissions": [
+    {
+      "id": "SUB-301",
+      "student": "Ryan Reynolds",
+      "course": "Advanced Full-Stack Web Engineering",
+      "assignment": "REST API Implementation",
+      "score": "98 / 100",
+      "status": "Graded (A+)"
+    },
+    {
+      "id": "SUB-302",
+      "student": "Elena Rostova",
+      "course": "Modern Cloud Architecture & DevOps",
+      "assignment": "Docker Multi-Stage Build",
+      "score": "95 / 100",
+      "status": "Graded (A)"
+    }
+  ]
+}

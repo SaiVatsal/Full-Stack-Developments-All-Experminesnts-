@@ -1,0 +1,44 @@
+{
+  "artworks": [
+    {
+      "id": "1",
+      "title": "Lumina Online Art & Auction Gallery Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for Lumina Online Art & Auction Gallery. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "Lumina Online Art & Auction Gallery Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Art & Auctions."
+    },
+    {
+      "id": "3",
+      "title": "Lumina Online Art & Auction Gallery Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Art & Auctions module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for Lumina Online Art & Auction Gallery",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Art & Auctions",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "candidates": [
+    {
+      "id": "1",
+      "candidateId": "CAND-01",
+      "name": "Dr. SaiVatsal (2500040224)",
+      "party": "Innovation & Tech Alliance",
+      "election": "Student Council Leadership 2026",
+      "votes": 1420,
+      "percentage": "48.5%",
+      "status": "Leading"
+    },
+    {
+      "id": "2",
+      "candidateId": "CAND-02",
+      "name": "Althea Vance",
+      "party": "Sustainable Campus Initiative",
+      "election": "Student Council Leadership 2026",
+      "votes": 980,
+      "percentage": "33.4%",
+      "status": "Runner Up"
+    },
+    {
+      "id": "3",
+      "candidateId": "CAND-03",
+      "name": "Julian Drake",
+      "party": "Academic Reform Coalition",
+      "election": "Student Council Leadership 2026",
+      "votes": 530,
+      "percentage": "18.1%",
+      "status": "Nominated"
+    }
+  ],
+  "auditLogs": [
+    {
+      "id": "VOTE-HASH-991",
+      "voterToken": "VTR-***-9021",
+      "candidateRef": "Dr. SaiVatsal (CAND-01)",
+      "timestamp": "2026-09-21 14:32:05",
+      "auditStatus": "Confirmed Tamper-Free"
+    },
+    {
+      "id": "VOTE-HASH-992",
+      "voterToken": "VTR-***-8842",
+      "candidateRef": "Althea Vance (CAND-02)",
+      "timestamp": "2026-09-21 14:33:12",
+      "auditStatus": "Confirmed Tamper-Free"
+    }
+  ]
+}

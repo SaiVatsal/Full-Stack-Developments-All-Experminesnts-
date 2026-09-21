@@ -1,0 +1,44 @@
+{
+  "threads": [
+    {
+      "id": "1",
+      "title": "DevAgora Discussion Forum Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for DevAgora Discussion Forum. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "DevAgora Discussion Forum Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Community & Discussions."
+    },
+    {
+      "id": "3",
+      "title": "DevAgora Discussion Forum Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Community & Discussions module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for DevAgora Discussion Forum",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Community & Discussions",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

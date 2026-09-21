@@ -1,0 +1,44 @@
+{
+  "crops": [
+    {
+      "id": "1",
+      "title": "KisanDirect Farmer-Buyer Marketplace Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for KisanDirect Farmer-Buyer Marketplace. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "KisanDirect Farmer-Buyer Marketplace Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Agriculture & AgriTech."
+    },
+    {
+      "id": "3",
+      "title": "KisanDirect Farmer-Buyer Marketplace Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Agriculture & AgriTech module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for KisanDirect Farmer-Buyer Marketplace",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Agriculture & AgriTech",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

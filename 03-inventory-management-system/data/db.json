@@ -1,0 +1,79 @@
+{
+  "items": [
+    {
+      "id": "1",
+      "sku": "SKU-1001",
+      "name": "Industrial Ball Bearings (Box 50)",
+      "category": "Mechanical",
+      "warehouse": "Warehouse North (Aisle 4)",
+      "stock": 420,
+      "threshold": 100,
+      "unitCost": 35,
+      "status": "Optimal"
+    },
+    {
+      "id": "2",
+      "sku": "SKU-1002",
+      "name": "Heavy-Duty Hydraulic Fluid 20L",
+      "category": "Lubricants",
+      "warehouse": "Warehouse Central (Bay 2)",
+      "stock": 15,
+      "threshold": 30,
+      "unitCost": 85.5,
+      "status": "Low Stock"
+    },
+    {
+      "id": "3",
+      "sku": "SKU-1003",
+      "name": "Fiberglass Safety Helmets ANSI",
+      "category": "Safety Gear",
+      "warehouse": "Warehouse North (Aisle 1)",
+      "stock": 280,
+      "threshold": 50,
+      "unitCost": 22,
+      "status": "Optimal"
+    },
+    {
+      "id": "4",
+      "sku": "SKU-1004",
+      "name": "Pneumatic Actuator Valves 2\"",
+      "category": "Pneumatics",
+      "warehouse": "Warehouse South (Rack 7)",
+      "stock": 8,
+      "threshold": 20,
+      "unitCost": 145,
+      "status": "Critical Shortage"
+    },
+    {
+      "id": "5",
+      "sku": "SKU-1005",
+      "name": "Copper Wire Spool 500m 12AWG",
+      "category": "Electrical",
+      "warehouse": "Warehouse Central (Bay 5)",
+      "stock": 95,
+      "threshold": 40,
+      "unitCost": 110,
+      "status": "Optimal"
+    }
+  ],
+  "movements": [
+    {
+      "id": "MV-901",
+      "item": "Industrial Ball Bearings",
+      "type": "RESTOCK IN",
+      "quantity": "+150 Units",
+      "warehouse": "Warehouse North",
+      "operator": "SaiVatsal (2500040224)",
+      "date": "2026-09-20"
+    },
+    {
+      "id": "MV-902",
+      "item": "Heavy-Duty Hydraulic Fluid",
+      "type": "DISPATCH OUT",
+      "quantity": "-10 Units",
+      "warehouse": "Warehouse Central",
+      "operator": "Shift Lead Mark",
+      "date": "2026-09-21"
+    }
+  ]
+}

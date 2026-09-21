@@ -1,0 +1,44 @@
+{
+  "surveys": [
+    {
+      "id": "1",
+      "title": "VoiceMetrics Enterprise Feedback Hub Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for VoiceMetrics Enterprise Feedback Hub. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "VoiceMetrics Enterprise Feedback Hub Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Customer Intelligence."
+    },
+    {
+      "id": "3",
+      "title": "VoiceMetrics Enterprise Feedback Hub Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Customer Intelligence module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for VoiceMetrics Enterprise Feedback Hub",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Customer Intelligence",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

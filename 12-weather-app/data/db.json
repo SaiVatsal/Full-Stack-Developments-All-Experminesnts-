@@ -1,0 +1,70 @@
+{
+  "locations": [
+    {
+      "id": "1",
+      "city": "San Francisco, CA",
+      "country": "United States",
+      "tempC": 18.5,
+      "tempF": 65.3,
+      "condition": "Partly Cloudy",
+      "humidity": 72,
+      "windKph": 19.4,
+      "uvIndex": 5,
+      "alert": "Moderate Coastal Breeze"
+    },
+    {
+      "id": "2",
+      "city": "Tokyo, Kanto",
+      "country": "Japan",
+      "tempC": 24,
+      "tempF": 75.2,
+      "condition": "Clear Sky",
+      "humidity": 55,
+      "windKph": 11.2,
+      "uvIndex": 7,
+      "alert": "Optimal Conditions"
+    },
+    {
+      "id": "3",
+      "city": "London, Greater London",
+      "country": "United Kingdom",
+      "tempC": 15.2,
+      "tempF": 59.4,
+      "condition": "Light Rain Showers",
+      "humidity": 84,
+      "windKph": 24,
+      "uvIndex": 3,
+      "alert": "Drizzle Advisory"
+    },
+    {
+      "id": "4",
+      "city": "Hyderabad, Telangana",
+      "country": "India",
+      "tempC": 29.5,
+      "tempF": 85.1,
+      "condition": "Sunny / Warm",
+      "humidity": 62,
+      "windKph": 14.5,
+      "uvIndex": 8,
+      "alert": "High UV Advisory"
+    }
+  ],
+  "forecasts": [
+    {
+      "id": "FC-101",
+      "city": "San Francisco, CA",
+      "day": "Tomorrow",
+      "expectedTemp": "19°C / 66°F",
+      "outlook": "Sunny Intervals",
+      "rainProbability": "10%"
+    },
+    {
+      "id": "FC-102",
+      "city": "Tokyo, Japan",
+      "day": "Tomorrow",
+      "expectedTemp": "25°C / 77°F",
+      "outlook": "Clear & Mild",
+      "rainProbability": "5%"
+    }
+  ]
+}

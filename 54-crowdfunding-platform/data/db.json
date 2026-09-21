@@ -1,0 +1,44 @@
+{
+  "ventures": [
+    {
+      "id": "1",
+      "title": "VentureForge Crowdfunding Platform Primary Record A",
+      "category": "Enterprise",
+      "status": "Active",
+      "value": 1250,
+      "details": "High-priority record configured for VentureForge Crowdfunding Platform. Supervised by SaiVatsal (2500040224)."
+    },
+    {
+      "id": "2",
+      "title": "VentureForge Crowdfunding Platform Secondary Record B",
+      "category": "Premium",
+      "status": "Approved",
+      "value": 840.5,
+      "details": "Standard operational entry with verified parameters in Crowdfunding & Startups."
+    },
+    {
+      "id": "3",
+      "title": "VentureForge Crowdfunding Platform Analytical Entry C",
+      "category": "Specialized",
+      "status": "In Progress",
+      "value": 2100,
+      "details": "Under active processing within the Crowdfunding & Startups module."
+    }
+  ],
+  "activityRecords": [
+    {
+      "id": "REC-01",
+      "entry": "Active verification log for VentureForge Crowdfunding Platform",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Success / Verified",
+      "date": "2026-09-21"
+    },
+    {
+      "id": "REC-02",
+      "entry": "Audit check for Crowdfunding & Startups",
+      "assignedTo": "SaiVatsal (2500040224)",
+      "status": "Completed",
+      "date": "2026-09-20"
+    }
+  ]
+}

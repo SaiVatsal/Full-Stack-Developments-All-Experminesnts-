@@ -1,0 +1,74 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "Ergonomic Mechanical Keyboard",
+      "category": "Electronics",
+      "price": 129.99,
+      "stock": 45,
+      "rating": 4.8,
+      "status": "In Stock",
+      "description": "Wireless mechanical keyboard with hot-swappable tactile switches and RGB backlighting."
+    },
+    {
+      "id": "2",
+      "name": "Noise-Canceling Wireless Headphones",
+      "category": "Electronics",
+      "price": 249.5,
+      "stock": 28,
+      "rating": 4.9,
+      "status": "In Stock",
+      "description": "Premium over-ear headphones with 30-hour battery life and adaptive noise cancellation."
+    },
+    {
+      "id": "3",
+      "name": "Ultra-Wide Curved Gaming Monitor 34\"",
+      "category": "Electronics",
+      "price": 499,
+      "stock": 12,
+      "rating": 4.7,
+      "status": "Low Stock",
+      "description": "WQHD 144Hz 1ms curved gaming monitor with HDR400 and USB-C connectivity."
+    },
+    {
+      "id": "4",
+      "name": "Handcrafted Leather Travel Backpack",
+      "category": "Fashion",
+      "price": 179,
+      "stock": 35,
+      "rating": 4.6,
+      "status": "In Stock",
+      "description": "Vegetable-tanned full-grain leather with dedicated 16-inch padded laptop compartment."
+    },
+    {
+      "id": "5",
+      "name": "Minimalist Titanium Automatic Watch",
+      "category": "Accessories",
+      "price": 320,
+      "stock": 18,
+      "rating": 4.9,
+      "status": "In Stock",
+      "description": "Sapphire crystal glass, Japanese automatic movement, and 50m water resistance."
+    }
+  ],
+  "orders": [
+    {
+      "id": "ORD-101",
+      "customer": "David Miller",
+      "date": "2026-09-18",
+      "total": "$379.49",
+      "status": "Shipped",
+      "tracking": "TRK-US-9821034",
+      "items": "Ergonomic Mechanical Keyboard, Noise-Canceling Headphones"
+    },
+    {
+      "id": "ORD-102",
+      "customer": "Sarah Jenkins",
+      "date": "2026-09-20",
+      "total": "$499.00",
+      "status": "Processing",
+      "tracking": "TRK-US-9821035",
+      "items": "Ultra-Wide Curved Gaming Monitor 34\""
+    }
+  ]
+}

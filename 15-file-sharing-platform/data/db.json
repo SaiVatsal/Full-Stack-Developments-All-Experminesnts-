@@ -1,0 +1,53 @@
+{
+  "files": [
+    {
+      "id": "1",
+      "fileName": "Enterprise-Architecture-v4.pdf",
+      "fileType": "PDF Document",
+      "fileSize": "8.4 MB",
+      "owner": "SaiVatsal (2500040224)",
+      "downloads": 142,
+      "permission": "Public Link",
+      "uploadDate": "2026-09-20",
+      "status": "Active"
+    },
+    {
+      "id": "2",
+      "fileName": "Microservices-Helm-Charts.zip",
+      "fileType": "Compressed Archive",
+      "fileSize": "24.1 MB",
+      "owner": "SaiVatsal (2500040224)",
+      "downloads": 89,
+      "permission": "Restricted Team",
+      "uploadDate": "2026-09-19",
+      "status": "Active"
+    },
+    {
+      "id": "3",
+      "fileName": "Financial-Audit-Report-Q3.xlsx",
+      "fileType": "Spreadsheet",
+      "fileSize": "3.2 MB",
+      "owner": "Finance Ops Lead",
+      "downloads": 14,
+      "permission": "Confidential / Password",
+      "uploadDate": "2026-09-18",
+      "status": "Active"
+    }
+  ],
+  "accessLogs": [
+    {
+      "id": "LOG-301",
+      "fileRef": "Enterprise-Architecture-v4.pdf",
+      "userIp": "192.168.1.45",
+      "action": "DOWNLOAD_SUCCESS",
+      "timestamp": "2026-09-21 15:10:22"
+    },
+    {
+      "id": "LOG-302",
+      "fileRef": "Financial-Audit-Report-Q3.xlsx",
+      "userIp": "10.0.4.88",
+      "action": "AUTH_CHALLENGE_VERIFIED",
+      "timestamp": "2026-09-21 15:12:00"
+    }
+  ]
+}

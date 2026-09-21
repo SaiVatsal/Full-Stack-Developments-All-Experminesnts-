@@ -1,0 +1,64 @@
+{
+  "transactions": [
+    {
+      "id": "1",
+      "title": "High-Performance Cloud Hosting Server",
+      "category": "Software & Tools",
+      "amount": 89.5,
+      "type": "Expense",
+      "account": "Business Debit Card",
+      "date": "2026-09-20",
+      "status": "Cleared",
+      "loggedBy": "SaiVatsal (2500040224)"
+    },
+    {
+      "id": "2",
+      "title": "Consulting Honorarium Payment",
+      "category": "Freelance & Contract",
+      "amount": 3500,
+      "type": "Income",
+      "account": "Checking Account",
+      "date": "2026-09-18",
+      "status": "Cleared",
+      "loggedBy": "SaiVatsal (2500040224)"
+    },
+    {
+      "id": "3",
+      "title": "Supermarket Organic Groceries",
+      "category": "Food & Dining",
+      "amount": 142.3,
+      "type": "Expense",
+      "account": "Personal Credit Card",
+      "date": "2026-09-19",
+      "status": "Cleared",
+      "loggedBy": "SaiVatsal (2500040224)"
+    },
+    {
+      "id": "4",
+      "title": "Ergonomic Standing Desk Frame",
+      "category": "Office Equipment",
+      "amount": 380,
+      "type": "Expense",
+      "account": "Business Debit Card",
+      "date": "2026-09-15",
+      "status": "Cleared",
+      "loggedBy": "SaiVatsal (2500040224)"
+    }
+  ],
+  "budgets": [
+    {
+      "id": "BDG-01",
+      "category": "Software & Tools",
+      "cap": "$250.00",
+      "spent": "$89.50",
+      "status": "Healthy (35.8%)"
+    },
+    {
+      "id": "BDG-02",
+      "category": "Food & Dining",
+      "cap": "$500.00",
+      "spent": "$142.30",
+      "status": "Healthy (28.4%)"
+    }
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "posts": [
+    {
+      "id": "1",
+      "author": "SaiVatsal (2500040224)",
+      "handle": "@saivatsal_dev",
+      "content": "Excited to announce the release of our 58 production-ready full-stack software suites! Clean architecture, zero boilerplate templates.",
+      "likes": 342,
+      "comments": 45,
+      "shares": 89,
+      "tag": "Tech & Engineering",
+      "time": "2 hours ago"
+    },
+    {
+      "id": "2",
+      "author": "Dr. Maya Lin",
+      "handle": "@mayalin_ai",
+      "content": "Deep learning breakthrough in multimodal reasoning models: benchmark accuracy up by 14% with 40% lower memory footprints.",
+      "likes": 580,
+      "comments": 72,
+      "shares": 120,
+      "tag": "Artificial Intelligence",
+      "time": "4 hours ago"
+    },
+    {
+      "id": "3",
+      "author": "DevOps Daily",
+      "handle": "@devops_daily",
+      "content": "Best practice reminder: Immutable infrastructure patterns combined with declarative GitOps reduce production drift to almost zero.",
+      "likes": 215,
+      "comments": 18,
+      "shares": 64,
+      "tag": "Cloud & Infrastructure",
+      "time": "6 hours ago"
+    },
+    {
+      "id": "4",
+      "author": "Samantha Reed",
+      "handle": "@sam_designs",
+      "content": "Great UI design is not about flashy animations; it is about cognitive clarity, accessible contrast, and effortless user journeys.",
+      "likes": 490,
+      "comments": 53,
+      "shares": 98,
+      "tag": "UI/UX Design",
+      "time": "8 hours ago"
+    }
+  ],
+  "comments": [
+    {
+      "id": "COM-101",
+      "postRef": "Post #1 (SaiVatsal)",
+      "author": "Alex Thorne",
+      "comment": "Fantastic engineering structure! The separation of concerns is textbook perfect.",
+      "time": "1 hour ago"
+    },
+    {
+      "id": "COM-102",
+      "postRef": "Post #2 (Dr. Maya Lin)",
+      "author": "Jordan Lee",
+      "comment": "Are the benchmark replication papers available on arXiv yet?",
+      "time": "3 hours ago"
+    }
+  ]
+}
