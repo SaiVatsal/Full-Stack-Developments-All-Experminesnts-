@@ -9,3 +9,10 @@ vercel.token
 *.secret
 
 .vercel
+
+# Local Viva & Study Guides (Do Not Push to GitHub)
+*Viva*
+*viva*
+PROJECTS_VIVA_EXPLANATIONS.csv
+generate-viva-guide-csv.js
+
