@@ -88,7 +88,7 @@ foreach ($folder in $folders) {
         try { git remote remove origin | Out-Null } catch {}
         $remoteUrl = "https://${Username}:${Token}@github.com/${Username}/${repoName}.git"
         git remote add origin $remoteUrl
-        git push -u origin main --force
+        git push -u origin main
         Pop-Location
     }
 

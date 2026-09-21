@@ -12,15 +12,34 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DB_FILE = path.join(__dirname, 'data', 'db.json');
+const VERCEL_TMP_DB = path.join('/tmp', 'db.json');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Helper to determine safe persistent database path (handles serverless read-only filesystem)
+function getDbFilePath() {
+  if (process.env.VERCEL) {
+    if (!fs.existsSync(VERCEL_TMP_DB)) {
+      try {
+        if (fs.existsSync(DB_FILE)) {
+          fs.copyFileSync(DB_FILE, VERCEL_TMP_DB);
+        } else {
+          fs.writeFileSync(VERCEL_TMP_DB, JSON.stringify({ tracks: [], activityRecords: [] }), 'utf8');
+        }
+      } catch (e) {}
+    }
+    return VERCEL_TMP_DB;
+  }
+  return DB_FILE;
+}
+
 // Helper to read database
 function readDb() {
   try {
-    const data = fs.readFileSync(DB_FILE, 'utf8');
+    const file = getDbFilePath();
+    const data = fs.readFileSync(file, 'utf8');
     return JSON.parse(data);
   } catch (err) {
     return { tracks: [], activityRecords: [] };
@@ -29,7 +48,12 @@ function readDb() {
 
 // Helper to write database
 function writeDb(data) {
-  fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
+  try {
+    const file = getDbFilePath();
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
+  } catch (err) {
+    console.error('Database write error:', err);
+  }
 }
 
 // 1. Health Check

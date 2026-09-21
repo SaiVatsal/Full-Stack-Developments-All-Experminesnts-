@@ -122,7 +122,7 @@ async function createAndPushProject(project, index, total) {
 
     execSync(`git remote add origin ${remoteUrl}`, { cwd: projectDir, stdio: 'pipe' });
     console.log(`Pushing code to https://github.com/${GITHUB_USERNAME}/${repoName}...`);
-    execSync(`git push -u origin main --force`, { cwd: projectDir, stdio: 'inherit' });
+    execSync(`git push -u origin main`, { cwd: projectDir, stdio: 'inherit' });
 
     console.log(`✅ [SUCCESS] Deployed: https://github.com/${GITHUB_USERNAME}/${repoName}`);
     return true;

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "name": "master-58-full-stack-showcase",
+  "builds": [
+    { "src": "index.html", "use": "@vercel/static" }
+  ],
+  "routes": [
+    { "src": "/(.*)", "dest": "/$1" }
+  ]
+}

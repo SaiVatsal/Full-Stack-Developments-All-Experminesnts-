@@ -26,15 +26,34 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 const DB_FILE = path.join(__dirname, 'data', 'db.json');
+const VERCEL_TMP_DB = path.join('/tmp', 'db.json');
 
 app.use(cors());
 app.use(express.json());
 app.use(express.static(path.join(__dirname, 'public')));
 
+// Helper to determine safe persistent database path (handles serverless read-only filesystem)
+function getDbFilePath() {
+  if (process.env.VERCEL) {
+    if (!fs.existsSync(VERCEL_TMP_DB)) {
+      try {
+        if (fs.existsSync(DB_FILE)) {
+          fs.copyFileSync(DB_FILE, VERCEL_TMP_DB);
+        } else {
+          fs.writeFileSync(VERCEL_TMP_DB, JSON.stringify({ ${project.entitiesName}: [], ${project.secondaryKey}: [] }), 'utf8');
+        }
+      } catch (e) {}
+    }
+    return VERCEL_TMP_DB;
+  }
+  return DB_FILE;
+}
+
 // Helper to read database
 function readDb() {
   try {
-    const data = fs.readFileSync(DB_FILE, 'utf8');
+    const file = getDbFilePath();
+    const data = fs.readFileSync(file, 'utf8');
     return JSON.parse(data);
   } catch (err) {
     return { ${project.entitiesName}: [], ${project.secondaryKey}: [] };
@@ -43,7 +62,12 @@ function readDb() {
 
 // Helper to write database
 function writeDb(data) {
-  fs.writeFileSync(DB_FILE, JSON.stringify(data, null, 2), 'utf8');
+  try {
+    const file = getDbFilePath();
+    fs.writeFileSync(file, JSON.stringify(data, null, 2), 'utf8');
+  } catch (err) {
+    console.error('Database write error:', err);
+  }
 }
 
 // 1. Health Check
@@ -758,6 +782,29 @@ const server = app.listen(0, async () => {
 `;
 }
 
+function generateVercelJson(project) {
+  return JSON.stringify({
+    version: 2,
+    rewrites: [
+      { source: "/api/(.*)", destination: "/api/index.js" },
+      { source: "/(.*)", destination: "/public/$1" }
+    ]
+  }, null, 2);
+}
+
+function generateApiIndexJs(project) {
+  return `/**
+ * Vercel Serverless Function Entry Point
+ * Project: ${project.name}
+ * Done By: SaiVatsal (2500040224)
+ */
+
+const app = require('../server.js');
+
+module.exports = app;
+`;
+}
+
 // Generate all 58 projects
 console.log(`Starting generation for all ${allProjects.length} projects...`);
 
@@ -765,16 +812,24 @@ allProjects.forEach(project => {
   const projectDir = path.join(rootDir, project.folder);
   const publicDir = path.join(projectDir, 'public');
   const dataDir = path.join(projectDir, 'data');
+  const apiDir = path.join(projectDir, 'api');
 
   if (!fs.existsSync(projectDir)) fs.mkdirSync(projectDir, { recursive: true });
   if (!fs.existsSync(publicDir)) fs.mkdirSync(publicDir, { recursive: true });
   if (!fs.existsSync(dataDir)) fs.mkdirSync(dataDir, { recursive: true });
+  if (!fs.existsSync(apiDir)) fs.mkdirSync(apiDir, { recursive: true });
 
   // Write package.json
   fs.writeFileSync(path.join(projectDir, 'package.json'), generatePackageJson(project));
 
   // Write server.js
   fs.writeFileSync(path.join(projectDir, 'server.js'), generateServerJs(project));
+
+  // Write api/index.js for Vercel Serverless Functions
+  fs.writeFileSync(path.join(apiDir, 'index.js'), generateApiIndexJs(project));
+
+  // Write vercel.json for Vercel Deployments
+  fs.writeFileSync(path.join(projectDir, 'vercel.json'), generateVercelJson(project));
 
   // Write public/index.html
   fs.writeFileSync(path.join(publicDir, 'index.html'), generateHtml(project));
@@ -792,7 +847,7 @@ allProjects.forEach(project => {
   // Write test.js
   fs.writeFileSync(path.join(projectDir, 'test.js'), generateTestJs(project));
 
-  console.log(`✔ [Project #${project.id}] Generated: ${project.folder}`);
+  console.log(`✔ [Project #${project.id}] Generated (Vercel-Ready): ${project.folder}`);
 });
 
 console.log(`\n======================================================`);

@@ -1,193 +1,1899 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>58 Full-Stack Projects Hub | Done By SaiVatsal 2500040224</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>58 Full-Stack Web Applications Showcase | Done By SaiVatsal (2500040224)</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
-    body { font-family: 'Inter', sans-serif; }
+    :root {
+      --bg: #0b0f19;
+      --surface: #111827;
+      --surface-2: #1e293b;
+      --surface-hover: #26334d;
+      --border: #334155;
+      --border-subtle: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+      --primary: #3b82f6;
+      --primary-glow: rgba(59, 130, 246, 0.25);
+      --accent: #8b5cf6;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.6;
+      background-image:
+        radial-gradient(circle at 15% 15%, rgba(59, 130, 246, 0.12) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(139, 92, 246, 0.12) 0%, transparent 40%);
+      background-attachment: fixed;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 2rem 1.5rem; }
+
+    /* Header & Hero */
+    .hero {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      position: relative;
+    }
+    .badge-student {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      padding: 0.4rem 1rem;
+      border-radius: 9999px;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: #60a5fa;
+      margin-bottom: 1.25rem;
+      box-shadow: 0 0 20px var(--primary-glow);
+    }
+    .hero h1 {
+      font-size: 2.75rem;
+      font-weight: 800;
+      letter-spacing: -0.025em;
+      margin-bottom: 0.75rem;
+      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      color: var(--text-muted);
+      font-size: 1.125rem;
+      max-width: 750px;
+      margin: 0 auto 1.5rem;
+    }
+
+    /* Stats Ribbon */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      padding: 1.25rem;
+      border-radius: 12px;
+      text-align: center;
+      transition: all 0.2s ease;
+    }
+    .stat-card:hover {
+      border-color: var(--border);
+      transform: translateY(-2px);
+    }
+    .stat-card .val {
+      font-size: 1.85rem;
+      font-weight: 700;
+      color: #60a5fa;
+      font-family: 'JetBrains Mono', monospace;
+    }
+    .stat-card .lbl {
+      font-size: 0.813rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.25rem;
+    }
+
+    /* Search & Filter Bar */
+    .filter-section {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 1.25rem;
+      margin-bottom: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+    .search-box {
+      position: relative;
+      width: 100%;
+    }
+    .search-box i {
+      position: absolute;
+      left: 1.1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-muted);
+    }
+    .search-box input {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 2.8rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      color: var(--text);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .search-box input:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 2px var(--primary-glow);
+    }
+
+    .category-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+    .pill-btn {
+      background: var(--surface-2);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 0.4rem 0.85rem;
+      border-radius: 8px;
+      font-size: 0.813rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .pill-btn:hover, .pill-btn.active {
+      background: var(--primary);
+      color: #ffffff;
+      border-color: var(--primary);
+    }
+
+    /* Projects Grid */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+      gap: 1.5rem;
+    }
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      transition: all 0.25s ease;
+      position: relative;
+    }
+    .project-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px -10px rgba(0,0,0,0.5), 0 0 20px var(--primary-glow);
+    }
+    .card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 0.75rem;
+    }
+    .card-id {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #93c5fd;
+      background: rgba(59, 130, 246, 0.12);
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+    .card-cat {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      background: var(--surface-2);
+      padding: 0.2rem 0.6rem;
+      border-radius: 6px;
+    }
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 0.5rem;
+    }
+    .project-desc {
+      font-size: 0.875rem;
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.5;
+      flex-grow: 1;
+    }
+    .tech-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      margin-bottom: 1.25rem;
+    }
+    .tech-tag {
+      font-size: 0.7rem;
+      font-family: 'JetBrains Mono', monospace;
+      color: #cbd5e1;
+      background: var(--surface-2);
+      padding: 0.15rem 0.5rem;
+      border-radius: 4px;
+      border: 1px solid var(--border-subtle);
+    }
+    .card-actions {
+      display: flex;
+      gap: 0.75rem;
+      border-top: 1px solid var(--border-subtle);
+      padding-top: 1rem;
+    }
+    .btn {
+      flex: 1;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0.8rem;
+      border-radius: 8px;
+      font-size: 0.813rem;
+      font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #ffffff;
+      border: none;
+    }
+    .btn-primary:hover {
+      background: #2563eb;
+    }
+    .btn-secondary {
+      background: var(--surface-2);
+      color: var(--text);
+      border: 1px solid var(--border);
+    }
+    .btn-secondary:hover {
+      background: var(--surface-hover);
+      border-color: #64748b;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 3rem 1rem 2rem;
+      color: var(--text-muted);
+      font-size: 0.875rem;
+      border-top: 1px solid var(--border-subtle);
+      margin-top: 4rem;
+    }
+    footer a { color: #60a5fa; text-decoration: none; }
+    footer a:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .projects-grid { grid-template-columns: 1fr; }
+      .hero h1 { font-size: 2rem; }
+    }
   </style>
 </head>
-<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-indigo-500 selection:text-white">
+<body>
+  <div class="container">
+    <!-- Hero Header -->
+    <header class="hero">
+      <div class="badge-student">
+        <i class="fa-solid fa-graduation-cap"></i>
+        <span>Done By SaiVatsal • Roll / College ID: 2500040224</span>
+      </div>
+      <h1>58 Full-Stack Applications Portfolio</h1>
+      <p>Production-Grade Full-Stack Solutions featuring RESTful APIs, Dynamic Glassmorphic Frontends, In-Memory/Persistent Database Engines, and Vercel Serverless Architecture.</p>
+    </header>
 
-  <!-- Top Hero Header -->
-  <header class="border-b border-slate-800 bg-slate-900/60 backdrop-blur-md sticky top-0 z-50">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-      <div class="flex items-center gap-3.5">
-        <div class="w-12 h-12 rounded-2xl bg-gradient-to-tr from-indigo-600 to-violet-500 flex items-center justify-center text-white shadow-xl shadow-indigo-500/25 border border-indigo-400/30">
-          <i class="fa-solid fa-cubes-stacked text-xl"></i>
-        </div>
+    <!-- Stats -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="val">58 / 58</div>
+        <div class="lbl">Projects Completed</div>
+      </div>
+      <div class="stat-card">
+        <div class="val">100%</div>
+        <div class="lbl">Automated Test Pass Rate</div>
+      </div>
+      <div class="stat-card">
+        <div class="val">58</div>
+        <div class="lbl">Dedicated GitHub Repos</div>
+      </div>
+      <div class="stat-card">
+        <div class="val">Vercel Ready</div>
+        <div class="lbl">Serverless Deployment</div>
+      </div>
+    </div>
+
+    <!-- Filter & Search Section -->
+    <div class="filter-section">
+      <div class="search-box">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        <input type="text" id="searchInput" placeholder="Search by project name, description, tech stack, or keyword...">
+      </div>
+      <div class="category-pills" id="categoryPills">
+        <button class="pill-btn active" data-cat="all">All Categories (58)</button>
+        <button class="pill-btn" data-cat="E-Commerce & Retail">E-Commerce & Retail</button>
+        <button class="pill-btn" data-cat="Food & Beverage">Food & Beverage</button>
+        <button class="pill-btn" data-cat="Logistics & Supply Chain">Logistics & Supply Chain</button>
+        <button class="pill-btn" data-cat="EdTech & Training">EdTech & Training</button>
+        <button class="pill-btn" data-cat="Social Networking">Social Networking</button>
+        <button class="pill-btn" data-cat="Healthcare & Telemedicine">Healthcare & Telemedicine</button>
+        <button class="pill-btn" data-cat="Human Resources">Human Resources</button>
+        <button class="pill-btn" data-cat="Digital Media & Streaming">Digital Media & Streaming</button>
+        <button class="pill-btn" data-cat="Finance & Budgeting">Finance & Budgeting</button>
+        <button class="pill-btn" data-cat="Assessment & Testing">Assessment & Testing</button>
+        <button class="pill-btn" data-cat="Automotive & Travel">Automotive & Travel</button>
+        <button class="pill-btn" data-cat="Weather & Meteorology">Weather & Meteorology</button>
+        <button class="pill-btn" data-cat="Governance & E-Voting">Governance & E-Voting</button>
+        <button class="pill-btn" data-cat="Health & Fitness">Health & Fitness</button>
+        <button class="pill-btn" data-cat="Cloud Storage & Security">Cloud Storage & Security</button>
+        <button class="pill-btn" data-cat="Content Management">Content Management</button>
+        <button class="pill-btn" data-cat="FinTech & Banking Simulation">FinTech & Banking Simulation</button>
+        <button class="pill-btn" data-cat="Events & Hospitality">Events & Hospitality</button>
+        <button class="pill-btn" data-cat="Healthcare & EHR">Healthcare & EHR</button>
+        <button class="pill-btn" data-cat="Travel & Tourism">Travel & Tourism</button>
+        <button class="pill-btn" data-cat="Education">Education</button>
+        <button class="pill-btn" data-cat="Healthcare">Healthcare</button>
+        <button class="pill-btn" data-cat="Art & Auctions">Art & Auctions</button>
+        <button class="pill-btn" data-cat="Sales & CRM">Sales & CRM</button>
+        <button class="pill-btn" data-cat="News & Media">News & Media</button>
+        <button class="pill-btn" data-cat="FinTech">FinTech</button>
+        <button class="pill-btn" data-cat="Food & Culinary">Food & Culinary</button>
+        <button class="pill-btn" data-cat="Real Estate">Real Estate</button>
+        <button class="pill-btn" data-cat="Auctions & Commerce">Auctions & Commerce</button>
+        <button class="pill-btn" data-cat="Portfolio & Career">Portfolio & Career</button>
+        <button class="pill-btn" data-cat="Transportation">Transportation</button>
+        <button class="pill-btn" data-cat="Retail & Grocery">Retail & Grocery</button>
+        <button class="pill-btn" data-cat="Media & Audio">Media & Audio</button>
+        <button class="pill-btn" data-cat="Community & Discussions">Community & Discussions</button>
+        <button class="pill-btn" data-cat="Entertainment">Entertainment</button>
+        <button class="pill-btn" data-cat="Academic ERP">Academic ERP</button>
+        <button class="pill-btn" data-cat="Productivity">Productivity</button>
+        <button class="pill-btn" data-cat="E-Learning">E-Learning</button>
+        <button class="pill-btn" data-cat="Sustainability">Sustainability</button>
+        <button class="pill-btn" data-cat="Animals & Welfare">Animals & Welfare</button>
+        <button class="pill-btn" data-cat="Charity & Philanthropy">Charity & Philanthropy</button>
+        <button class="pill-btn" data-cat="Emergency Management">Emergency Management</button>
+        <button class="pill-btn" data-cat="Personal Finance">Personal Finance</button>
+        <button class="pill-btn" data-cat="Medical & Blood Banking">Medical & Blood Banking</button>
+        <button class="pill-btn" data-cat="Agriculture & AgriTech">Agriculture & AgriTech</button>
+        <button class="pill-btn" data-cat="Hospitality">Hospitality</button>
+        <button class="pill-btn" data-cat="Library & Archival">Library & Archival</button>
+        <button class="pill-btn" data-cat="Customer Intelligence">Customer Intelligence</button>
+        <button class="pill-btn" data-cat="Tutoring & Education">Tutoring & Education</button>
+        <button class="pill-btn" data-cat="Streaming & Music">Streaming & Music</button>
+        <button class="pill-btn" data-cat="Freelance & Gig Economy">Freelance & Gig Economy</button>
+        <button class="pill-btn" data-cat="Career Management">Career Management</button>
+        <button class="pill-btn" data-cat="Academic Research">Academic Research</button>
+        <button class="pill-btn" data-cat="Crowdfunding & Startups">Crowdfunding & Startups</button>
+        <button class="pill-btn" data-cat="Sports Management">Sports Management</button>
+        <button class="pill-btn" data-cat="Digital Payments">Digital Payments</button>
+        <button class="pill-btn" data-cat="Esports & Gaming">Esports & Gaming</button>
+        <button class="pill-btn" data-cat="FinTech & Stock Trading">FinTech & Stock Trading</button>
+      </div>
+    </div>
+
+    <!-- Project Cards Grid -->
+    <div class="projects-grid" id="projectsGrid">
+      
+      <div class="project-card" data-cat="E-Commerce & Retail" data-search="nexus e-commerce platform production-grade full-stack e-commerce marketplace with catalog browsing, category filters, cart, checkout workflow, order history, and merchant inventory control. e-commerce & retail 01-ecommerce-platform">
         <div>
-          <h1 class="text-lg font-extrabold tracking-tight text-white flex items-center gap-2">
-            Full-Stack Master Suite
-            <span class="text-xs font-semibold bg-indigo-500/20 text-indigo-300 border border-indigo-500/30 px-2 py-0.5 rounded-full">58 Live Apps</span>
-          </h1>
-          <p class="text-xs text-slate-400">Enterprise Full-Stack Web Development Experiments</p>
+          <div class="card-header">
+            <span class="card-id">#01</span>
+            <span class="card-cat">E-Commerce & Retail</span>
+          </div>
+          <h3 class="project-title">Nexus E-Commerce Platform</h3>
+          <p class="project-desc">Production-grade full-stack e-commerce marketplace with catalog browsing, category filters, cart, checkout workflow, order history, and merchant inventory control.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">7 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./01-ecommerce-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/01-ecommerce-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
         </div>
       </div>
 
-      <!-- Student Attribution Badge -->
-      <div class="flex items-center gap-4">
-        <div class="hidden sm:flex flex-col items-end">
-          <span class="text-xs font-bold text-slate-200">SaiVatsal</span>
-          <span class="text-[11px] text-emerald-400 font-mono">Roll / ID: 2500040224</span>
+      <div class="project-card" data-cat="Food & Beverage" data-search="bistrobite food delivery network complete food delivery ecosystem connecting customers, partner restaurants, and fleet couriers with live order progression and menu management. food & beverage 02-food-delivery-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#02</span>
+            <span class="card-cat">Food & Beverage</span>
+          </div>
+          <h3 class="project-title">BistroBite Food Delivery Network</h3>
+          <p class="project-desc">Complete food delivery ecosystem connecting customers, partner restaurants, and fleet couriers with live order progression and menu management.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">7 Data Fields</span>
+          </div>
         </div>
-        <div class="px-3.5 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center gap-2 shadow-inner">
-          <span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
-          Done By SaiVatsal 2500040224
+        <div class="card-actions">
+          <a href="./02-food-delivery-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/02-food-delivery-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Logistics & Supply Chain" data-search="stockmaster pro inventory system enterprise multi-warehouse inventory management with automated low-stock triggers, stock movement auditing, and supplier tracking. logistics & supply chain 03-inventory-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#03</span>
+            <span class="card-cat">Logistics & Supply Chain</span>
+          </div>
+          <h3 class="project-title">StockMaster Pro Inventory System</h3>
+          <p class="project-desc">Enterprise multi-warehouse inventory management with automated low-stock triggers, stock movement auditing, and supplier tracking.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./03-inventory-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/03-inventory-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="EdTech & Training" data-search="eduvanguard lms platform comprehensive learning management system supporting course module structuring, student enrollments, interactive lesson tracking, gradebook assessments, and certificates. edtech & training 04-learning-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#04</span>
+            <span class="card-cat">EdTech & Training</span>
+          </div>
+          <h3 class="project-title">EduVanguard LMS Platform</h3>
+          <p class="project-desc">Comprehensive Learning Management System supporting course module structuring, student enrollments, interactive lesson tracking, gradebook assessments, and certificates.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">7 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./04-learning-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/04-learning-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Social Networking" data-search="pulsenet community platform human-centric social network featuring interactive post feeds, media attachments, verified user badges, comment threads, direct engagement analytics, and content moderation. social networking 05-social-media-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#05</span>
+            <span class="card-cat">Social Networking</span>
+          </div>
+          <h3 class="project-title">PulseNet Community Platform</h3>
+          <p class="project-desc">Human-centric social network featuring interactive post feeds, media attachments, verified user badges, comment threads, direct engagement analytics, and content moderation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./05-social-media-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/05-social-media-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Healthcare & Telemedicine" data-search="medicare specialist appointment portal patient-centric doctor appointment and scheduling platform with physician specialty filtering, real-time slot booking, and clinical reminders. healthcare & telemedicine 06-healthcare-appointment-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#06</span>
+            <span class="card-cat">Healthcare & Telemedicine</span>
+          </div>
+          <h3 class="project-title">MediCare Specialist Appointment Portal</h3>
+          <p class="project-desc">Patient-centric doctor appointment and scheduling platform with physician specialty filtering, real-time slot booking, and clinical reminders.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">7 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./06-healthcare-appointment-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/06-healthcare-appointment-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Human Resources" data-search="workforcehr enterprise suite full-stack human resource management platform featuring employee directory records, salary allocations, attendance tracking, and leave workflows. human resources 07-employee-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#07</span>
+            <span class="card-cat">Human Resources</span>
+          </div>
+          <h3 class="project-title">WorkforceHR Enterprise Suite</h3>
+          <p class="project-desc">Full-stack human resource management platform featuring employee directory records, salary allocations, attendance tracking, and leave workflows.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./07-employee-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/07-employee-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Digital Media & Streaming" data-search="streamcrest cinema & video hub on-demand video streaming catalog featuring rich metadata, category categorization, user watchlists, view counts, ratings, and creator content management. digital media & streaming 08-video-streaming-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#08</span>
+            <span class="card-cat">Digital Media & Streaming</span>
+          </div>
+          <h3 class="project-title">StreamCrest Cinema & Video Hub</h3>
+          <p class="project-desc">On-demand video streaming catalog featuring rich metadata, category categorization, user watchlists, view counts, ratings, and creator content management.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./08-video-streaming-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/08-video-streaming-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Finance & Budgeting" data-search="smartledger personal expense tracker real-time personal finance and expense accounting platform with categorized expenditure logging, monthly budget thresholds, transaction auditing, and exportable financial summaries. finance & budgeting 09-expense-tracker">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#09</span>
+            <span class="card-cat">Finance & Budgeting</span>
+          </div>
+          <h3 class="project-title">SmartLedger Personal Expense Tracker</h3>
+          <p class="project-desc">Real-time personal finance and expense accounting platform with categorized expenditure logging, monthly budget thresholds, transaction auditing, and exportable financial summaries.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./09-expense-tracker/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/09-expense-tracker" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Assessment & Testing" data-search="testmaster pro online examination portal secure online assessment platform supporting timed examinations, question banks, candidate attempt tracking, and instant auto-scoring results. assessment & testing 10-online-examination-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#10</span>
+            <span class="card-cat">Assessment & Testing</span>
+          </div>
+          <h3 class="project-title">TestMaster Pro Online Examination Portal</h3>
+          <p class="project-desc">Secure online assessment platform supporting timed examinations, question banks, candidate attempt tracking, and instant auto-scoring results.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./10-online-examination-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/10-online-examination-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Automotive & Travel" data-search="velocity auto fleet & rental system fleet management and car rental booking portal with multi-class vehicle selection, daily rate calculations, reservation conflict checking, and vehicle maintenance scheduling. automotive & travel 11-car-rental-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#11</span>
+            <span class="card-cat">Automotive & Travel</span>
+          </div>
+          <h3 class="project-title">Velocity Auto Fleet & Rental System</h3>
+          <p class="project-desc">Fleet management and car rental booking portal with multi-class vehicle selection, daily rate calculations, reservation conflict checking, and vehicle maintenance scheduling.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./11-car-rental-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/11-car-rental-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Weather & Meteorology" data-search="aerocast meteorological intelligence precision meteorological tracking application featuring global multi-city forecasts, humidity and wind velocity telemetry, severe weather advisories, and weather trends. weather & meteorology 12-weather-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#12</span>
+            <span class="card-cat">Weather & Meteorology</span>
+          </div>
+          <h3 class="project-title">AeroCast Meteorological Intelligence</h3>
+          <p class="project-desc">Precision meteorological tracking application featuring global multi-city forecasts, humidity and wind velocity telemetry, severe weather advisories, and weather trends.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">9 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./12-weather-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/12-weather-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Governance & E-Voting" data-search="civictrust secure e-voting portal educational simulation of tamper-evident democratic voting with voter identity verification, encrypted ballot submissions, and live audit tallies. governance & e-voting 13-online-voting-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#13</span>
+            <span class="card-cat">Governance & E-Voting</span>
+          </div>
+          <h3 class="project-title">CivicTrust Secure E-Voting Portal</h3>
+          <p class="project-desc">Educational simulation of tamper-evident democratic voting with voter identity verification, encrypted ballot submissions, and live audit tallies.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">7 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./13-online-voting-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/13-online-voting-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Health & Fitness" data-search="fitpulse athletic & nutrition suite comprehensive fitness activity and metabolic logging system tracking workout routines, daily calorie expenditures, macronutrient breakdowns, and milestone goals. health & fitness 14-fitness-tracker">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#14</span>
+            <span class="card-cat">Health & Fitness</span>
+          </div>
+          <h3 class="project-title">FitPulse Athletic & Nutrition Suite</h3>
+          <p class="project-desc">Comprehensive fitness activity and metabolic logging system tracking workout routines, daily calorie expenditures, macronutrient breakdowns, and milestone goals.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./14-fitness-tracker/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/14-fitness-tracker" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Cloud Storage & Security" data-search="cloudvault secure file sharing platform enterprise secure file sharing repository with permission controls, download analytics, expiration limits, encrypted storage metadata, and audit logs. cloud storage & security 15-file-sharing-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#15</span>
+            <span class="card-cat">Cloud Storage & Security</span>
+          </div>
+          <h3 class="project-title">CloudVault Secure File Sharing Platform</h3>
+          <p class="project-desc">Enterprise secure file sharing repository with permission controls, download analytics, expiration limits, encrypted storage metadata, and audit logs.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./15-file-sharing-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/15-file-sharing-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Content Management" data-search="omnipress enterprise cms modern headless and decoupled cms supporting multi-author publishing workflows, editorial drafts, seo metadata optimization, category taxonomy, and media assets. content management 16-content-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#16</span>
+            <span class="card-cat">Content Management</span>
+          </div>
+          <h3 class="project-title">OmniPress Enterprise CMS</h3>
+          <p class="project-desc">Modern Headless and Decoupled CMS supporting multi-author publishing workflows, editorial drafts, SEO metadata optimization, category taxonomy, and media assets.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./16-content-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/16-content-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="FinTech & Banking Simulation" data-search="aurabank educational digital banking suite educational financial banking simulator providing multi-account balance ledgers, peer-to-peer fund transfers, simulated bill settlements, and tamper-resistant transaction journals. fintech & banking simulation 17-online-banking-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#17</span>
+            <span class="card-cat">FinTech & Banking Simulation</span>
+          </div>
+          <h3 class="project-title">AuraBank Educational Digital Banking Suite</h3>
+          <p class="project-desc">Educational financial banking simulator providing multi-account balance ledgers, peer-to-peer fund transfers, simulated bill settlements, and tamper-resistant transaction journals.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">7 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./17-online-banking-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/17-online-banking-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Events & Hospitality" data-search="vanguard eventhub & conference suite end-to-end conference and event management software supporting speaker agendas, ticket reservations, venue capacity management, and attendee badge registrations. events & hospitality 18-event-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#18</span>
+            <span class="card-cat">Events & Hospitality</span>
+          </div>
+          <h3 class="project-title">Vanguard EventHub & Conference Suite</h3>
+          <p class="project-desc">End-to-end conference and event management software supporting speaker agendas, ticket reservations, venue capacity management, and attendee badge registrations.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">9 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./18-event-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/18-event-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Healthcare & EHR" data-search="ehr-nexus electronic health records hipaa-conscious electronic health record (ehr) platform managing patient medical charts, clinical vitals, prescription orders, lab test reports, and consultation notes. healthcare & ehr 19-health-records-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#19</span>
+            <span class="card-cat">Healthcare & EHR</span>
+          </div>
+          <h3 class="project-title">EHR-Nexus Electronic Health Records</h3>
+          <p class="project-desc">HIPAA-conscious electronic health record (EHR) platform managing patient medical charts, clinical vitals, prescription orders, lab test reports, and consultation notes.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./19-health-records-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/19-health-records-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Travel & Tourism" data-search="wanderlust global travel & flight booking travel itinerary and multi-city vacation booking engine featuring flight schedule discovery, luxury hotel room comparisons, departure boards, and booking management. travel & tourism 20-travel-booking-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#20</span>
+            <span class="card-cat">Travel & Tourism</span>
+          </div>
+          <h3 class="project-title">WanderLust Global Travel & Flight Booking</h3>
+          <p class="project-desc">Travel itinerary and multi-city vacation booking engine featuring flight schedule discovery, luxury hotel room comparisons, departure boards, and booking management.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">8 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./20-travel-booking-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/20-travel-booking-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Education" data-search="skillcore student learning hub full-stack production-style application for skillcore student learning hub. built with express backend rest apis, responsive modern ui, and data validation. education 21-learning-hub">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#21</span>
+            <span class="card-cat">Education</span>
+          </div>
+          <h3 class="project-title">SkillCore Student Learning Hub</h3>
+          <p class="project-desc">Full-stack production-style application for SkillCore Student Learning Hub. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./21-learning-hub/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/21-learning-hub" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Healthcare" data-search="apexcare hospital management suite full-stack production-style application for apexcare hospital management suite. built with express backend rest apis, responsive modern ui, and data validation. healthcare 22-hospital-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#22</span>
+            <span class="card-cat">Healthcare</span>
+          </div>
+          <h3 class="project-title">ApexCare Hospital Management Suite</h3>
+          <p class="project-desc">Full-stack production-style application for ApexCare Hospital Management Suite. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./22-hospital-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/22-hospital-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Art & Auctions" data-search="lumina online art & auction gallery full-stack production-style application for lumina online art & auction gallery. built with express backend rest apis, responsive modern ui, and data validation. art & auctions 23-online-art-gallery">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#23</span>
+            <span class="card-cat">Art & Auctions</span>
+          </div>
+          <h3 class="project-title">Lumina Online Art & Auction Gallery</h3>
+          <p class="project-desc">Full-stack production-style application for Lumina Online Art & Auction Gallery. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./23-online-art-gallery/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/23-online-art-gallery" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Sales & CRM" data-search="pipelinepro enterprise crm full-stack production-style application for pipelinepro enterprise crm. built with express backend rest apis, responsive modern ui, and data validation. sales & crm 24-crm-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#24</span>
+            <span class="card-cat">Sales & CRM</span>
+          </div>
+          <h3 class="project-title">PipelinePro Enterprise CRM</h3>
+          <p class="project-desc">Full-stack production-style application for PipelinePro Enterprise CRM. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./24-crm-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/24-crm-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="News & Media" data-search="globalpulse news aggregator full-stack production-style application for globalpulse news aggregator. built with express backend rest apis, responsive modern ui, and data validation. news & media 25-news-aggregator">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#25</span>
+            <span class="card-cat">News & Media</span>
+          </div>
+          <h3 class="project-title">GlobalPulse News Aggregator</h3>
+          <p class="project-desc">Full-stack production-style application for GlobalPulse News Aggregator. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./25-news-aggregator/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/25-news-aggregator" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="FinTech" data-search="splitfair group expense app full-stack production-style application for splitfair group expense app. built with express backend rest apis, responsive modern ui, and data validation. fintech 26-expense-sharing-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#26</span>
+            <span class="card-cat">FinTech</span>
+          </div>
+          <h3 class="project-title">SplitFair Group Expense App</h3>
+          <p class="project-desc">Full-stack production-style application for SplitFair Group Expense App. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./26-expense-sharing-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/26-expense-sharing-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Food & Culinary" data-search="gourmetcraft recipe & cooking app full-stack production-style application for gourmetcraft recipe & cooking app. built with express backend rest apis, responsive modern ui, and data validation. food & culinary 27-food-recipe-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#27</span>
+            <span class="card-cat">Food & Culinary</span>
+          </div>
+          <h3 class="project-title">GourmetCraft Recipe & Cooking App</h3>
+          <p class="project-desc">Full-stack production-style application for GourmetCraft Recipe & Cooking App. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./27-food-recipe-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/27-food-recipe-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Real Estate" data-search="estateprime property management full-stack production-style application for estateprime property management. built with express backend rest apis, responsive modern ui, and data validation. real estate 28-property-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#28</span>
+            <span class="card-cat">Real Estate</span>
+          </div>
+          <h3 class="project-title">EstatePrime Property Management</h3>
+          <p class="project-desc">Full-stack production-style application for EstatePrime Property Management. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./28-property-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/28-property-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Auctions & Commerce" data-search="bidmaster real-time auction hub full-stack production-style application for bidmaster real-time auction hub. built with express backend rest apis, responsive modern ui, and data validation. auctions & commerce 29-online-auction-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#29</span>
+            <span class="card-cat">Auctions & Commerce</span>
+          </div>
+          <h3 class="project-title">BidMaster Real-Time Auction Hub</h3>
+          <p class="project-desc">Full-stack production-style application for BidMaster Real-Time Auction Hub. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./29-online-auction-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/29-online-auction-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Portfolio & Career" data-search="devcraft masterclass portfolio full-stack production-style application for devcraft masterclass portfolio. built with express backend rest apis, responsive modern ui, and data validation. portfolio & career 30-personal-portfolio-website">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#30</span>
+            <span class="card-cat">Portfolio & Career</span>
+          </div>
+          <h3 class="project-title">DevCraft Masterclass Portfolio</h3>
+          <p class="project-desc">Full-stack production-style application for DevCraft Masterclass Portfolio. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./30-personal-portfolio-website/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/30-personal-portfolio-website" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Transportation" data-search="swiftride mobility platform full-stack production-style application for swiftride mobility platform. built with express backend rest apis, responsive modern ui, and data validation. transportation 31-ride-sharing-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#31</span>
+            <span class="card-cat">Transportation</span>
+          </div>
+          <h3 class="project-title">SwiftRide Mobility Platform</h3>
+          <p class="project-desc">Full-stack production-style application for SwiftRide Mobility Platform. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./31-ride-sharing-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/31-ride-sharing-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Retail & Grocery" data-search="freshpantry supermarket & grocer full-stack production-style application for freshpantry supermarket & grocer. built with express backend rest apis, responsive modern ui, and data validation. retail & grocery 32-online-grocery-store">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#32</span>
+            <span class="card-cat">Retail & Grocery</span>
+          </div>
+          <h3 class="project-title">FreshPantry Supermarket & Grocer</h3>
+          <p class="project-desc">Full-stack production-style application for FreshPantry Supermarket & Grocer. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./32-online-grocery-store/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/32-online-grocery-store" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Media & Audio" data-search="soundwave music player & catalog full-stack production-style application for soundwave music player & catalog. built with express backend rest apis, responsive modern ui, and data validation. media & audio 33-music-streaming-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#33</span>
+            <span class="card-cat">Media & Audio</span>
+          </div>
+          <h3 class="project-title">SoundWave Music Player & Catalog</h3>
+          <p class="project-desc">Full-stack production-style application for SoundWave Music Player & Catalog. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./33-music-streaming-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/33-music-streaming-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Community & Discussions" data-search="devagora discussion forum full-stack production-style application for devagora discussion forum. built with express backend rest apis, responsive modern ui, and data validation. community & discussions 34-forum-application">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#34</span>
+            <span class="card-cat">Community & Discussions</span>
+          </div>
+          <h3 class="project-title">DevAgora Discussion Forum</h3>
+          <p class="project-desc">Full-stack production-style application for DevAgora Discussion Forum. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./34-forum-application/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/34-forum-application" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Entertainment" data-search="boxoffice cine & event ticketing full-stack production-style application for boxoffice cine & event ticketing. built with express backend rest apis, responsive modern ui, and data validation. entertainment 35-online-ticket-booking">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#35</span>
+            <span class="card-cat">Entertainment</span>
+          </div>
+          <h3 class="project-title">BoxOffice Cine & Event Ticketing</h3>
+          <p class="project-desc">Full-stack production-style application for BoxOffice Cine & Event Ticketing. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./35-online-ticket-booking/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/35-online-ticket-booking" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Academic ERP" data-search="academiaplus student report system full-stack production-style application for academiaplus student report system. built with express backend rest apis, responsive modern ui, and data validation. academic erp 36-student-report-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#36</span>
+            <span class="card-cat">Academic ERP</span>
+          </div>
+          <h3 class="project-title">AcademiaPlus Student Report System</h3>
+          <p class="project-desc">Full-stack production-style application for AcademiaPlus Student Report System. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./36-student-report-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/36-student-report-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Productivity" data-search="kanbanflow agile task manager full-stack production-style application for kanbanflow agile task manager. built with express backend rest apis, responsive modern ui, and data validation. productivity 37-task-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#37</span>
+            <span class="card-cat">Productivity</span>
+          </div>
+          <h3 class="project-title">KanbanFlow Agile Task Manager</h3>
+          <p class="project-desc">Full-stack production-style application for KanbanFlow Agile Task Manager. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./37-task-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/37-task-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="E-Learning" data-search="quizcraft assessment builder full-stack production-style application for quizcraft assessment builder. built with express backend rest apis, responsive modern ui, and data validation. e-learning 38-quiz-builder">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#38</span>
+            <span class="card-cat">E-Learning</span>
+          </div>
+          <h3 class="project-title">QuizCraft Assessment Builder</h3>
+          <p class="project-desc">Full-stack production-style application for QuizCraft Assessment Builder. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./38-quiz-builder/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/38-quiz-builder" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Sustainability" data-search="surplusfeed waste prevention system full-stack production-style application for surplusfeed waste prevention system. built with express backend rest apis, responsive modern ui, and data validation. sustainability 39-food-waste-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#39</span>
+            <span class="card-cat">Sustainability</span>
+          </div>
+          <h3 class="project-title">SurplusFeed Waste Prevention System</h3>
+          <p class="project-desc">Full-stack production-style application for SurplusFeed Waste Prevention System. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./39-food-waste-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/39-food-waste-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Animals & Welfare" data-search="pawshaven pet adoption network full-stack production-style application for pawshaven pet adoption network. built with express backend rest apis, responsive modern ui, and data validation. animals & welfare 40-pet-adoption-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#40</span>
+            <span class="card-cat">Animals & Welfare</span>
+          </div>
+          <h3 class="project-title">PawsHaven Pet Adoption Network</h3>
+          <p class="project-desc">Full-stack production-style application for PawsHaven Pet Adoption Network. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./40-pet-adoption-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/40-pet-adoption-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Charity & Philanthropy" data-search="kindredheart charitable giving platform full-stack production-style application for kindredheart charitable giving platform. built with express backend rest apis, responsive modern ui, and data validation. charity & philanthropy 41-online-donation-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#41</span>
+            <span class="card-cat">Charity & Philanthropy</span>
+          </div>
+          <h3 class="project-title">KindredHeart Charitable Giving Platform</h3>
+          <p class="project-desc">Full-stack production-style application for KindredHeart Charitable Giving Platform. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./41-online-donation-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/41-online-donation-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Emergency Management" data-search="resqnet disaster coordination center full-stack production-style application for resqnet disaster coordination center. built with express backend rest apis, responsive modern ui, and data validation. emergency management 42-disaster-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#42</span>
+            <span class="card-cat">Emergency Management</span>
+          </div>
+          <h3 class="project-title">ResQNet Disaster Coordination Center</h3>
+          <p class="project-desc">Full-stack production-style application for ResQNet Disaster Coordination Center. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./42-disaster-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/42-disaster-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Personal Finance" data-search="capitalwise personal budget planner full-stack production-style application for capitalwise personal budget planner. built with express backend rest apis, responsive modern ui, and data validation. personal finance 43-budget-planner">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#43</span>
+            <span class="card-cat">Personal Finance</span>
+          </div>
+          <h3 class="project-title">CapitalWise Personal Budget Planner</h3>
+          <p class="project-desc">Full-stack production-style application for CapitalWise Personal Budget Planner. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./43-budget-planner/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/43-budget-planner" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Medical & Blood Banking" data-search="lifedrop blood bank registry full-stack production-style application for lifedrop blood bank registry. built with express backend rest apis, responsive modern ui, and data validation. medical & blood banking 44-blood-banking-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#44</span>
+            <span class="card-cat">Medical & Blood Banking</span>
+          </div>
+          <h3 class="project-title">LifeDrop Blood Bank Registry</h3>
+          <p class="project-desc">Full-stack production-style application for LifeDrop Blood Bank Registry. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./44-blood-banking-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/44-blood-banking-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Agriculture & AgriTech" data-search="kisandirect farmer-buyer marketplace full-stack production-style application for kisandirect farmer-buyer marketplace. built with express backend rest apis, responsive modern ui, and data validation. agriculture & agritech 45-agriculture-farmer-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#45</span>
+            <span class="card-cat">Agriculture & AgriTech</span>
+          </div>
+          <h3 class="project-title">KisanDirect Farmer-Buyer Marketplace</h3>
+          <p class="project-desc">Full-stack production-style application for KisanDirect Farmer-Buyer Marketplace. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./45-agriculture-farmer-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/45-agriculture-farmer-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Hospitality" data-search="grandstay luxury hotel booking full-stack production-style application for grandstay luxury hotel booking. built with express backend rest apis, responsive modern ui, and data validation. hospitality 46-hotel-booking-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#46</span>
+            <span class="card-cat">Hospitality</span>
+          </div>
+          <h3 class="project-title">GrandStay Luxury Hotel Booking</h3>
+          <p class="project-desc">Full-stack production-style application for GrandStay Luxury Hotel Booking. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./46-hotel-booking-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/46-hotel-booking-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Library & Archival" data-search="bibliotech library management system full-stack production-style application for bibliotech library management system. built with express backend rest apis, responsive modern ui, and data validation. library & archival 47-online-library-management">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#47</span>
+            <span class="card-cat">Library & Archival</span>
+          </div>
+          <h3 class="project-title">BiblioTech Library Management System</h3>
+          <p class="project-desc">Full-stack production-style application for BiblioTech Library Management System. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./47-online-library-management/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/47-online-library-management" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Customer Intelligence" data-search="voicemetrics enterprise feedback hub full-stack production-style application for voicemetrics enterprise feedback hub. built with express backend rest apis, responsive modern ui, and data validation. customer intelligence 48-feedback-management-system">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#48</span>
+            <span class="card-cat">Customer Intelligence</span>
+          </div>
+          <h3 class="project-title">VoiceMetrics Enterprise Feedback Hub</h3>
+          <p class="project-desc">Full-stack production-style application for VoiceMetrics Enterprise Feedback Hub. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./48-feedback-management-system/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/48-feedback-management-system" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Tutoring & Education" data-search="tutorconnect academic mentor finder full-stack production-style application for tutorconnect academic mentor finder. built with express backend rest apis, responsive modern ui, and data validation. tutoring & education 49-home-tutor-finder">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#49</span>
+            <span class="card-cat">Tutoring & Education</span>
+          </div>
+          <h3 class="project-title">TutorConnect Academic Mentor Finder</h3>
+          <p class="project-desc">Full-stack production-style application for TutorConnect Academic Mentor Finder. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./49-home-tutor-finder/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/49-home-tutor-finder" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Streaming & Music" data-search="auraharmonics cloud audio streaming full-stack production-style application for auraharmonics cloud audio streaming. built with express backend rest apis, responsive modern ui, and data validation. streaming & music 50-music-streaming-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#50</span>
+            <span class="card-cat">Streaming & Music</span>
+          </div>
+          <h3 class="project-title">AuraHarmonics Cloud Audio Streaming</h3>
+          <p class="project-desc">Full-stack production-style application for AuraHarmonics Cloud Audio Streaming. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./50-music-streaming-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/50-music-streaming-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Freelance & Gig Economy" data-search="gigsphere freelancer & client marketplace full-stack production-style application for gigsphere freelancer & client marketplace. built with express backend rest apis, responsive modern ui, and data validation. freelance & gig economy 51-freelancer-marketplace">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#51</span>
+            <span class="card-cat">Freelance & Gig Economy</span>
+          </div>
+          <h3 class="project-title">GigSphere Freelancer & Client Marketplace</h3>
+          <p class="project-desc">Full-stack production-style application for GigSphere Freelancer & Client Marketplace. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./51-freelancer-marketplace/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/51-freelancer-marketplace" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Career Management" data-search="careerpulse job application tracker full-stack production-style application for careerpulse job application tracker. built with express backend rest apis, responsive modern ui, and data validation. career management 52-job-application-tracker">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#52</span>
+            <span class="card-cat">Career Management</span>
+          </div>
+          <h3 class="project-title">CareerPulse Job Application Tracker</h3>
+          <p class="project-desc">Full-stack production-style application for CareerPulse Job Application Tracker. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./52-job-application-tracker/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/52-job-application-tracker" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Academic Research" data-search="scholarpeer academic journal workflow full-stack production-style application for scholarpeer academic journal workflow. built with express backend rest apis, responsive modern ui, and data validation. academic research 53-research-journal-management">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#53</span>
+            <span class="card-cat">Academic Research</span>
+          </div>
+          <h3 class="project-title">ScholarPeer Academic Journal Workflow</h3>
+          <p class="project-desc">Full-stack production-style application for ScholarPeer Academic Journal Workflow. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./53-research-journal-management/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/53-research-journal-management" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Crowdfunding & Startups" data-search="ventureforge crowdfunding platform full-stack production-style application for ventureforge crowdfunding platform. built with express backend rest apis, responsive modern ui, and data validation. crowdfunding & startups 54-crowdfunding-platform">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#54</span>
+            <span class="card-cat">Crowdfunding & Startups</span>
+          </div>
+          <h3 class="project-title">VentureForge Crowdfunding Platform</h3>
+          <p class="project-desc">Full-stack production-style application for VentureForge Crowdfunding Platform. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./54-crowdfunding-platform/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/54-crowdfunding-platform" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Sports Management" data-search="arenapro sports league management full-stack production-style application for arenapro sports league management. built with express backend rest apis, responsive modern ui, and data validation. sports management 55-sports-league-management">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#55</span>
+            <span class="card-cat">Sports Management</span>
+          </div>
+          <h3 class="project-title">ArenaPro Sports League Management</h3>
+          <p class="project-desc">Full-stack production-style application for ArenaPro Sports League Management. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./55-sports-league-management/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/55-sports-league-management" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Digital Payments" data-search="payswift digital wallet simulation full-stack production-style application for payswift digital wallet simulation. built with express backend rest apis, responsive modern ui, and data validation. digital payments 56-digital-wallet-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#56</span>
+            <span class="card-cat">Digital Payments</span>
+          </div>
+          <h3 class="project-title">PaySwift Digital Wallet Simulation</h3>
+          <p class="project-desc">Full-stack production-style application for PaySwift Digital Wallet Simulation. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./56-digital-wallet-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/56-digital-wallet-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="Esports & Gaming" data-search="esportsgrid tournament portal full-stack production-style application for esportsgrid tournament portal. built with express backend rest apis, responsive modern ui, and data validation. esports & gaming 57-gaming-tournament-portal">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#57</span>
+            <span class="card-cat">Esports & Gaming</span>
+          </div>
+          <h3 class="project-title">EsportsGrid Tournament Portal</h3>
+          <p class="project-desc">Full-stack production-style application for EsportsGrid Tournament Portal. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./57-gaming-tournament-portal/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/57-gaming-tournament-portal" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
+        </div>
+      </div>
+
+      <div class="project-card" data-cat="FinTech & Stock Trading" data-search="tradevision virtual stock trading sim full-stack production-style application for tradevision virtual stock trading sim. built with express backend rest apis, responsive modern ui, and data validation. fintech & stock trading 58-virtual-stock-trading-app">
+        <div>
+          <div class="card-header">
+            <span class="card-id">#58</span>
+            <span class="card-cat">FinTech & Stock Trading</span>
+          </div>
+          <h3 class="project-title">TradeVision Virtual Stock Trading Sim</h3>
+          <p class="project-desc">Full-stack production-style application for TradeVision Virtual Stock Trading Sim. Built with Express backend REST APIs, responsive modern UI, and data validation.</p>
+          <div class="tech-stack">
+            <span class="tech-tag">Express.js</span>
+            <span class="tech-tag">REST API</span>
+            <span class="tech-tag">Vercel Serverless</span>
+            <span class="tech-tag">5 Data Fields</span>
+          </div>
+        </div>
+        <div class="card-actions">
+          <a href="./58-virtual-stock-trading-app/public/index.html" class="btn btn-primary" target="_blank">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i> Open App
+          </a>
+          <a href="https://github.com/SaiVatsal/58-virtual-stock-trading-app" class="btn btn-secondary" target="_blank">
+            <i class="fa-brands fa-github"></i> GitHub
+          </a>
         </div>
       </div>
     </div>
-  </header>
 
-  <!-- Hero Banner -->
-  <section class="relative overflow-hidden py-12 px-4 sm:px-6 lg:px-8 border-b border-slate-800/80 bg-gradient-to-b from-slate-900/40 to-transparent">
-    <div class="max-w-7xl mx-auto space-y-6">
-      <div class="max-w-3xl space-y-3">
-        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/20 text-indigo-400 text-xs font-semibold uppercase tracking-wider">
-          <i class="fa-solid fa-code-branch"></i> 58 Production Full-Stack Solutions
-        </div>
-        <h2 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
-          Comprehensive Full-Stack Development Repository
-        </h2>
-        <p class="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Each application is structured with a standalone Node.js & Express REST API, persistent file-backed JSON database, responsive modern UI, real-time search, modal CRUD controls, and complete domain workflows.
-        </p>
-      </div>
+    <!-- Footer -->
+    <footer>
+      <p><strong>58 Full-Stack Web Development Projects</strong> • Designed & Engineered by <a href="https://github.com/SaiVatsal" target="_blank">SaiVatsal (2500040224)</a></p>
+      <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #64748b;">Master Repository: <a href="https://github.com/SaiVatsal/Full-Stack-Developments-All-Experminesnts-" target="_blank">github.com/SaiVatsal/Full-Stack-Developments-All-Experminesnts-</a></p>
+    </footer>
+  </div>
 
-      <!-- Stats Grid -->
-      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-4">
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Total Applications</span>
-          <p class="text-2xl sm:text-3xl font-extrabold text-white mt-1">58 Apps</p>
-          <span class="text-[11px] text-indigo-400 font-medium mt-1 inline-block">100% Generated & Active</span>
-        </div>
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Test Suite Status</span>
-          <p class="text-2xl sm:text-3xl font-extrabold text-emerald-400 mt-1">58/58 Passed</p>
-          <span class="text-[11px] text-emerald-500 font-medium mt-1 inline-block">0 Failures Verified</span>
-        </div>
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Backend Architecture</span>
-          <p class="text-2xl sm:text-3xl font-extrabold text-indigo-400 mt-1">Node + Express</p>
-          <span class="text-[11px] text-slate-400 font-medium mt-1 inline-block">REST API + JSON Store</span>
-        </div>
-        <div class="p-5 rounded-2xl bg-slate-900/90 border border-slate-800">
-          <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Author Attribution</span>
-          <p class="text-2xl sm:text-3xl font-extrabold text-amber-400 mt-1">SaiVatsal</p>
-          <span class="text-[11px] text-slate-400 font-medium mt-1 inline-block">ID: 2500040224</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Controls & Search Filter -->
-  <section class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 pt-8">
-    <div class="flex flex-col sm:flex-row gap-4 items-center justify-between">
-      <div class="relative w-full sm:w-96">
-        <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-500 text-sm"></i>
-        <input type="text" id="projectSearch" oninput="filterProjects()" placeholder="Search from 58 projects, domains, keywords..." class="w-full pl-10 pr-4 py-2.5 bg-slate-900 border border-slate-800 rounded-xl text-sm text-slate-200 placeholder:text-slate-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition" />
-      </div>
-      <div class="flex items-center gap-2 overflow-x-auto w-full sm:w-auto pb-2 sm:pb-0" id="categoryTabs">
-        <button onclick="setCategory('All')" class="cat-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white transition">All (58)</button>
-        <button onclick="setCategory('E-Commerce')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">E-Commerce</button>
-        <button onclick="setCategory('Healthcare')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Healthcare</button>
-        <button onclick="setCategory('Finance')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">Finance</button>
-        <button onclick="setCategory('EdTech')" class="cat-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition">EdTech</button>
-      </div>
-    </div>
-  </section>
-
-  <!-- 58 Projects Grid -->
-  <main class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-1">
-    <div id="projectsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      <!-- Injected by catalog JS -->
-    </div>
-  </main>
-
-  <!-- Footer -->
-  <footer class="border-t border-slate-800 bg-slate-900 py-8 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 space-y-2">
-      <p class="font-bold text-slate-300 text-sm">Full-Stack Development 58-Project Suite</p>
-      <p class="text-indigo-400 font-semibold">Done By SaiVatsal (Roll / College ID: 2500040224)</p>
-      <p>Built with Express.js, Tailwind CSS, HTML5, REST API, and Automated Verification Tests.</p>
-    </div>
-  </footer>
-
-  <script src="./master-catalog.js"></script>
   <script>
-    let activeCategory = 'All';
+    const searchInput = document.getElementById('searchInput');
+    const pills = document.querySelectorAll('.pill-btn');
+    const cards = document.querySelectorAll('.project-card');
 
-    function renderGrid(list) {
-      const grid = document.getElementById('projectsGrid');
-      if (list.length === 0) {
-        grid.innerHTML = \`<div class="col-span-full py-16 text-center text-slate-500 text-sm">No matching projects found.</div>\`;
-        return;
-      }
-      grid.innerHTML = list.map(p => \`
-        <div class="bg-slate-900/80 rounded-2xl p-6 border border-slate-800 hover:border-indigo-500/50 hover:shadow-xl hover:shadow-indigo-500/10 transition duration-200 flex flex-col justify-between group">
-          <div class="space-y-3">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-mono font-bold text-indigo-400 bg-indigo-500/10 px-2.5 py-1 rounded-md border border-indigo-500/20">Project #\${String(p.id).padStart(2, '0')}</span>
-              <span class="text-[11px] font-semibold text-slate-400 bg-slate-800/80 px-2 py-0.5 rounded">\${p.category}</span>
-            </div>
-            <h3 class="text-base font-bold text-white group-hover:text-indigo-300 transition">\${p.name}</h3>
-            <p class="text-xs text-slate-400 line-clamp-2 leading-relaxed">\${p.description}</p>
-            <div class="pt-2 flex flex-wrap gap-2 text-[11px] text-slate-400 font-mono">
-              <span class="bg-slate-800/50 px-2 py-0.5 rounded text-slate-300">📁 \${p.folder}</span>
-              <span class="bg-slate-800/50 px-2 py-0.5 rounded text-emerald-400">✔ Tested</span>
-            </div>
-          </div>
-          <div class="pt-5 mt-5 border-t border-slate-800/80 flex items-center justify-between">
-            <a href="./\${p.folder}/public/index.html" class="inline-flex items-center gap-1.5 text-xs font-bold text-indigo-400 hover:text-indigo-300 group-hover:translate-x-0.5 transition">
-              <span>View Portal</span>
-              <i class="fa-solid fa-arrow-right text-[10px]"></i>
-            </a>
-            <span class="text-[10px] text-slate-500 font-mono">SaiVatsal 2500040224</span>
-          </div>
-        </div>
-      \`).join('');
-    }
+    let currentCat = 'all';
+    let searchQuery = '';
 
-    function filterProjects() {
-      const q = document.getElementById('projectSearch').value.toLowerCase();
-      let list = allProjects;
+    function filterCards() {
+      cards.forEach(card => {
+        const cardCat = card.getAttribute('data-cat');
+        const cardSearch = card.getAttribute('data-search');
 
-      if (activeCategory !== 'All') {
-        list = list.filter(p => p.category.toLowerCase().includes(activeCategory.toLowerCase()));
-      }
+        const matchesCat = (currentCat === 'all' || cardCat === currentCat);
+        const matchesSearch = (!searchQuery || cardSearch.includes(searchQuery));
 
-      if (q) {
-        list = list.filter(p =>
-          p.name.toLowerCase().includes(q) ||
-          p.category.toLowerCase().includes(q) ||
-          p.description.toLowerCase().includes(q) ||
-          p.folder.toLowerCase().includes(q)
-        );
-      }
-      renderGrid(list);
-    }
-
-    function setCategory(cat) {
-      activeCategory = cat;
-      document.querySelectorAll('.cat-tab').forEach(b => {
-        if (b.textContent.includes(cat)) {
-          b.className = 'cat-tab active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-indigo-600 text-white transition';
+        if (matchesCat && matchesSearch) {
+          card.style.display = 'flex';
         } else {
-          b.className = 'cat-tab px-3.5 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white border border-slate-800 transition';
+          card.style.display = 'none';
         }
       });
-      filterProjects();
     }
 
-    // Initial render
-    window.addEventListener('DOMContentLoaded', () => {
-      renderGrid(allProjects);
+    searchInput.addEventListener('input', (e) => {
+      searchQuery = e.target.value.toLowerCase().trim();
+      filterCards();
+    });
+
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+        currentCat = pill.getAttribute('data-cat');
+        filterCards();
+      });
     });
   </script>
 </body>

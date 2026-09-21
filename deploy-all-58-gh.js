@@ -65,7 +65,7 @@ async function deployProject(project, index, total) {
     execSync('git add .', { cwd: projectDir, stdio: 'pipe' });
 
     try {
-      execSync(`git commit -m "feat: ${project.name} Full-Stack Solution - Done By SaiVatsal 2500040224"`, {
+      execSync(`git commit -m "feat: ${project.name} Vercel Serverless Ready - Done By SaiVatsal 2500040224\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>"`, {
         cwd: projectDir,
         stdio: 'pipe'
       });
@@ -82,7 +82,7 @@ async function deployProject(project, index, total) {
 
     execSync(`git remote add origin ${remoteUrl}`, { cwd: projectDir, stdio: 'pipe' });
     console.log(`Pushing code to ${remoteUrl}...`);
-    execSync('git push -u origin main --force', { cwd: projectDir, stdio: 'inherit' });
+    execSync('git push -u origin main', { cwd: projectDir, stdio: 'inherit' });
 
     console.log(`✅ [SUCCESS] Deployed: https://github.com/${GITHUB_USERNAME}/${repoName}`);
     return { name: project.name, repo: repoName, url: `https://github.com/${GITHUB_USERNAME}/${repoName}`, status: 'SUCCESS' };
