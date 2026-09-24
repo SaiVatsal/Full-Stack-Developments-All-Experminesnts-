@@ -113,20 +113,20 @@ app.get('/api/accounts/:id', (req, res) => {
   res.json(item);
 });
 
-// 5. POST create primary entity
+// 5. POST new primary entity
 app.post('/api/accounts', (req, res) => {
   const db = readDb();
+  const items = db.accounts || [];
+  const newId = String(Date.now());
   const newItem = {
-    id: Date.now().toString(),
+    id: newId,
     ...req.body,
     createdAt: new Date().toISOString(),
-    createdBy: 'SaiVatsal (2500040224)'
+    author: 'SaiVatsal (2500040224)'
   };
-
-  db.accounts = db.accounts || [];
-  db.accounts.unshift(newItem);
+  items.unshift(newItem);
+  db.accounts = items;
   writeDb(db);
-
   res.status(201).json(newItem);
 });
 
@@ -140,19 +140,15 @@ app.put('/api/accounts/:id', (req, res) => {
     return res.status(404).json({ error: 'Bank Account & Customer not found' });
   }
 
-  const updatedItem = {
+  items[index] = {
     ...items[index],
     ...req.body,
-    id: items[index].id,
-    updatedAt: new Date().toISOString(),
-    updatedBy: 'SaiVatsal (2500040224)'
+    updatedAt: new Date().toISOString()
   };
 
-  items[index] = updatedItem;
   db.accounts = items;
   writeDb(db);
-
-  res.json(updatedItem);
+  res.json(items[index]);
 });
 
 // 7. DELETE primary entity
@@ -195,12 +191,12 @@ app.post('/api/transfers', (req, res) => {
 // Start Server
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`======================================================`);
-    console.log(`🚀 ${project.name} is running!`);
-    console.log(`📂 Category: ${project.category}`);
-    console.log(`👤 Author: SaiVatsal | College ID: 2500040224`);
-    console.log(`🔗 Web Portal: http://localhost:${PORT}`);
-    console.log(`======================================================`);
+    console.log('======================================================');
+    console.log('🚀 AuraBank Educational Digital Banking Suite is running!');
+    console.log('📂 Category: FinTech & Banking Simulation');
+    console.log('👤 Author: SaiVatsal | College ID: 2500040224');
+    console.log('🔗 Web Portal: http://localhost:' + PORT);
+    console.log('======================================================');
   });
 }
 

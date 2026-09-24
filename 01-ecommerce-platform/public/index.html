@@ -1,225 +1,787 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Nexus E-Commerce Platform | Done By SaiVatsal 2500040224</title>
+  <title>Nexus E-Commerce Platform | Done By SaiVatsal (2500040224)</title>
+
+  <!-- Tailwind CSS CDN with Plugins -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eef2ff',
+              100: '#e0e7ff',
+              400: '#818cf8',
+              500: '#6366f1',
+              600: '#4f46e5',
+              700: '#4338ca',
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- FontAwesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Chart.js 4.4.1 -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
   <style>
-    body { font-family: 'Inter', sans-serif; }
-    [x-cloak] { display: none !important; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    /* Modern Glassmorphic Shadows & Glows */
+    .glass-card {
+      background: rgba(15, 23, 42, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    html:not(.dark) .glass-card {
+      background: rgba(255, 255, 255, 0.9);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 6px; height: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(100, 116, 139, 0.3); border-radius: 9999px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(100, 116, 139, 0.5); }
+
+    /* Radial Glow Backdrop */
+    .bg-mesh {
+      background-image:
+        radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.12) 0px, transparent 50%),
+        radial-gradient(at 100% 0%, rgba(168, 85, 247, 0.12) 0px, transparent 50%),
+        radial-gradient(at 50% 100%, rgba(59, 130, 246, 0.08) 0px, transparent 50%);
+      background-attachment: fixed;
+    }
+
+    .pulse-beacon {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+      animation: pulse-ring 2s infinite cubic-bezier(0.66, 0, 0, 1);
+    }
+    @keyframes pulse-ring {
+      to { box-shadow: 0 0 0 8px rgba(16, 185, 129, 0); }
+    }
   </style>
 </head>
-<body class="bg-slate-900/5 text-slate-800 min-h-screen flex flex-col antialiased">
+<body class="bg-[#0B0F17] text-slate-100 min-h-screen flex flex-col antialiased bg-mesh selection:bg-indigo-500 selection:text-white">
 
-  <!-- Navigation Header -->
-  <header class="bg-slate-900 text-white sticky top-0 z-40 shadow-md border-b border-slate-800">
+  <!-- ========================================== -->
+  <!-- TOP APP BAR / BRAND HEADER                -->
+  <!-- ========================================== -->
+  <header class="sticky top-0 z-40 bg-[#0B0F17]/85 backdrop-blur-xl border-b border-slate-800/80 transition-all duration-200 shadow-xl">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <div class="flex items-center space-x-3">
-          <div class="w-10 h-10 rounded-xl bg-indigo-600 flex items-center justify-center font-bold text-white shadow-lg shadow-indigo-600/30">
-            <i class="fa-solid fa-layer-group text-lg"></i>
+
+        <!-- Brand & Title -->
+        <div class="flex items-center gap-3.5">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-500 to-purple-500 flex items-center justify-center font-extrabold text-white shadow-lg shadow-indigo-500/25 ring-1 ring-white/20">
+            <i class="fa-solid fa-cubes-stacked text-base"></i>
           </div>
           <div>
-            <h1 class="text-base font-bold leading-tight flex items-center gap-2">
-              Nexus E-Commerce Platform
-              <span class="text-[11px] font-medium bg-indigo-500/20 text-indigo-300 px-2 py-0.5 rounded border border-indigo-400/30">E-Commerce & Retail</span>
-            </h1>
-            <p class="text-xs text-slate-400">Project #1 • Production Architecture</p>
+            <div class="flex items-center gap-2">
+              <span class="text-sm font-extrabold tracking-tight text-white">Nexus E-Commerce Platform</span>
+              <span class="text-[10px] font-bold uppercase tracking-wider bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 px-2 py-0.5 rounded-full">v2.4 Live</span>
+            </div>
+            <div class="flex items-center gap-2 text-xs text-slate-400 font-medium">
+              <span>Project #1</span>
+              <span>•</span>
+              <span class="text-slate-300 font-semibold">E-Commerce & Retail</span>
+            </div>
           </div>
         </div>
 
-        <!-- Student Attribution Badge -->
-        <div class="flex items-center space-x-4">
-          <div class="hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
-            <span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-            Done By SaiVatsal 2500040224
+        <!-- Center / Right Actions -->
+        <div class="flex items-center gap-3">
+
+          <!-- Live REST Status Pill -->
+          <div class="hidden md:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-800/80 border border-slate-700/60 text-xs text-slate-300 font-mono">
+            <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-beacon"></span>
+            <span id="serverPingDisplay">REST Engine: 24ms</span>
           </div>
-          <button onclick="openModal()" class="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-sm font-semibold shadow-sm transition">
+
+          <!-- Student Attribution Pill -->
+          <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold shadow-sm">
+            <i class="fa-solid fa-shield-check text-emerald-400"></i>
+            <span class="tracking-wide">Done By SaiVatsal (2500040224)</span>
+          </div>
+
+          <!-- Theme Toggle -->
+          <button onclick="toggleTheme()" class="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition shadow-sm hover:scale-105" title="Toggle Dark/Light Theme">
+            <i id="themeIcon" class="fa-solid fa-moon text-xs"></i>
+          </button>
+
+          <!-- Audio FX Toggle -->
+          <button onclick="toggleSound()" id="soundToggleBtn" class="w-9 h-9 rounded-xl bg-slate-800/80 border border-slate-700/60 text-slate-300 hover:text-white flex items-center justify-center transition shadow-sm hover:scale-105" title="Toggle Sound Feedback">
+            <i id="soundIcon" class="fa-solid fa-volume-high text-xs"></i>
+          </button>
+
+          <!-- Add Entity Quick CTA -->
+          <button onclick="openModal()" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/30 border border-indigo-400/30 transition hover:scale-[1.02] active:scale-[0.98]">
             <i class="fa-solid fa-plus text-xs"></i>
-            <span>Add Product</span>
-          </button>
-        </div>
-      </div>
-    </div>
-  </header>
-
-  <!-- Main Container -->
-  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-8">
-
-    <!-- Hero Banner & Overview -->
-    <div class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-slate-200/80">
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
-        <div class="space-y-1.5">
-          <div class="flex items-center gap-2">
-            <span class="text-xs font-bold uppercase tracking-wider text-indigo-600 bg-indigo-50 px-2.5 py-1 rounded-md">Enterprise Solution</span>
-            <span class="text-xs text-slate-500">Node.js + Express REST API</span>
-          </div>
-          <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">Nexus E-Commerce Platform</h2>
-          <p class="text-slate-600 text-sm max-w-3xl leading-relaxed">Production-grade full-stack e-commerce marketplace with catalog browsing, category filters, cart, checkout workflow, order history, and merchant inventory control.</p>
-        </div>
-        <div class="flex items-center gap-2 shrink-0">
-          <button onclick="fetchData()" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-2 transition">
-            <i class="fa-solid fa-arrows-rotate"></i>
-            <span>Refresh</span>
-          </button>
-          <a href="/api/products" target="_blank" class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold flex items-center gap-2 transition">
-            <i class="fa-solid fa-code"></i>
-            <span>Raw JSON</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- KPI Stat Tiles -->
-      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-6 pt-6 border-t border-slate-100">
-        
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-medium text-slate-500">Catalog SKUs</span>
-            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-600 flex items-center justify-center text-sm">
-              <i class="fa-solid fa-box"></i>
-            </div>
-          </div>
-          <p class="text-xl font-bold text-slate-900 mt-2">5 Items</p>
-        </div>
-        
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-medium text-slate-500">Active Orders</span>
-            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center text-sm">
-              <i class="fa-solid fa-truck-fast"></i>
-            </div>
-          </div>
-          <p class="text-xl font-bold text-slate-900 mt-2">2 In-Transit</p>
-        </div>
-        
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-medium text-slate-500">Gross Revenue</span>
-            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-600 flex items-center justify-center text-sm">
-              <i class="fa-solid fa-dollar-sign"></i>
-            </div>
-          </div>
-          <p class="text-xl font-bold text-slate-900 mt-2">$878.49</p>
-        </div>
-        
-        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
-          <div class="flex items-center justify-between">
-            <span class="text-xs font-medium text-slate-500">Customer Rating</span>
-            <div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-600 flex items-center justify-center text-sm">
-              <i class="fa-solid fa-star"></i>
-            </div>
-          </div>
-          <p class="text-xl font-bold text-slate-900 mt-2">4.8 / 5.0</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Management Data Workspace -->
-    <div class="bg-white rounded-2xl shadow-sm border border-slate-200/80 overflow-hidden">
-
-      <!-- Table Filter Bar -->
-      <div class="p-4 sm:p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-        <div class="flex items-center gap-2">
-          <h3 class="text-base font-bold text-slate-900">Product Directory</h3>
-          <span id="itemCountBadge" class="bg-indigo-50 text-indigo-700 text-xs font-bold px-2.5 py-0.5 rounded-full">0 Entries</span>
-        </div>
-        <div class="flex flex-wrap items-center gap-2 sm:gap-3">
-          <div class="relative min-w-[220px]">
-            <i class="fa-solid fa-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
-            <input type="text" id="searchInput" oninput="debounceSearch()" placeholder="Search records..." class="w-full pl-9 pr-3.5 py-1.5 bg-slate-50 border border-slate-200 rounded-lg text-xs text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" />
-          </div>
-          <button onclick="openModal()" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold flex items-center gap-1.5 transition">
-            <i class="fa-solid fa-plus text-[10px]"></i>
             <span>New Product</span>
           </button>
         </div>
       </div>
 
-      <!-- Main Data Table -->
-      <div class="overflow-x-auto">
-        <table class="w-full text-left border-collapse">
-          <thead>
-            <tr class="bg-slate-50/75 border-b border-slate-200/60">
-              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Product Name</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Category</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Unit Price ($)</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Inventory Stock</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Rating (1-5)</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Stock Status</th>
-              <th class="px-4 py-3 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Product Overview</th>
-              <th class="px-4 py-3 text-right text-xs font-semibold text-slate-600 uppercase tracking-wider">Actions</th>
-            </tr>
-          </thead>
-          <tbody id="dataTableBody" class="divide-y divide-slate-100 text-sm text-slate-700">
-            <!-- Dynamic Rows Injected by JS -->
-          </tbody>
-        </table>
+      <!-- Sub Navigation Tabs (SPA Router) -->
+      <nav class="flex space-x-1 sm:space-x-2 border-t border-slate-800/60 overflow-x-auto py-1 text-xs font-semibold">
+        <button onclick="switchTab('overview')" id="tab-btn-overview" class="tab-btn active px-3.5 py-2 rounded-lg text-indigo-400 bg-indigo-500/10 flex items-center gap-2 transition border border-indigo-500/30">
+          <i class="fa-solid fa-chart-pie"></i>
+          <span>Overview & Metrics</span>
+        </button>
+        <button onclick="switchTab('data')" id="tab-btn-data" class="tab-btn px-3.5 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 transition border border-transparent">
+          <i class="fa-solid fa-table-list"></i>
+          <span>Data Explorer & CRUD</span>
+        </button>
+        <button onclick="switchTab('operations')" id="tab-btn-operations" class="tab-btn px-3.5 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 transition border border-transparent">
+          <i class="fa-solid fa-bolt"></i>
+          <span>Live Operations Stream</span>
+        </button>
+        <button onclick="switchTab('api')" id="tab-btn-api" class="tab-btn px-3.5 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 transition border border-transparent">
+          <i class="fa-solid fa-terminal"></i>
+          <span>Interactive API Console</span>
+        </button>
+        <button onclick="switchTab('architecture')" id="tab-btn-architecture" class="tab-btn px-3.5 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 transition border border-transparent">
+          <i class="fa-solid fa-graduation-cap"></i>
+          <span>Viva Defense Blueprint</span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN WORKSPACE VIEWPORTS                   -->
+  <!-- ========================================== -->
+  <main class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+
+    <!-- ========================================== -->
+    <!-- TAB 1: OVERVIEW & ANALYTICS METRICS       -->
+    <!-- ========================================== -->
+    <div id="view-overview" class="space-y-6">
+
+      <!-- Hero Banner -->
+      <div class="glass-card rounded-2xl p-6 sm:p-8 relative overflow-hidden shadow-2xl">
+        <div class="absolute -right-16 -top-16 w-64 h-64 bg-gradient-to-br from-indigo-500/20 to-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+          <div class="space-y-2 max-w-3xl">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md">Enterprise Full-Stack Architecture</span>
+              <span class="text-xs text-slate-400 font-mono">Node.js • Express • Vercel Serverless</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight text-white">Nexus E-Commerce Platform</h2>
+            <p class="text-slate-300 text-sm leading-relaxed">Production-grade full-stack e-commerce marketplace with catalog browsing, category filters, cart, checkout workflow, order history, and merchant inventory control.</p>
+          </div>
+          <div class="flex flex-wrap items-center gap-2.5 shrink-0">
+            <button onclick="fetchData()" class="px-4 py-2.5 bg-slate-800/80 hover:bg-slate-700/80 text-slate-200 rounded-xl text-xs font-bold border border-slate-700/60 flex items-center gap-2 transition shadow-sm hover:scale-105">
+              <i class="fa-solid fa-arrows-rotate text-indigo-400"></i>
+              <span>Refresh Metrics</span>
+            </button>
+            <button onclick="switchTab('api')" class="px-4 py-2.5 bg-indigo-600/20 hover:bg-indigo-600/30 text-indigo-300 rounded-xl text-xs font-bold border border-indigo-500/40 flex items-center gap-2 transition shadow-sm hover:scale-105">
+              <i class="fa-solid fa-code"></i>
+              <span>API Explorer</span>
+            </button>
+          </div>
+        </div>
       </div>
 
-      <!-- Empty State -->
-      <div id="emptyState" class="hidden p-12 text-center">
-        <div class="w-12 h-12 rounded-full bg-slate-100 text-slate-400 mx-auto flex items-center justify-center text-lg mb-3">
-          <i class="fa-regular fa-folder-open"></i>
+      <!-- KPI Stat Tiles -->
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="glass-card p-5 rounded-2xl border border-slate-800/80 relative overflow-hidden group hover:border-indigo-500/40 transition duration-300">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Catalog SKUs</span>
+            <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-400 border border-blue-500/20 flex items-center justify-center text-sm shadow-sm group-hover:scale-110 transition">
+              <i class="fa-solid fa-box"></i>
+            </div>
+          </div>
+          <p class="text-2xl font-black text-white mt-3 tracking-tight">5 Items</p>
+          <div class="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
+            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i>
+            <span>+14.2% operational velocity</span>
+          </div>
         </div>
-        <h4 class="text-sm font-bold text-slate-800">No records found</h4>
-        <p class="text-xs text-slate-500 mt-1 max-w-sm mx-auto">Get started by creating your first entry or adjust your search filter.</p>
-        <button onclick="openModal()" class="mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-lg">Create New</button>
+        
+        <div class="glass-card p-5 rounded-2xl border border-slate-800/80 relative overflow-hidden group hover:border-indigo-500/40 transition duration-300">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Active Orders</span>
+            <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20 flex items-center justify-center text-sm shadow-sm group-hover:scale-110 transition">
+              <i class="fa-solid fa-truck-fast"></i>
+            </div>
+          </div>
+          <p class="text-2xl font-black text-white mt-3 tracking-tight">2 In-Transit</p>
+          <div class="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
+            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i>
+            <span>+14.2% operational velocity</span>
+          </div>
+        </div>
+        
+        <div class="glass-card p-5 rounded-2xl border border-slate-800/80 relative overflow-hidden group hover:border-indigo-500/40 transition duration-300">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Gross Revenue</span>
+            <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 flex items-center justify-center text-sm shadow-sm group-hover:scale-110 transition">
+              <i class="fa-solid fa-dollar-sign"></i>
+            </div>
+          </div>
+          <p class="text-2xl font-black text-white mt-3 tracking-tight">$878.49</p>
+          <div class="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
+            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i>
+            <span>+14.2% operational velocity</span>
+          </div>
+        </div>
+        
+        <div class="glass-card p-5 rounded-2xl border border-slate-800/80 relative overflow-hidden group hover:border-indigo-500/40 transition duration-300">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Customer Rating</span>
+            <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-400 border border-purple-500/20 flex items-center justify-center text-sm shadow-sm group-hover:scale-110 transition">
+              <i class="fa-solid fa-star"></i>
+            </div>
+          </div>
+          <p class="text-2xl font-black text-white mt-3 tracking-tight">4.8 / 5.0</p>
+          <div class="mt-2 flex items-center gap-1.5 text-[11px] text-emerald-400 font-medium">
+            <i class="fa-solid fa-arrow-trend-up text-[10px]"></i>
+            <span>+14.2% operational velocity</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual Analytics: Charts Section -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Doughnut / Categorical Distribution Chart -->
+        <div class="lg:col-span-5 glass-card p-6 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-chart-pie text-indigo-400"></i>
+                <span>Distribution Breakdown</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Live segmented analysis by record parameters</p>
+            </div>
+            <span class="text-[10px] font-mono bg-indigo-500/10 text-indigo-400 px-2 py-0.5 rounded border border-indigo-500/30">Auto-Sync</span>
+          </div>
+          <div class="relative h-64 flex items-center justify-center">
+            <canvas id="categoryChart"></canvas>
+          </div>
+          <div class="text-[11px] text-slate-400 text-center pt-3 border-t border-slate-800/60 mt-2">
+            Real-time entity aggregation powered by Chart.js 4.4
+          </div>
+        </div>
+
+        <!-- Activity Timeline / Spline Velocity Chart -->
+        <div class="lg:col-span-7 glass-card p-6 rounded-2xl border border-slate-800/80 flex flex-col justify-between">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-sm font-bold text-white flex items-center gap-2">
+                <i class="fa-solid fa-chart-line text-emerald-400"></i>
+                <span>Operational Throughput & Velocity</span>
+              </h3>
+              <p class="text-xs text-slate-400 mt-0.5">Dynamic 7-day transaction velocity curve</p>
+            </div>
+            <span class="text-[10px] font-mono bg-emerald-500/10 text-emerald-400 px-2 py-0.5 rounded border border-emerald-500/30">99.98% Uptime</span>
+          </div>
+          <div class="relative h-64">
+            <canvas id="velocityChart"></canvas>
+          </div>
+          <div class="text-[11px] text-slate-400 flex items-center justify-between pt-3 border-t border-slate-800/60 mt-2">
+            <span>Verified Author: SaiVatsal (2500040224)</span>
+            <span class="text-emerald-400 font-mono">Status: Healthy</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Telemetry & Diagnostic Status Grid -->
+      <div class="glass-card p-6 rounded-2xl border border-slate-800/80">
+        <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-800/60">
+          <h3 class="text-sm font-bold text-white flex items-center gap-2">
+            <i class="fa-solid fa-server text-indigo-400"></i>
+            <span>System Telemetry & Architecture Runtime</span>
+          </h3>
+          <span class="text-xs font-mono text-slate-400">Environment: Production Node.js</span>
+        </div>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+          <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">REST API Engine</span>
+            <span class="font-bold text-emerald-400 flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-emerald-400"></span> Online (Port 3000)</span>
+          </div>
+          <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Database State</span>
+            <span class="font-bold text-slate-200 font-mono">Local JSON + /tmp</span>
+          </div>
+          <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Serverless Adaptor</span>
+            <span class="font-bold text-indigo-400 font-mono">Vercel AWS Lambda</span>
+          </div>
+          <div class="p-3 bg-slate-900/60 rounded-xl border border-slate-800">
+            <span class="text-slate-400 block mb-1">Lead Architect</span>
+            <span class="font-bold text-slate-200">SaiVatsal (2500040224)</span>
+          </div>
+        </div>
       </div>
     </div>
 
-    <!-- Secondary Domain Entity Section -->
-    <div class="bg-white rounded-2xl p-6 shadow-sm border border-slate-200/80">
-      <div class="flex items-center justify-between mb-4 pb-3 border-b border-slate-100">
+    <!-- ========================================== -->
+    <!-- TAB 2: DATA EXPLORER & CRUD               -->
+    <!-- ========================================== -->
+    <div id="view-data" class="hidden space-y-6">
+
+      <!-- Management Data Workspace -->
+      <div class="glass-card rounded-2xl shadow-2xl border border-slate-800/80 overflow-hidden">
+
+        <!-- Table Toolbar & Action Bar -->
+        <div class="p-5 border-b border-slate-800/80 flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs border border-indigo-500/20">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <div>
+              <h3 class="text-sm font-bold text-white">Product Directory</h3>
+              <p class="text-xs text-slate-400">Synchronized with Node.js REST API Storage</p>
+            </div>
+            <span id="itemCountBadge" class="ml-2 bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-xs font-bold px-3 py-1 rounded-full font-mono">0 Entries</span>
+          </div>
+
+          <!-- Filters & Actions -->
+          <div class="flex flex-wrap items-center gap-2.5">
+
+            <!-- Real-time Search Box -->
+            <div class="relative min-w-[240px]">
+              <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-1/2 -translate-y-1/2 text-slate-400 text-xs"></i>
+              <input type="text" id="searchInput" oninput="debounceSearch()" placeholder="Search all fields..." class="w-full pl-9 pr-8 py-2 bg-slate-900/80 border border-slate-700/80 rounded-xl text-xs text-slate-100 placeholder-slate-500 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner font-medium" />
+              <button onclick="clearSearch()" id="clearSearchBtn" class="hidden absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-white text-xs">
+                <i class="fa-solid fa-xmark"></i>
+              </button>
+            </div>
+
+            <!-- View Mode Switcher -->
+            <div class="flex items-center bg-slate-900/80 border border-slate-700/80 rounded-xl p-0.5 text-xs">
+              <button onclick="setViewMode('table')" id="btn-view-table" class="px-2.5 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold transition" title="Table View">
+                <i class="fa-solid fa-table"></i>
+              </button>
+              <button onclick="setViewMode('grid')" id="btn-view-grid" class="px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold transition" title="Card Grid View">
+                <i class="fa-solid fa-border-all"></i>
+              </button>
+            </div>
+
+            <!-- Export CSV -->
+            <button onclick="exportCSV()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold flex items-center gap-1.5 border border-slate-700/80 transition" title="Export as CSV">
+              <i class="fa-solid fa-file-csv text-emerald-400"></i>
+              <span class="hidden sm:inline">CSV</span>
+            </button>
+
+            <!-- Export JSON -->
+            <button onclick="exportJSON()" class="px-3 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold flex items-center gap-1.5 border border-slate-700/80 transition" title="Export as JSON">
+              <i class="fa-solid fa-file-code text-indigo-400"></i>
+              <span class="hidden sm:inline">JSON</span>
+            </button>
+
+            <!-- Add New -->
+            <button onclick="openModal()" class="px-3.5 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl text-xs font-bold flex items-center gap-1.5 shadow-md shadow-indigo-600/30 transition hover:scale-105 active:scale-95">
+              <i class="fa-solid fa-plus text-[10px]"></i>
+              <span>Add Product</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Main Table Viewport -->
+        <div id="tableViewContainer" class="overflow-x-auto">
+          <table class="w-full text-left border-collapse">
+            <thead>
+              <tr class="bg-slate-900/90 border-b border-slate-800 text-slate-400 font-mono">
+                <th class="px-4 py-3.5 w-10 text-center">
+                  <input type="checkbox" id="selectAllCheckbox" onchange="toggleSelectAll(this)" class="rounded bg-slate-800 border-slate-700 text-indigo-600 focus:ring-0 cursor-pointer" />
+                </th>
+                <th class="px-4 py-3.5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-white transition" onclick="sortTable('name')"><div class="flex items-center gap-1.5"><span>Product Name</span><i class="fa-solid fa-sort text-[10px] opacity-40"></i></div></th>
+              <th class="px-4 py-3.5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-white transition" onclick="sortTable('category')"><div class="flex items-center gap-1.5"><span>Category</span><i class="fa-solid fa-sort text-[10px] opacity-40"></i></div></th>
+              <th class="px-4 py-3.5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-white transition" onclick="sortTable('price')"><div class="flex items-center gap-1.5"><span>Unit Price ($)</span><i class="fa-solid fa-sort text-[10px] opacity-40"></i></div></th>
+              <th class="px-4 py-3.5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-white transition" onclick="sortTable('stock')"><div class="flex items-center gap-1.5"><span>Inventory Stock</span><i class="fa-solid fa-sort text-[10px] opacity-40"></i></div></th>
+              <th class="px-4 py-3.5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-white transition" onclick="sortTable('rating')"><div class="flex items-center gap-1.5"><span>Rating (1-5)</span><i class="fa-solid fa-sort text-[10px] opacity-40"></i></div></th>
+              <th class="px-4 py-3.5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-white transition" onclick="sortTable('status')"><div class="flex items-center gap-1.5"><span>Stock Status</span><i class="fa-solid fa-sort text-[10px] opacity-40"></i></div></th>
+              <th class="px-4 py-3.5 text-left text-[11px] font-bold text-slate-400 uppercase tracking-wider cursor-pointer hover:text-white transition" onclick="sortTable('description')"><div class="flex items-center gap-1.5"><span>Product Overview</span><i class="fa-solid fa-sort text-[10px] opacity-40"></i></div></th>
+                <th class="px-4 py-3.5 text-right text-[11px] font-bold text-slate-400 uppercase tracking-wider">Actions</th>
+              </tr>
+            </thead>
+            <tbody id="dataTableBody" class="divide-y divide-slate-800/60 text-xs text-slate-300 font-medium">
+              <!-- Dynamic Injected Rows -->
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Grid Viewport (Cards) -->
+        <div id="gridViewContainer" class="hidden p-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Dynamic Injected Cards -->
+        </div>
+
+        <!-- Empty State Viewport -->
+        <div id="emptyState" class="hidden p-16 text-center">
+          <div class="w-16 h-16 rounded-2xl bg-indigo-500/10 text-indigo-400 border border-indigo-500/20 mx-auto flex items-center justify-center text-2xl mb-4 shadow-lg">
+            <i class="fa-regular fa-folder-open"></i>
+          </div>
+          <h4 class="text-base font-bold text-white">No records found</h4>
+          <p class="text-xs text-slate-400 mt-1.5 max-w-md mx-auto leading-relaxed">No product entries matched your current search criteria. Create a new entry or reset your active filters.</p>
+          <div class="mt-5 flex items-center justify-center gap-3">
+            <button onclick="clearSearch()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-semibold rounded-xl border border-slate-700">Clear Search</button>
+            <button onclick="openModal()" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white text-xs font-bold rounded-xl shadow-lg shadow-indigo-600/30">Create Product</button>
+          </div>
+        </div>
+
+        <!-- Table Footer / Pagination Metadata -->
+        <div class="p-4 bg-slate-900/80 border-t border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-slate-400">
+          <div class="flex items-center gap-2">
+            <span>Showing</span>
+            <span id="pageCountDisplay" class="font-bold text-slate-200">0 of 0</span>
+            <span>verified records</span>
+          </div>
+          <div class="flex items-center gap-2 text-slate-400 font-mono text-[11px]">
+            <span>Storage: <strong class="text-indigo-400">data/db.json</strong></span>
+            <span>•</span>
+            <span>Student: <strong class="text-emerald-400">SaiVatsal (2500040224)</strong></span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 3: LIVE OPERATIONS & SECONDARY STREAM -->
+    <!-- ========================================== -->
+    <div id="view-operations" class="hidden space-y-6">
+
+      <!-- Stream Header -->
+      <div class="glass-card rounded-2xl p-6 border border-slate-800/80 shadow-2xl">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-800/80">
+          <div>
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 pulse-beacon"></span>
+              <h3 class="text-base font-extrabold text-white">Customer Orders</h3>
+            </div>
+            <p class="text-xs text-slate-400 mt-1">Live synchronized event stream from secondary domain service endpoint (/api/orders)</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <button onclick="simulateSecondaryEvent()" class="px-4 py-2 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white text-xs font-bold rounded-xl shadow-lg shadow-emerald-600/20 border border-emerald-400/30 flex items-center gap-2 transition hover:scale-105 active:scale-95">
+              <i class="fa-solid fa-plus-circle text-xs"></i>
+              <span>Simulate Live Event</span>
+            </button>
+            <button onclick="fetchSecondary()" class="px-3.5 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold border border-slate-700 flex items-center gap-1.5 transition">
+              <i class="fa-solid fa-arrows-rotate text-emerald-400"></i>
+              <span>Refresh</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Secondary Feed Grid -->
+        <div id="secondaryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+          <!-- Injected secondary items -->
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 4: INTERACTIVE API CONSOLE & SANDBOX  -->
+    <!-- ========================================== -->
+    <div id="view-api" class="hidden space-y-6">
+
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800/80 shadow-2xl">
+        <div class="flex items-center justify-between pb-4 border-b border-slate-800/80 mb-6">
+          <div>
+            <h3 class="text-lg font-extrabold text-white flex items-center gap-2.5">
+              <i class="fa-solid fa-terminal text-indigo-400"></i>
+              <span>Interactive REST API Console & Sandbox</span>
+            </h3>
+            <p class="text-xs text-slate-400 mt-1">Execute live HTTP requests directly against the Node.js / Vercel Serverless endpoints</p>
+          </div>
+          <span class="text-xs font-mono bg-indigo-500/10 text-indigo-400 px-3 py-1 rounded-full border border-indigo-500/30">CORS Enabled</span>
+        </div>
+
+        <!-- Endpoint Preset Selector -->
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+          <div class="lg:col-span-4 space-y-4">
+            <label class="block text-xs font-bold text-slate-300 uppercase tracking-wider">Quick Route Presets</label>
+            <div class="space-y-1.5 font-mono text-xs">
+              <button onclick="setApiPreset('GET', '/api/health')" class="w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 flex items-center justify-between transition">
+                <span class="text-emerald-400 font-bold">GET</span>
+                <span class="text-slate-300">/api/health</span>
+              </button>
+              <button onclick="setApiPreset('GET', '/api/stats')" class="w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 flex items-center justify-between transition">
+                <span class="text-emerald-400 font-bold">GET</span>
+                <span class="text-slate-300">/api/stats</span>
+              </button>
+              <button onclick="setApiPreset('GET', '/api/products')" class="w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 flex items-center justify-between transition">
+                <span class="text-emerald-400 font-bold">GET</span>
+                <span class="text-slate-300">/api/products</span>
+              </button>
+              <button onclick="setApiPreset('POST', '/api/products')" class="w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 flex items-center justify-between transition">
+                <span class="text-indigo-400 font-bold">POST</span>
+                <span class="text-slate-300">/api/products</span>
+              </button>
+              <button onclick="setApiPreset('GET', '/api/orders')" class="w-full text-left px-3.5 py-2.5 rounded-xl bg-slate-900/80 hover:bg-slate-800 border border-slate-800 hover:border-slate-700 flex items-center justify-between transition">
+                <span class="text-emerald-400 font-bold">GET</span>
+                <span class="text-slate-300">/api/orders</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- HTTP Request Builder & Runner -->
+          <div class="lg:col-span-8 space-y-4">
+            <div class="flex items-center gap-2">
+              <select id="apiMethodInput" class="px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs font-bold text-indigo-400 font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                <option value="GET">GET</option>
+                <option value="POST">POST</option>
+                <option value="PUT">PUT</option>
+                <option value="DELETE">DELETE</option>
+              </select>
+              <input type="text" id="apiEndpointInput" value="/api/products" class="flex-1 px-3.5 py-2.5 bg-slate-900 border border-slate-700 rounded-xl text-xs text-slate-100 font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="/api/..." />
+              <button onclick="executeApiConsoleRequest()" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/30 flex items-center gap-2 transition hover:scale-105 active:scale-95">
+                <i class="fa-solid fa-paper-plane text-xs"></i>
+                <span>Send</span>
+              </button>
+            </div>
+
+            <!-- Request Body (For POST/PUT) -->
+            <div id="apiReqBodyContainer" class="hidden space-y-1.5">
+              <label class="block text-xs font-bold text-slate-400 font-mono">Request JSON Payload:</label>
+              <textarea id="apiReqBodyInput" rows="4" class="w-full p-3 bg-slate-950 border border-slate-800 rounded-xl text-xs text-indigo-300 font-mono focus:outline-none focus:ring-2 focus:ring-indigo-500" placeholder="{}"></textarea>
+            </div>
+
+            <!-- Response Visualizer -->
+            <div class="space-y-2">
+              <div class="flex items-center justify-between text-xs font-mono">
+                <div class="flex items-center gap-2">
+                  <span class="text-slate-400">Response Status:</span>
+                  <span id="apiResStatus" class="font-bold text-slate-500">—</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-slate-400">Latency:</span>
+                  <span id="apiResLatency" class="text-slate-400">—</span>
+                </div>
+              </div>
+              <pre id="apiResOutput" class="p-4 bg-slate-950/90 border border-slate-800 rounded-xl text-xs text-emerald-400 font-mono overflow-x-auto max-h-80 shadow-inner">Click "Send" or pick a preset route to execute a live API call.</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 5: VIVA DEFENSE & ARCHITECTURE        -->
+    <!-- ========================================== -->
+    <div id="view-architecture" class="hidden space-y-6">
+
+      <div class="glass-card rounded-2xl p-6 sm:p-8 border border-slate-800/80 shadow-2xl space-y-6">
+
+        <!-- Viva Lead Info -->
+        <div class="pb-6 border-b border-slate-800/80 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div>
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 text-xs font-bold mb-2">
+              <i class="fa-solid fa-award"></i>
+              <span>Academic & Production Viva Defense System</span>
+            </div>
+            <h3 class="text-xl font-black text-white">Full-Stack Engineering Blueprint</h3>
+            <p class="text-xs text-slate-400 mt-1">Detailed breakdown of database layer, REST controllers, and serverless edge deployment.</p>
+          </div>
+          <div class="p-4 bg-slate-900/90 rounded-2xl border border-slate-800 text-xs font-mono space-y-1">
+            <div class="text-slate-400">Candidate: <strong class="text-white">SaiVatsal</strong></div>
+            <div class="text-slate-400">College / Roll ID: <strong class="text-emerald-400">2500040224</strong></div>
+            <div class="text-slate-400">Project Rank: <strong class="text-indigo-400">Project #1 of 58</strong></div>
+          </div>
+        </div>
+
+        <!-- 3-Tier Architecture Diagram -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-5 bg-slate-900/70 border border-slate-800 rounded-2xl space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-lg border border-indigo-500/30">
+              <i class="fa-solid fa-desktop"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white">1. Modern Client Tier (SPA)</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">Single-Page Architecture using Tailwind CSS, Chart.js 4.4, responsive multi-tab views, real-time debounced search, dynamic modal CRUD forms, and Web Audio API feedback.</p>
+          </div>
+
+          <div class="p-5 bg-slate-900/70 border border-slate-800 rounded-2xl space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg border border-purple-500/30">
+              <i class="fa-solid fa-gears"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white">2. Application & API Tier</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">Node.js with Express 4.19 RESTful engine providing 8 distinct endpoints with CORS, JSON body validation, search filtering, and Vercel serverless function entry adapter.</p>
+          </div>
+
+          <div class="p-5 bg-slate-900/70 border border-slate-800 rounded-2xl space-y-2">
+            <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg border border-emerald-500/30">
+              <i class="fa-solid fa-database"></i>
+            </div>
+            <h4 class="text-sm font-bold text-white">3. Persistent Data Tier</h4>
+            <p class="text-xs text-slate-400 leading-relaxed">Atomic JSON document store with safe fallback to Vercel <code class="text-emerald-400">/tmp/db.json</code> on serverless environments to ensure zero runtime read-only crashes.</p>
+          </div>
+        </div>
+
+        <!-- REST API Contract Reference Table -->
         <div>
-          <h3 class="text-base font-bold text-slate-900">Customer Orders</h3>
-          <p class="text-xs text-slate-500">Live synchronized records from secondary domain service</p>
+          <h4 class="text-sm font-bold text-white mb-3 flex items-center gap-2">
+            <i class="fa-solid fa-network-wired text-indigo-400"></i>
+            <span>REST API Endpoint Contracts</span>
+          </h4>
+          <div class="overflow-x-auto rounded-xl border border-slate-800">
+            <table class="w-full text-left text-xs font-mono">
+              <thead class="bg-slate-900 text-slate-400 border-b border-slate-800">
+                <tr>
+                  <th class="p-3">Method</th>
+                  <th class="p-3">Endpoint Route</th>
+                  <th class="p-3">Purpose & Description</th>
+                  <th class="p-3">Status Code</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                <tr>
+                  <td class="p-3 text-emerald-400 font-bold">GET</td>
+                  <td class="p-3">/api/products</td>
+                  <td class="p-3 font-sans">List and filter all Product records with multi-query support</td>
+                  <td class="p-3 text-emerald-400">200 OK</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-emerald-400 font-bold">GET</td>
+                  <td class="p-3">/api/products/:id</td>
+                  <td class="p-3 font-sans">Retrieve single Product record by unique ID</td>
+                  <td class="p-3 text-emerald-400">200 OK</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-indigo-400 font-bold">POST</td>
+                  <td class="p-3">/api/products</td>
+                  <td class="p-3 font-sans">Create and persist new validated Product with timestamp</td>
+                  <td class="p-3 text-indigo-400">201 Created</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-amber-400 font-bold">PUT</td>
+                  <td class="p-3">/api/products/:id</td>
+                  <td class="p-3 font-sans">Update existing record with new properties and update timestamp</td>
+                  <td class="p-3 text-amber-400">200 OK</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-rose-400 font-bold">DELETE</td>
+                  <td class="p-3">/api/products/:id</td>
+                  <td class="p-3 font-sans">Permanently delete record from persistent storage</td>
+                  <td class="p-3 text-rose-400">200 OK</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-emerald-400 font-bold">GET</td>
+                  <td class="p-3">/api/orders</td>
+                  <td class="p-3 font-sans">Retrieve live secondary stream records (Customer Orders)</td>
+                  <td class="p-3 text-emerald-400">200 OK</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-emerald-400 font-bold">GET</td>
+                  <td class="p-3">/api/health</td>
+                  <td class="p-3 font-sans">Health check endpoint returning student attribution and uptime status</td>
+                  <td class="p-3 text-emerald-400">200 OK</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
-        <span class="text-xs bg-slate-100 text-slate-700 font-semibold px-2.5 py-1 rounded-md">Live Stream</span>
-      </div>
-      <div id="secondaryGrid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
-        <!-- Injected secondary items -->
+
       </div>
     </div>
+
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-slate-200 py-6 mt-12 text-center text-xs text-slate-500">
-    <div class="max-w-7xl mx-auto px-4 space-y-2">
-      <p class="font-bold text-slate-800">Nexus E-Commerce Platform • Project #1</p>
-      <p class="text-indigo-600 font-semibold">Done By SaiVatsal (Roll / College ID: 2500040224)</p>
-      <p>© 2026 Advanced Full-Stack Software Engineering Repository</p>
-    </div>
-  </footer>
-
-  <!-- Modal Dialog -->
-  <div id="crudModal" class="fixed inset-0 z-50 bg-slate-900/60 backdrop-blur-sm hidden flex items-center justify-center p-4">
-    <div class="bg-white rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col shadow-2xl overflow-hidden animate-in fade-in zoom-in-95 duration-150">
-      <div class="p-5 bg-slate-900 text-white flex items-center justify-between">
-        <div>
-          <h3 id="modalTitle" class="text-base font-bold">Add Product</h3>
-          <p class="text-xs text-slate-400">SaiVatsal (2500040224) Management Portal</p>
+  <!-- ========================================== -->
+  <!-- SLIDE-OVER DETAIL DRAWER (INSPECTOR)      -->
+  <!-- ========================================== -->
+  <div id="detailDrawer" class="fixed inset-y-0 right-0 z-50 w-full max-w-md bg-[#0B0F17] border-l border-slate-800 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+    <div class="p-5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-8 h-8 rounded-lg bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-xs border border-indigo-500/30">
+          <i class="fa-solid fa-fingerprint"></i>
         </div>
-        <button onclick="closeModal()" class="w-8 h-8 rounded-lg bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
-          <i class="fa-solid fa-xmark"></i>
+        <div>
+          <h3 class="text-sm font-bold text-white">Product Inspector</h3>
+          <p id="drawerSubtitle" class="text-xs text-slate-400 font-mono">ID: —</p>
+        </div>
+      </div>
+      <button onclick="closeDrawer()" class="w-8 h-8 rounded-xl bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+        <i class="fa-solid fa-xmark text-sm"></i>
+      </button>
+    </div>
+
+    <!-- Drawer Body -->
+    <div id="drawerContent" class="p-6 overflow-y-auto flex-1 space-y-6 text-xs text-slate-300">
+      <!-- Injected by JS -->
+    </div>
+
+    <!-- Drawer Footer Actions -->
+    <div class="p-4 bg-slate-900/90 border-t border-slate-800 flex items-center justify-between gap-3">
+      <button onclick="closeDrawer()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-semibold transition">Close</button>
+      <div class="flex items-center gap-2">
+        <button id="drawerEditBtn" class="px-4 py-2 bg-indigo-600 hover:bg-indigo-500 text-white rounded-xl font-bold shadow-md transition">Edit</button>
+        <button id="drawerDeleteBtn" class="px-4 py-2 bg-rose-600/20 hover:bg-rose-600 text-rose-300 hover:text-white rounded-xl font-bold border border-rose-500/30 transition">Delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backdrop for Drawer -->
+  <div id="drawerBackdrop" onclick="closeDrawer()" class="fixed inset-0 z-40 bg-black/60 backdrop-blur-sm hidden transition-opacity"></div>
+
+  <!-- ========================================== -->
+  <!-- MODAL DIALOG (CREATE / EDIT)              -->
+  <!-- ========================================== -->
+  <div id="crudModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-card rounded-2xl max-w-xl w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-700/80 overflow-hidden transform transition-all duration-200">
+
+      <!-- Modal Header -->
+      <div class="p-5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-sm border border-indigo-500/30">
+            <i class="fa-solid fa-pen-to-square"></i>
+          </div>
+          <div>
+            <h3 id="modalTitle" class="text-sm font-extrabold text-white">Add Product</h3>
+            <p class="text-[11px] text-slate-400">SaiVatsal (2500040224) Management Interface</p>
+          </div>
+        </div>
+        <button onclick="closeModal()" class="w-8 h-8 rounded-xl bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-sm"></i>
         </button>
       </div>
+
+      <!-- Modal Form -->
       <form id="crudForm" onsubmit="saveItem(event)" class="p-6 overflow-y-auto space-y-4 flex-1">
         <input type="hidden" id="editItemId" value="" />
         <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
           
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Product Name</label>
-            <input type="text" id="field_name" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter product name..." required />
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span>Product Name</span>
+              <span class="text-[10px] text-indigo-400 font-mono">Text</span>
+            </label>
+            <input type="text" id="field_name" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-500 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner" placeholder="Enter product name..." required />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Category</label>
-            <select id="field_category" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" required>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span>Category</span>
+              <span class="text-[10px] text-indigo-400 font-mono">Required</span>
+            </label>
+            <select id="field_category" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-sm text-slate-100 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner" required>
               <option value="Electronics">Electronics</option>
               <option value="Fashion">Fashion</option>
               <option value="Accessories">Accessories</option>
@@ -229,23 +791,35 @@
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Unit Price ($)</label>
-            <input type="number" id="field_price" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter unit price ($)..." required />
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span>Unit Price ($)</span>
+              <span class="text-[10px] text-indigo-400 font-mono">Numeric</span>
+            </label>
+            <input type="number" id="field_price" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-500 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner" placeholder="Enter unit price ($)..." required />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Inventory Stock</label>
-            <input type="number" id="field_stock" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter inventory stock..." required />
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span>Inventory Stock</span>
+              <span class="text-[10px] text-indigo-400 font-mono">Numeric</span>
+            </label>
+            <input type="number" id="field_stock" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-500 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner" placeholder="Enter inventory stock..." required />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Rating (1-5)</label>
-            <input type="number" id="field_rating" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter rating (1-5)..." required />
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span>Rating (1-5)</span>
+              <span class="text-[10px] text-indigo-400 font-mono">Numeric</span>
+            </label>
+            <input type="number" id="field_rating" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-500 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner" placeholder="Enter rating (1-5)..." required />
           </div>
 
           <div>
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Stock Status</label>
-            <select id="field_status" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" required>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span>Stock Status</span>
+              <span class="text-[10px] text-indigo-400 font-mono">Required</span>
+            </label>
+            <select id="field_status" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-sm text-slate-100 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner" required>
               <option value="In Stock">In Stock</option>
               <option value="Low Stock">Low Stock</option>
               <option value="Out of Stock">Out of Stock</option>
@@ -253,36 +827,152 @@
           </div>
 
           <div class="col-span-full">
-            <label class="block text-xs font-semibold text-slate-700 uppercase tracking-wider mb-1.5">Product Overview</label>
-            <textarea id="field_description" rows="3" class="w-full px-3.5 py-2.5 bg-slate-50 border border-slate-200 rounded-lg text-sm text-slate-800 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-600 transition" placeholder="Enter product overview..."></textarea>
+            <label class="block text-xs font-semibold text-slate-300 uppercase tracking-wider mb-1.5 flex items-center justify-between">
+              <span>Product Overview</span>
+              <span class="text-[10px] text-slate-400 font-mono">Text</span>
+            </label>
+            <textarea id="field_description" rows="3" class="w-full px-3.5 py-2.5 bg-slate-900/80 border border-slate-700/80 rounded-xl text-sm text-slate-100 placeholder-slate-500 focus:bg-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 transition shadow-inner" placeholder="Enter product overview..."></textarea>
           </div>
         </div>
-        <div class="pt-4 border-t border-slate-100 flex items-center justify-end gap-3">
-          <button type="button" onclick="closeModal()" class="px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg text-xs font-semibold transition">Cancel</button>
-          <button type="submit" class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-lg text-xs font-semibold transition shadow-sm">Save Entry</button>
+
+        <!-- Form Actions -->
+        <div class="pt-5 border-t border-slate-800 flex items-center justify-end gap-3">
+          <button type="button" onclick="closeModal()" class="px-4 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition">Cancel</button>
+          <button type="submit" class="px-5 py-2.5 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/30 transition hover:scale-105 active:scale-95">Save Product</button>
         </div>
       </form>
     </div>
   </div>
 
-  <!-- Toast Container -->
-  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900 text-white px-4 py-3 rounded-xl shadow-xl text-xs font-medium transform translate-y-20 opacity-0 transition duration-200 flex items-center gap-2 border border-slate-800">
-    <i class="fa-solid fa-circle-check text-emerald-400 text-sm"></i>
-    <span id="toastMsg">Operation successful</span>
+  <!-- ========================================== -->
+  <!-- TOAST NOTIFICATION STACK                  -->
+  <!-- ========================================== -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900/95 text-white px-4 py-3 rounded-2xl shadow-2xl text-xs font-medium transform translate-y-24 opacity-0 transition duration-300 flex items-center gap-3 border border-slate-700/80 backdrop-blur-xl">
+    <div id="toastIconContainer" class="w-7 h-7 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
+    <div>
+      <p id="toastMsg" class="font-bold text-slate-100">Operation Successful</p>
+      <p class="text-[10px] text-slate-400">Verified by SaiVatsal (2500040224)</p>
+    </div>
   </div>
 
-  <!-- Client JavaScript Logic -->
+  <!-- ========================================== -->
+  <!-- FOOTER CERTIFICATION & ATTRIBUTION        -->
+  <!-- ========================================== -->
+  <footer class="bg-[#0B0F17]/90 border-t border-slate-800/80 py-8 mt-12 text-center text-xs text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 space-y-3">
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-medium">
+        <span class="text-white font-bold">Nexus E-Commerce Platform • Project #1</span>
+        <span>•</span>
+        <span class="text-indigo-400 font-semibold">E-Commerce & Retail</span>
+        <span>•</span>
+        <span class="text-emerald-400 font-semibold font-mono">100% Operational</span>
+      </div>
+      <p class="text-slate-300 font-bold tracking-wide">
+        Developed & Deployed by <span class="text-indigo-400">SaiVatsal</span> • Roll / College ID: <span class="text-emerald-400">2500040224</span>
+      </p>
+      <p class="text-[11px] text-slate-400">
+        Engineered with Clean Architecture, Express REST Endpoints, Tailwind UI, and Vercel Serverless Integration.
+      </p>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- CLIENT LOGIC & SPA ENGINE JAVASCRIPT       -->
+  <!-- ========================================== -->
   <script>
     const API_URL = '/api/products';
     const SEC_API_URL = '/api/orders';
     const fields = [{"key":"name","label":"Product Name","type":"text","required":true},{"key":"category","label":"Category","type":"select","options":["Electronics","Fashion","Accessories","Grocery","Home & Office"],"required":true},{"key":"price","label":"Unit Price ($)","type":"number","required":true},{"key":"stock","label":"Inventory Stock","type":"number","required":true},{"key":"rating","label":"Rating (1-5)","type":"number","required":true},{"key":"status","label":"Stock Status","type":"select","options":["In Stock","Low Stock","Out of Stock"],"required":true},{"key":"description","label":"Product Overview","type":"textarea","required":true}];
-    let allData = [];
 
+    let allData = [];
+    let currentViewMode = 'table';
+    let sortKey = null;
+    let sortAsc = true;
+    let categoryChartInstance = null;
+    let velocityChartInstance = null;
+    let soundEnabled = true;
+
+    // Web Audio Synthesizer for subtle haptic feedback
+    const audioCtx = (typeof AudioContext !== 'undefined' || typeof webkitAudioContext !== 'undefined') ? new (window.AudioContext || window.webkitAudioContext)() : null;
+
+    function playBeep(freq = 600, type = 'sine', duration = 0.08) {
+      if (!soundEnabled || !audioCtx) return;
+      try {
+        if (audioCtx.state === 'suspended') audioCtx.resume();
+        const osc = audioCtx.createOscillator();
+        const gain = audioCtx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, audioCtx.currentTime);
+        gain.gain.setValueAtTime(0.04, audioCtx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(audioCtx.destination);
+        osc.start();
+        osc.stop(audioCtx.currentTime + duration);
+      } catch (e) {}
+    }
+
+    function toggleSound() {
+      soundEnabled = !soundEnabled;
+      const icon = document.getElementById('soundIcon');
+      if (soundEnabled) {
+        icon.className = 'fa-solid fa-volume-high text-xs text-emerald-400';
+        showToast('Sound Feedback Enabled');
+        playBeep(880, 'sine', 0.1);
+      } else {
+        icon.className = 'fa-solid fa-volume-xmark text-xs text-slate-500';
+        showToast('Sound Feedback Muted');
+      }
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const icon = document.getElementById('themeIcon');
+      html.classList.toggle('dark');
+      if (html.classList.contains('dark')) {
+        icon.className = 'fa-solid fa-moon text-xs';
+        localStorage.setItem('theme', 'dark');
+      } else {
+        icon.className = 'fa-solid fa-sun text-xs text-amber-400';
+        localStorage.setItem('theme', 'light');
+      }
+      playBeep(440);
+    }
+
+    // Tab Navigation Switcher
+    function switchTab(tabId) {
+      playBeep(520, 'sine', 0.05);
+      const tabs = ['overview', 'data', 'operations', 'api', 'architecture'];
+      tabs.forEach(t => {
+        const view = document.getElementById('view-' + t);
+        const btn = document.getElementById('tab-btn-' + t);
+        if (t === tabId) {
+          view.classList.remove('hidden');
+          btn.classList.add('active', 'text-indigo-400', 'bg-indigo-500/10', 'border-indigo-500/30');
+          btn.classList.remove('text-slate-400', 'border-transparent');
+        } else {
+          view.classList.add('hidden');
+          btn.classList.remove('active', 'text-indigo-400', 'bg-indigo-500/10', 'border-indigo-500/30');
+          btn.classList.add('text-slate-400', 'border-transparent');
+        }
+      });
+      if (tabId === 'overview') {
+        renderCharts(allData);
+      }
+    }
+
+    // Data Fetching & Sync
     async function fetchData() {
+      const t0 = performance.now();
       try {
         const res = await fetch(API_URL);
+        const t1 = performance.now();
+        document.getElementById('serverPingDisplay').textContent = 'REST Engine: ' + Math.round(t1 - t0) + 'ms';
         allData = await res.json();
         renderTable(allData);
+        renderCharts(allData);
         fetchSecondary();
       } catch (err) {
         showToast('Error loading data: ' + err.message, true);
@@ -296,78 +986,320 @@
         const grid = document.getElementById('secondaryGrid');
         if (!grid) return;
         if (secData.length === 0) {
-          grid.innerHTML = '<p class="text-xs text-slate-400 col-span-full">No active secondary entries.</p>';
+          grid.innerHTML = '<p class="text-xs text-slate-400 col-span-full">No active secondary stream entries.</p>';
           return;
         }
         grid.innerHTML = secData.map(item => `
-          <div class="p-4 bg-slate-50 rounded-xl border border-slate-100 space-y-2">
+          <div class="p-4 bg-slate-900/80 rounded-2xl border border-slate-800 hover:border-slate-700 transition space-y-2.5">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-slate-800">${item.id || item.code || 'Record'}</span>
-              <span class="text-[11px] font-semibold bg-emerald-100 text-emerald-700 px-2 py-0.5 rounded">${item.status || 'Active'}</span>
+              <span class="text-xs font-mono font-bold text-indigo-400">${item.id || 'SEC-LOG'}</span>
+              <span class="text-[10px] font-bold uppercase bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 px-2 py-0.5 rounded-full">${item.status || 'Verified'}</span>
             </div>
-            <p class="text-xs text-slate-600">${item.items || item.customer || item.tour || item.patient || item.entry || item.comments || item.drug || JSON.stringify(item)}</p>
-            <div class="text-[11px] text-slate-400 flex items-center justify-between pt-2 border-t border-slate-200/60">
-              <span>Author: SaiVatsal (2500040224)</span>
-              <span>${item.date || 'Synchronized'}</span>
+            <p class="text-xs text-slate-200 font-medium">${item.items || item.customer || item.tour || item.patient || item.entry || item.comments || item.drug || item.title || JSON.stringify(item)}</p>
+            <div class="text-[11px] text-slate-400 flex items-center justify-between pt-2 border-t border-slate-800">
+              <span class="flex items-center gap-1"><i class="fa-solid fa-user-check text-emerald-400"></i> SaiVatsal (2500040224)</span>
+              <span class="font-mono">${item.date || item.recordedAt ? new Date(item.recordedAt || Date.now()).toLocaleTimeString() : 'Live Synced'}</span>
             </div>
           </div>
         `).join('');
       } catch (err) {
-        console.error('Secondary error', err);
+        console.error('Secondary stream error:', err);
       }
     }
 
+    async function simulateSecondaryEvent() {
+      try {
+        const samplePayload = {
+          event: 'Operational Sync Triggered',
+          status: 'Processed',
+          items: 'Automated telemetry validation pulse #' + Math.floor(Math.random() * 9000 + 1000)
+        };
+        const res = await fetch(SEC_API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(samplePayload)
+        });
+        if (res.ok) {
+          playBeep(700, 'sine', 0.12);
+          showToast('Live event recorded to secondary stream');
+          fetchSecondary();
+        }
+      } catch (e) {
+        showToast('Simulation failed: ' + e.message, true);
+      }
+    }
+
+    // Chart.js Visualizations
+    function renderCharts(data) {
+      if (!window.Chart) return;
+
+      // 1. Categorical / Status Distribution
+      const categoryCounts = {};
+      data.forEach(item => {
+        const cat = item.category || item.status || item.level || 'Standard';
+        categoryCounts[cat] = (categoryCounts[cat] || 0) + 1;
+      });
+      const labels = Object.keys(categoryCounts);
+      const values = Object.values(categoryCounts);
+
+      const ctxCat = document.getElementById('categoryChart');
+      if (ctxCat) {
+        if (categoryChartInstance) categoryChartInstance.destroy();
+        categoryChartInstance = new Chart(ctxCat, {
+          type: 'doughnut',
+          data: {
+            labels: labels.length ? labels : ['Active'],
+            datasets: [{
+              data: values.length ? values : [1],
+              backgroundColor: ['#6366f1', '#a855f7', '#06b6d4', '#10b981', '#f59e0b', '#f43f5e'],
+              borderWidth: 0,
+              hoverOffset: 6
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: { position: 'bottom', labels: { color: '#94a3b8', font: { size: 10, family: 'Plus Jakarta Sans' } } }
+            },
+            cutout: '70%'
+          }
+        });
+      }
+
+      // 2. Operational Velocity Chart
+      const ctxVel = document.getElementById('velocityChart');
+      if (ctxVel) {
+        if (velocityChartInstance) velocityChartInstance.destroy();
+        velocityChartInstance = new Chart(ctxVel, {
+          type: 'line',
+          data: {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Today'],
+            datasets: [{
+              label: 'Transaction Rate',
+              data: [12, 19, 15, 26, 22, 34, data.length ? data.length * 7 + 14 : 45],
+              borderColor: '#10b981',
+              backgroundColor: 'rgba(16, 185, 129, 0.08)',
+              fill: true,
+              tension: 0.42,
+              pointRadius: 4,
+              pointBackgroundColor: '#10b981'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+              x: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b', font: { size: 10 } } },
+              y: { grid: { color: 'rgba(255,255,255,0.04)' }, ticks: { color: '#64748b', font: { size: 10 } } }
+            },
+            plugins: {
+              legend: { display: false }
+            }
+          }
+        });
+      }
+    }
+
+    // Table & Grid Rendering
     function renderTable(data) {
       const tbody = document.getElementById('dataTableBody');
+      const grid = document.getElementById('gridViewContainer');
       const empty = document.getElementById('emptyState');
       const badge = document.getElementById('itemCountBadge');
+      const pageDisplay = document.getElementById('pageCountDisplay');
 
       badge.textContent = `${data.length} Entries`;
+      pageDisplay.textContent = `${data.length} of ${allData.length}`;
 
       if (data.length === 0) {
         tbody.innerHTML = '';
+        grid.innerHTML = '';
         empty.classList.remove('hidden');
         return;
       }
 
       empty.classList.add('hidden');
+
+      // Table Rows
       tbody.innerHTML = data.map(row => {
         const cells = fields.map(f => {
           let val = row[f.key] || '—';
           if (f.key === 'status') {
-            return `<td class="px-4 py-3"><span class="px-2.5 py-1 text-xs font-semibold rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200/50">${val}</span></td>`;
+            const isOpt = String(val).toLowerCase().includes('in stock') || String(val).toLowerCase().includes('optimal') || String(val).toLowerCase().includes('active') || String(val).toLowerCase().includes('verified');
+            const isWarn = String(val).toLowerCase().includes('low') || String(val).toLowerCase().includes('pending');
+            const badgeClass = isOpt ? 'bg-emerald-500/10 text-emerald-400 border-emerald-500/30' : isWarn ? 'bg-amber-500/10 text-amber-400 border-amber-500/30' : 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30';
+            return `<td class="px-4 py-3.5"><span class="px-2.5 py-1 text-[11px] font-bold rounded-full border ${badgeClass}">${val}</span></td>`;
           }
           if (f.key === 'price' || f.key === 'salary' || f.key === 'fee' || f.key === 'unitCost' || f.key === 'dailyRate' || f.key === 'amount' || f.key === 'balance' || f.key === 'ticketPrice' || f.key === 'value') {
-            return `<td class="px-4 py-3 font-semibold text-slate-900">$${Number(val).toLocaleString()}</td>`;
+            return `<td class="px-4 py-3.5 font-bold font-mono text-white">$${Number(val).toLocaleString()}</td>`;
           }
-          return `<td class="px-4 py-3 text-slate-700">${val}</td>`;
+          if (f.key === 'rating') {
+            return `<td class="px-4 py-3.5 text-amber-400 font-bold"><i class="fa-solid fa-star text-xs mr-1"></i>${val}</td>`;
+          }
+          return `<td class="px-4 py-3.5 text-slate-300 max-w-xs truncate">${val}</td>`;
         }).join('');
 
         return `
-          <tr class="hover:bg-slate-50/80 transition group">
+          <tr class="hover:bg-slate-800/50 transition group border-b border-slate-800/40">
+            <td class="px-4 py-3.5 text-center">
+              <input type="checkbox" data-id="${row.id}" class="row-checkbox rounded bg-slate-800 border-slate-700 text-indigo-600 focus:ring-0 cursor-pointer" />
+            </td>
             ${cells}
-            <td class="px-4 py-3 text-right space-x-2">
-              <button onclick="editItem('${row.id}')" class="px-2.5 py-1 text-xs font-semibold text-indigo-600 hover:text-indigo-800 bg-indigo-50 hover:bg-indigo-100 rounded-md transition">Edit</button>
-              <button onclick="deleteItem('${row.id}')" class="px-2.5 py-1 text-xs font-semibold text-rose-600 hover:text-rose-800 bg-rose-50 hover:bg-rose-100 rounded-md transition">Delete</button>
+            <td class="px-4 py-3.5 text-right space-x-1 whitespace-nowrap">
+              <button onclick="inspectItem('${row.id}')" class="px-2.5 py-1 text-xs font-semibold text-slate-300 hover:text-white bg-slate-800 hover:bg-slate-700 rounded-lg border border-slate-700 transition" title="Inspect Record">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+              <button onclick="openModal('${row.id}')" class="px-2.5 py-1 text-xs font-semibold text-indigo-400 hover:text-white bg-indigo-500/10 hover:bg-indigo-600 rounded-lg border border-indigo-500/30 transition" title="Edit Entry">
+                <i class="fa-solid fa-pen"></i>
+              </button>
+              <button onclick="deleteItem('${row.id}')" class="px-2.5 py-1 text-xs font-semibold text-rose-400 hover:text-white bg-rose-500/10 hover:bg-rose-600 rounded-lg border border-rose-500/30 transition" title="Delete Entry">
+                <i class="fa-solid fa-trash"></i>
+              </button>
             </td>
           </tr>
         `;
       }).join('');
+
+      // Grid Cards
+      grid.innerHTML = data.map(row => `
+        <div class="glass-card p-5 rounded-2xl border border-slate-800 hover:border-indigo-500/40 transition space-y-3">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-mono font-bold text-indigo-400">ID: #${row.id}</span>
+            <span class="text-[10px] font-bold bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 px-2.5 py-0.5 rounded-full">${row.status || 'Active'}</span>
+          </div>
+          <h4 class="text-sm font-bold text-white truncate">${row.name || row.title || row.sku || 'Record Item'}</h4>
+          <div class="text-xs text-slate-400 space-y-1 pt-2 border-t border-slate-800">
+            ${fields.slice(0, 3).map(f => `<div><span class="text-slate-500">${f.label}:</span> ${row[f.key] || '—'}</div>`).join('')}
+          </div>
+          <div class="flex items-center justify-end gap-2 pt-2">
+            <button onclick="inspectItem('${row.id}')" class="px-3 py-1.5 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-lg text-xs font-semibold">Inspect</button>
+            <button onclick="openModal('${row.id}')" class="px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold">Edit</button>
+          </div>
+        </div>
+      `).join('');
     }
 
+    function setViewMode(mode) {
+      currentViewMode = mode;
+      const table = document.getElementById('tableViewContainer');
+      const grid = document.getElementById('gridViewContainer');
+      const btnTable = document.getElementById('btn-view-table');
+      const btnGrid = document.getElementById('btn-view-grid');
+
+      if (mode === 'table') {
+        table.classList.remove('hidden');
+        grid.classList.add('hidden');
+        btnTable.className = 'px-2.5 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold transition';
+        btnGrid.className = 'px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold transition';
+      } else {
+        table.classList.add('hidden');
+        grid.classList.remove('hidden');
+        btnGrid.className = 'px-2.5 py-1.5 rounded-lg bg-indigo-600 text-white font-semibold transition';
+        btnTable.className = 'px-2.5 py-1.5 rounded-lg text-slate-400 hover:text-white font-semibold transition';
+      }
+      playBeep(480, 'sine', 0.05);
+    }
+
+    // Debounced Search Engine
     let searchTimeout;
     function debounceSearch() {
+      const q = document.getElementById('searchInput').value.trim().toLowerCase();
+      const clearBtn = document.getElementById('clearSearchBtn');
+      clearBtn.classList.toggle('hidden', q === '');
+
       clearTimeout(searchTimeout);
       searchTimeout = setTimeout(() => {
-        const q = document.getElementById('searchInput').value.toLowerCase();
         const filtered = allData.filter(item =>
           Object.values(item).some(val => String(val).toLowerCase().includes(q))
         );
         renderTable(filtered);
-      }, 200);
+      }, 150);
     }
 
+    function clearSearch() {
+      document.getElementById('searchInput').value = '';
+      document.getElementById('clearSearchBtn').classList.add('hidden');
+      renderTable(allData);
+    }
+
+    // Column Sorting
+    function sortTable(key) {
+      if (sortKey === key) {
+        sortAsc = !sortAsc;
+      } else {
+        sortKey = key;
+        sortAsc = true;
+      }
+      const sorted = [...allData].sort((a, b) => {
+        let valA = a[key] || '';
+        let valB = b[key] || '';
+        if (typeof valA === 'number' && typeof valB === 'number') {
+          return sortAsc ? valA - valB : valB - valA;
+        }
+        return sortAsc ? String(valA).localeCompare(String(valB)) : String(valB).localeCompare(String(valA));
+      });
+      playBeep(640, 'sine', 0.04);
+      renderTable(sorted);
+    }
+
+    function toggleSelectAll(master) {
+      const checkboxes = document.querySelectorAll('.row-checkbox');
+      checkboxes.forEach(cb => cb.checked = master.checked);
+    }
+
+    // Slide-Over Drawer Inspector
+    function inspectItem(id) {
+      const item = allData.find(i => String(i.id) === String(id));
+      if (!item) return;
+
+      playBeep(560, 'sine', 0.08);
+      document.getElementById('drawerSubtitle').textContent = 'ID: #' + item.id;
+
+      const content = document.getElementById('drawerContent');
+      content.innerHTML = `
+        <div class="space-y-4">
+          <div class="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-3">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Record Metadata</h4>
+            ${fields.map(f => `
+              <div class="flex items-center justify-between py-1.5 border-b border-slate-800/60 last:border-0">
+                <span class="text-slate-400 font-medium">${f.label}:</span>
+                <span class="font-bold text-white font-mono">${item[f.key] || '—'}</span>
+              </div>
+            `).join('')}
+          </div>
+
+          <div class="p-4 bg-slate-900 rounded-2xl border border-slate-800 space-y-2">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Audit Trail</h4>
+            <div class="text-[11px] text-slate-400 space-y-1">
+              <div>Created: <strong class="text-slate-200">${item.createdAt || 'Initial Seed'}</strong></div>
+              <div>Author: <strong class="text-emerald-400">SaiVatsal (2500040224)</strong></div>
+              <div>Sync Verification: <strong class="text-indigo-400">200 OK Active</strong></div>
+            </div>
+          </div>
+
+          <div class="space-y-2">
+            <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider">Raw JSON Payload</h4>
+            <pre class="p-3 bg-slate-950 rounded-xl border border-slate-800 text-[11px] text-indigo-300 font-mono overflow-x-auto max-h-48">${JSON.stringify(item, null, 2)}</pre>
+          </div>
+        </div>
+      `;
+
+      document.getElementById('drawerEditBtn').onclick = () => { closeDrawer(); openModal(item.id); };
+      document.getElementById('drawerDeleteBtn').onclick = () => { closeDrawer(); deleteItem(item.id); };
+
+      document.getElementById('detailDrawer').classList.remove('translate-x-full');
+      document.getElementById('drawerBackdrop').classList.remove('hidden');
+    }
+
+    function closeDrawer() {
+      document.getElementById('detailDrawer').classList.add('translate-x-full');
+      document.getElementById('drawerBackdrop').classList.add('hidden');
+    }
+
+    // Modal Operations (Create & Edit)
     function openModal(editId = null) {
+      playBeep(520, 'sine', 0.08);
       document.getElementById('crudForm').reset();
       document.getElementById('editItemId').value = editId || '';
       document.getElementById('modalTitle').textContent = editId ? 'Edit Product' : 'Add Product';
@@ -388,13 +1320,16 @@
       document.getElementById('crudModal').classList.add('hidden');
     }
 
+    // Save Record (POST / PUT)
     async function saveItem(e) {
       e.preventDefault();
       const editId = document.getElementById('editItemId').value;
       const payload = {};
       fields.forEach(f => {
         const el = document.getElementById('field_' + f.key);
-        if (el) payload[f.key] = el.value;
+        if (el) {
+          payload[f.key] = f.type === 'number' ? Number(el.value) : el.value;
+        }
       });
 
       try {
@@ -405,6 +1340,7 @@
             body: JSON.stringify(payload)
           });
           if (!res.ok) throw new Error('Update failed');
+          playBeep(880, 'sine', 0.15);
           showToast('Product updated successfully!');
         } else {
           const res = await fetch(API_URL, {
@@ -413,39 +1349,152 @@
             body: JSON.stringify(payload)
           });
           if (!res.ok) throw new Error('Creation failed');
+          playBeep(880, 'sine', 0.15);
           showToast('Product created successfully!');
         }
         closeModal();
         fetchData();
       } catch (err) {
+        playBeep(240, 'triangle', 0.2);
         showToast(err.message, true);
       }
     }
 
+    // Delete Record (DELETE)
     async function deleteItem(id) {
-      if (!confirm('Are you sure you want to delete this product?')) return;
+      if (!confirm('Are you sure you want to permanently delete this product?')) return;
       try {
         const res = await fetch(`${API_URL}/${id}`, { method: 'DELETE' });
         if (!res.ok) throw new Error('Delete failed');
-        showToast('Product deleted successfully');
+        playBeep(320, 'triangle', 0.15);
+        showToast('Product removed from persistent storage');
         fetchData();
       } catch (err) {
         showToast(err.message, true);
       }
     }
 
+    // Export Handlers
+    function exportCSV() {
+      if (!allData.length) return showToast('No records to export', true);
+      const headers = fields.map(f => f.label).join(',');
+      const rows = allData.map(row => fields.map(f => '"' + (row[f.key] || '') + '"').join(',')).join('\n');
+      const csv = headers + '\n' + rows;
+      const blob = new Blob([csv], { type: 'text/csv' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '01-ecommerce-platform-export.csv';
+      a.click();
+      playBeep(700, 'sine', 0.1);
+      showToast('CSV export generated successfully');
+    }
+
+    function exportJSON() {
+      if (!allData.length) return showToast('No records to export', true);
+      const blob = new Blob([JSON.stringify(allData, null, 2)], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '01-ecommerce-platform-data.json';
+      a.click();
+      playBeep(700, 'sine', 0.1);
+      showToast('JSON data exported successfully');
+    }
+
+    // Interactive API Sandbox Client
+    function setApiPreset(method, endpoint) {
+      document.getElementById('apiMethodInput').value = method;
+      document.getElementById('apiEndpointInput').value = endpoint;
+      const bodyContainer = document.getElementById('apiReqBodyContainer');
+      if (method === 'POST' || method === 'PUT') {
+        bodyContainer.classList.remove('hidden');
+        const dummyPayload = {};
+        fields.forEach(f => {
+          dummyPayload[f.key] = f.type === 'number' ? 99 : 'Sample ' + f.label;
+        });
+        document.getElementById('apiReqBodyInput').value = JSON.stringify(dummyPayload, null, 2);
+      } else {
+        bodyContainer.classList.add('hidden');
+      }
+      playBeep(600, 'sine', 0.05);
+    }
+
+    async function executeApiConsoleRequest() {
+      const method = document.getElementById('apiMethodInput').value;
+      const endpoint = document.getElementById('apiEndpointInput').value;
+      const bodyInput = document.getElementById('apiReqBodyInput').value;
+      const statusBadge = document.getElementById('apiResStatus');
+      const latencyBadge = document.getElementById('apiResLatency');
+      const output = document.getElementById('apiResOutput');
+
+      output.textContent = 'Executing request...';
+      const t0 = performance.now();
+
+      try {
+        const opts = { method, headers: { 'Content-Type': 'application/json' } };
+        if ((method === 'POST' || method === 'PUT') && bodyInput.trim()) {
+          opts.body = bodyInput;
+        }
+        const res = await fetch(endpoint, opts);
+        const t1 = performance.now();
+        const latency = Math.round(t1 - t0);
+
+        statusBadge.textContent = res.status + ' ' + res.statusText;
+        statusBadge.className = res.ok ? 'font-bold text-emerald-400' : 'font-bold text-rose-400';
+        latencyBadge.textContent = latency + 'ms';
+
+        const json = await res.json();
+        output.textContent = JSON.stringify(json, null, 2);
+        playBeep(res.ok ? 750 : 250, 'sine', 0.1);
+      } catch (e) {
+        statusBadge.textContent = 'ERROR';
+        statusBadge.className = 'font-bold text-rose-400';
+        output.textContent = 'Request failed: ' + e.message;
+      }
+    }
+
+    // Toast Manager
     function showToast(msg, isError = false) {
       const toast = document.getElementById('toast');
       const text = document.getElementById('toastMsg');
+      const iconBox = document.getElementById('toastIconContainer');
       text.textContent = msg;
-      toast.classList.remove('translate-y-20', 'opacity-0');
+      if (isError) {
+        iconBox.className = 'w-7 h-7 rounded-xl bg-rose-500/10 text-rose-400 flex items-center justify-center text-xs';
+        iconBox.innerHTML = '<i class="fa-solid fa-circle-xmark"></i>';
+      } else {
+        iconBox.className = 'w-7 h-7 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-xs';
+        iconBox.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+      }
+      toast.classList.remove('translate-y-24', 'opacity-0');
       setTimeout(() => {
-        toast.classList.add('translate-y-20', 'opacity-0');
-      }, 3000);
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3200);
     }
 
-    // Auto-load on startup
-    window.addEventListener('DOMContentLoaded', fetchData);
+    // Keyboard Shortcuts: Cmd/Ctrl + K to Add New
+    window.addEventListener('keydown', (e) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+        e.preventDefault();
+        openModal();
+      }
+      if (e.key === 'Escape') {
+        closeModal();
+        closeDrawer();
+      }
+    });
+
+    // Startup Initialization
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'light') {
+        document.documentElement.classList.remove('dark');
+        const icon = document.getElementById('themeIcon');
+        if (icon) icon.className = 'fa-solid fa-sun text-xs text-amber-400';
+      }
+      fetchData();
+    });
   </script>
 </body>
 </html>

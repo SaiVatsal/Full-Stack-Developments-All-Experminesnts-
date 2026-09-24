@@ -113,20 +113,20 @@ app.get('/api/employees/:id', (req, res) => {
   res.json(item);
 });
 
-// 5. POST create primary entity
+// 5. POST new primary entity
 app.post('/api/employees', (req, res) => {
   const db = readDb();
+  const items = db.employees || [];
+  const newId = String(Date.now());
   const newItem = {
-    id: Date.now().toString(),
+    id: newId,
     ...req.body,
     createdAt: new Date().toISOString(),
-    createdBy: 'SaiVatsal (2500040224)'
+    author: 'SaiVatsal (2500040224)'
   };
-
-  db.employees = db.employees || [];
-  db.employees.unshift(newItem);
+  items.unshift(newItem);
+  db.employees = items;
   writeDb(db);
-
   res.status(201).json(newItem);
 });
 
@@ -140,19 +140,15 @@ app.put('/api/employees/:id', (req, res) => {
     return res.status(404).json({ error: 'Employee Record not found' });
   }
 
-  const updatedItem = {
+  items[index] = {
     ...items[index],
     ...req.body,
-    id: items[index].id,
-    updatedAt: new Date().toISOString(),
-    updatedBy: 'SaiVatsal (2500040224)'
+    updatedAt: new Date().toISOString()
   };
 
-  items[index] = updatedItem;
   db.employees = items;
   writeDb(db);
-
-  res.json(updatedItem);
+  res.json(items[index]);
 });
 
 // 7. DELETE primary entity
@@ -195,12 +191,12 @@ app.post('/api/leaves', (req, res) => {
 // Start Server
 if (require.main === module) {
   app.listen(PORT, () => {
-    console.log(`======================================================`);
-    console.log(`🚀 ${project.name} is running!`);
-    console.log(`📂 Category: ${project.category}`);
-    console.log(`👤 Author: SaiVatsal | College ID: 2500040224`);
-    console.log(`🔗 Web Portal: http://localhost:${PORT}`);
-    console.log(`======================================================`);
+    console.log('======================================================');
+    console.log('🚀 WorkforceHR Enterprise Suite is running!');
+    console.log('📂 Category: Human Resources');
+    console.log('👤 Author: SaiVatsal | College ID: 2500040224');
+    console.log('🔗 Web Portal: http://localhost:' + PORT);
+    console.log('======================================================');
   });
 }
 
