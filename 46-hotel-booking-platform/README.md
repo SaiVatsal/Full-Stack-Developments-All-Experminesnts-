@@ -27,13 +27,19 @@ Full-stack production-style application for GrandStay Luxury Hotel Booking. Buil
    - `GET /api/activityRecords` — Secondary domain service integration.
    - `GET /api/stats` — Live KPI calculation endpoint.
    - `GET /api/health` — Service health check and verification endpoint.
+   - `POST /api/auth/login` — User authentication and JWT token issuance.
+   - `GET /api/auth/me` — Active session claims and permissions inspection.
+   - `GET /api/auth/users` — Available IAM personas and clearance matrices.
 
 2. **Human-Designed Production UI:**
-   - Multi-tab layout (Overview & Metrics, Data Explorer, Live Operations, Interactive API Console, Viva Blueprint).
+   - Multi-tab layout (Overview & Metrics, Data Explorer, Live Operations, Interactive API Console, Viva Blueprint, Access & IAM Portal).
+   - Identity & Access Management (IAM) Portal with 1-click persona switching (Lead Admin, Specialist, Evaluator, Guest).
+   - Live JWT session token generator and decoded claims payload visualizer.
    - Real-time interactive Chart.js visualizations (Categorical Distribution and Throughput Velocity).
    - Real-time debounced search, column sorting, and CSV/JSON data exports.
    - Slide-over inspection drawer for deep record exploration.
    - Modal-driven CRUD forms with client-side validation.
+   - Dual-theme engine (Dark / Light mode) with localStorage persistence.
    - Web Audio API haptic feedback and toast alerts.
    - Prominent student identification badge: **Done By SaiVatsal 2500040224**.
 

@@ -139,6 +139,50 @@
             <i id="soundIcon" class="fa-solid fa-volume-high text-xs"></i>
           </button>
 
+          <!-- Active IAM Session Widget -->
+          <div class="relative">
+            <button onclick="toggleUserDropdown()" id="userNavBtn" class="flex items-center gap-2.5 px-3 py-1.5 rounded-xl bg-slate-800/80 hover:bg-slate-700/80 border border-slate-700/60 transition shadow-sm" title="IAM Session & Persona Switcher">
+              <img id="navUserAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="User" class="w-6 h-6 rounded-full object-cover border border-emerald-400">
+              <div class="text-left hidden sm:block">
+                <div id="navUserName" class="text-xs font-bold text-white leading-none">Sai Vatsal</div>
+                <div id="navUserRole" class="text-[10px] text-emerald-400 font-mono leading-none mt-0.5">Administrator</div>
+              </div>
+              <i class="fa-solid fa-chevron-down text-[10px] text-slate-400 ml-1"></i>
+            </button>
+
+            <!-- User Session Dropdown -->
+            <div id="userDropdownMenu" class="hidden absolute right-0 mt-2 w-64 glass-card rounded-2xl border border-slate-700/80 shadow-2xl p-3 z-50 text-xs">
+              <div class="p-2 border-b border-slate-800/80 mb-2">
+                <div class="font-bold text-white" id="dropdownUserName">Sai Vatsal (Lead Admin)</div>
+                <div class="text-[11px] text-slate-400" id="dropdownUserEmail">admin@saivatsal.dev</div>
+                <div class="mt-1.5 flex items-center gap-1.5">
+                  <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold" id="dropdownUserBadge">Administrator</span>
+                  <span class="text-[10px] text-slate-400 font-mono">ID: 2500040224</span>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <button onclick="switchTab('auth'); toggleUserDropdown();" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 transition">
+                  <i class="fa-solid fa-id-badge text-indigo-400"></i>
+                  <span>Access & IAM Portal</span>
+                </button>
+                <button onclick="openAuthModal(); toggleUserDropdown();" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 transition">
+                  <i class="fa-solid fa-users-gear text-purple-400"></i>
+                  <span>Switch Persona / Login</span>
+                </button>
+                <button onclick="copyAuthToken(); toggleUserDropdown();" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-slate-800 text-slate-300 hover:text-white flex items-center gap-2 transition">
+                  <i class="fa-solid fa-key text-amber-400"></i>
+                  <span>Copy Session Token</span>
+                </button>
+                <div class="border-t border-slate-800/80 my-1 pt-1">
+                  <button onclick="logoutUser(); toggleUserDropdown();" class="w-full text-left px-2.5 py-1.5 rounded-lg hover:bg-rose-500/10 text-rose-400 flex items-center gap-2 transition">
+                    <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                    <span>Log Out</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <!-- Add Entity Quick CTA -->
           <button onclick="openModal()" class="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white rounded-xl text-xs font-bold shadow-lg shadow-indigo-600/30 border border-indigo-400/30 transition hover:scale-[1.02] active:scale-[0.98]">
             <i class="fa-solid fa-plus text-xs"></i>
@@ -168,6 +212,10 @@
         <button onclick="switchTab('architecture')" id="tab-btn-architecture" class="tab-btn px-3.5 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 transition border border-transparent">
           <i class="fa-solid fa-graduation-cap"></i>
           <span>Viva Defense Blueprint</span>
+        </button>
+        <button onclick="switchTab('auth')" id="tab-btn-auth" class="tab-btn px-3.5 py-2 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 flex items-center gap-2 transition border border-transparent">
+          <i class="fa-solid fa-id-badge"></i>
+          <span>Access & IAM Portal</span>
         </button>
       </nav>
     </div>
@@ -695,12 +743,330 @@
                   <td class="p-3 font-sans">Health check endpoint returning student attribution and uptime status</td>
                   <td class="p-3 text-emerald-400">200 OK</td>
                 </tr>
+                <tr>
+                  <td class="p-3 text-indigo-400 font-bold">POST</td>
+                  <td class="p-3">/api/auth/login</td>
+                  <td class="p-3 font-sans">Authenticate credentials or persona and issue signed JWT session token</td>
+                  <td class="p-3 text-indigo-400">200 OK</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-emerald-400 font-bold">GET</td>
+                  <td class="p-3">/api/auth/me</td>
+                  <td class="p-3 font-sans">Inspect current active authenticated session claims & RBAC permissions</td>
+                  <td class="p-3 text-emerald-400">200 OK</td>
+                </tr>
+                <tr>
+                  <td class="p-3 text-emerald-400 font-bold">GET</td>
+                  <td class="p-3">/api/auth/users</td>
+                  <td class="p-3 font-sans">List all system IAM role personas and security clearance profiles</td>
+                  <td class="p-3 text-emerald-400">200 OK</td>
+                </tr>
               </tbody>
             </table>
           </div>
         </div>
 
       </div>
+    </div>
+
+    <!-- ========================================== -->
+    <!-- TAB 6: ACCESS & IAM LOGIN PORTAL          -->
+    <!-- ========================================== -->
+    <div id="view-auth" class="hidden space-y-6">
+
+      <!-- IAM Hero Header -->
+      <div class="glass-card rounded-2xl p-6 relative overflow-hidden shadow-xl">
+        <div class="absolute -right-10 -top-10 w-48 h-48 bg-gradient-to-br from-indigo-500/20 to-purple-500/10 rounded-full blur-2xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <div class="space-y-1">
+            <div class="flex items-center gap-2">
+              <span class="text-[11px] font-extrabold uppercase tracking-widest text-indigo-400 bg-indigo-500/10 border border-indigo-500/20 px-2.5 py-0.5 rounded-md">Enterprise Security</span>
+              <span class="text-xs text-slate-400 font-mono">IAM • RBAC • JWT Claims</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold tracking-tight text-white">Identity & Access Management Portal</h2>
+            <p class="text-slate-300 text-xs">Role-Based Access Control, Fast Persona Switching, and Live Cryptographic Token Diagnostics.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <div class="px-3 py-1.5 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-bold flex items-center gap-2">
+              <span class="w-2 h-2 rounded-full bg-emerald-400 pulse-beacon"></span>
+              <span id="iamActiveSessionStatus">Session Active: Sai Vatsal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+
+        <!-- Left Column: Active User Profile & Persona Switcher (7 Cols) -->
+        <div class="lg:col-span-7 space-y-6">
+
+          <!-- Current Active Profile Card -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl space-y-5">
+            <div class="flex items-center justify-between border-b border-slate-800 pb-4">
+              <div class="flex items-center gap-3">
+                <img id="iamUserProfileAvatar" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="Avatar" class="w-12 h-12 rounded-2xl object-cover border-2 border-indigo-500 shadow-md">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <h3 id="iamUserProfileName" class="text-base font-extrabold text-white">Sai Vatsal (Lead Admin)</h3>
+                    <span id="iamUserProfileRoleBadge" class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-extrabold">Administrator</span>
+                  </div>
+                  <p id="iamUserProfileEmail" class="text-xs text-slate-400 font-mono">admin@saivatsal.dev</p>
+                </div>
+              </div>
+              <button onclick="logoutUser()" class="px-3 py-1.5 rounded-xl bg-rose-500/10 hover:bg-rose-500/20 text-rose-400 border border-rose-500/30 text-xs font-bold transition flex items-center gap-1.5">
+                <i class="fa-solid fa-arrow-right-from-bracket"></i>
+                <span>Sign Out</span>
+              </button>
+            </div>
+
+            <!-- Profile Details Grid -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div class="text-[10px] text-slate-400 uppercase font-mono">Student ID</div>
+                <div class="font-extrabold text-emerald-400 mt-0.5">2500040224</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div class="text-[10px] text-slate-400 uppercase font-mono">Clearance</div>
+                <div id="iamProfileClearance" class="font-bold text-white mt-0.5">Level 4 (Full)</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div class="text-[10px] text-slate-400 uppercase font-mono">Auth Method</div>
+                <div class="font-bold text-indigo-400 mt-0.5">JWT Bearer</div>
+              </div>
+              <div class="p-3 rounded-xl bg-slate-900/60 border border-slate-800">
+                <div class="text-[10px] text-slate-400 uppercase font-mono">Session State</div>
+                <div class="font-bold text-emerald-400 mt-0.5">Verified ✓</div>
+              </div>
+            </div>
+
+            <!-- Granted Permissions Chips -->
+            <div>
+              <div class="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2 flex items-center gap-2">
+                <i class="fa-solid fa-key text-amber-400 text-xs"></i>
+                <span>Active RBAC Capabilities</span>
+              </div>
+              <div id="iamPermissionsList" class="flex flex-wrap gap-1.5">
+                <span class="px-2.5 py-1 rounded-lg bg-indigo-500/10 border border-indigo-500/30 text-indigo-300 text-[11px] font-mono font-semibold">READ</span>
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[11px] font-mono font-semibold">WRITE</span>
+                <span class="px-2.5 py-1 rounded-lg bg-rose-500/10 border border-rose-500/30 text-rose-300 text-[11px] font-mono font-semibold">DELETE</span>
+                <span class="px-2.5 py-1 rounded-lg bg-purple-500/10 border border-purple-500/30 text-purple-300 text-[11px] font-mono font-semibold">ADMIN</span>
+                <span class="px-2.5 py-1 rounded-lg bg-amber-500/10 border border-amber-500/30 text-amber-300 text-[11px] font-mono font-semibold">EXPORT</span>
+                <span class="px-2.5 py-1 rounded-lg bg-cyan-500/10 border border-cyan-500/30 text-cyan-300 text-[11px] font-mono font-semibold">API_SANDBOX</span>
+                <span class="px-2.5 py-1 rounded-lg bg-emerald-500/10 border border-emerald-500/30 text-emerald-300 text-[11px] font-mono font-semibold">VIVA_DEFENSE</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 1-Click Fast Persona Switcher -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between">
+              <div>
+                <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                  <i class="fa-solid fa-users-viewfinder text-indigo-400"></i>
+                  <span>1-Click Multi-Persona Fast Switcher</span>
+                </h3>
+                <p class="text-[11px] text-slate-400">Instantly switch role contexts to evaluate RBAC access boundaries.</p>
+              </div>
+              <span class="text-[10px] font-mono text-indigo-400 bg-indigo-500/10 px-2 py-1 rounded-lg border border-indigo-500/20">4 Pre-configured</span>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+
+              <!-- Persona 1: Lead Admin -->
+              <div onclick="switchPersona('admin')" class="p-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-indigo-500/40 cursor-pointer transition hover:scale-[1.02] shadow-sm flex items-start gap-3 group">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="Admin" class="w-9 h-9 rounded-xl object-cover border border-emerald-400 mt-0.5">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <div class="text-xs font-bold text-white group-hover:text-indigo-400 truncate">Sai Vatsal</div>
+                    <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-emerald-500/20 text-emerald-400">Admin</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 truncate">admin@saivatsal.dev</div>
+                  <div class="text-[9px] text-indigo-400 font-mono mt-1">ID: 2500040224 • Full Root</div>
+                </div>
+              </div>
+
+              <!-- Persona 2: Operations Specialist -->
+              <div onclick="switchPersona('specialist')" class="p-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-700/60 hover:border-purple-500/40 cursor-pointer transition hover:scale-[1.02] shadow-sm flex items-start gap-3 group">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&q=80" alt="Staff" class="w-9 h-9 rounded-xl object-cover border border-purple-400 mt-0.5">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <div class="text-xs font-bold text-white group-hover:text-purple-400 truncate">Alex Chen</div>
+                    <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-purple-500/20 text-purple-400">Specialist</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 truncate">staff@saivatsal.dev</div>
+                  <div class="text-[9px] text-purple-400 font-mono mt-1">Ops & CRUD Management</div>
+                </div>
+              </div>
+
+              <!-- Persona 3: Academic Evaluator -->
+              <div onclick="switchPersona('auditor')" class="p-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-700/60 hover:border-cyan-500/40 cursor-pointer transition hover:scale-[1.02] shadow-sm flex items-start gap-3 group">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80" alt="Auditor" class="w-9 h-9 rounded-xl object-cover border border-cyan-400 mt-0.5">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <div class="text-xs font-bold text-white group-hover:text-cyan-400 truncate">Dr. Evelyn Reed</div>
+                    <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-cyan-500/20 text-cyan-400">Auditor</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 truncate">auditor@college.edu</div>
+                  <div class="text-[9px] text-cyan-400 font-mono mt-1">Read & Viva Defense Audit</div>
+                </div>
+              </div>
+
+              <!-- Persona 4: Guest Observer -->
+              <div onclick="switchPersona('guest')" class="p-3.5 rounded-xl bg-slate-900/80 hover:bg-slate-800/80 border border-slate-700/60 hover:border-amber-500/40 cursor-pointer transition hover:scale-[1.02] shadow-sm flex items-start gap-3 group">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80" alt="Guest" class="w-9 h-9 rounded-xl object-cover border border-amber-400 mt-0.5">
+                <div class="flex-1 min-w-0">
+                  <div class="flex items-center justify-between">
+                    <div class="text-xs font-bold text-white group-hover:text-amber-400 truncate">Jordan Taylor</div>
+                    <span class="text-[9px] font-extrabold uppercase px-1.5 py-0.5 rounded bg-amber-500/20 text-amber-400">Guest</span>
+                  </div>
+                  <div class="text-[10px] text-slate-400 truncate">demo@saivatsal.dev</div>
+                  <div class="text-[9px] text-amber-400 font-mono mt-1">Public Read-Only Access</div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+          <!-- Standard Credentials Login Form -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+            <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+              <i class="fa-solid fa-lock text-indigo-400"></i>
+              <span>Direct Credentials Authentication</span>
+            </h3>
+            <form onsubmit="handleDirectLogin(event)" class="space-y-3.5 text-xs">
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-1">Email / Username</label>
+                  <input type="email" id="directLoginEmail" value="admin@saivatsal.dev" required class="w-full px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white focus:outline-none focus:border-indigo-500">
+                </div>
+                <div>
+                  <label class="block text-[11px] font-semibold text-slate-300 mb-1">Assigned Role</label>
+                  <select id="directLoginRole" class="w-full px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white focus:outline-none focus:border-indigo-500">
+                    <option value="Administrator">Administrator (Full Access)</option>
+                    <option value="Specialist">Operations Specialist</option>
+                    <option value="Auditor">Academic Auditor</option>
+                    <option value="Viewer">Guest Observer</option>
+                  </select>
+                </div>
+              </div>
+              <div class="relative">
+                <label class="block text-[11px] font-semibold text-slate-300 mb-1">Password</label>
+                <input type="password" id="directLoginPassword" value="SaiVatsal@2500040224" required class="w-full px-3 py-2 rounded-xl bg-slate-900/80 border border-slate-700/80 text-white focus:outline-none focus:border-indigo-500 pr-10 font-mono">
+                <button type="button" onclick="togglePasswordVisibility('directLoginPassword', 'pwdEyeIcon')" class="absolute right-3 top-7 text-slate-400 hover:text-white">
+                  <i id="pwdEyeIcon" class="fa-solid fa-eye text-xs"></i>
+                </button>
+              </div>
+              <div class="flex items-center justify-between pt-2">
+                <div class="flex items-center gap-2 text-[11px] text-slate-400">
+                  <i class="fa-solid fa-circle-info text-indigo-400"></i>
+                  <span>Uses `POST /api/auth/login`</span>
+                </div>
+                <button type="submit" class="px-5 py-2 rounded-xl bg-gradient-to-r from-indigo-600 to-indigo-700 hover:from-indigo-500 hover:to-indigo-600 text-white font-bold shadow-lg shadow-indigo-600/30 transition hover:scale-105">
+                  Sign In & Issue JWT
+                </button>
+              </div>
+            </form>
+          </div>
+
+        </div>
+
+        <!-- Right Column: Live JWT Inspector & RBAC Matrix (5 Cols) -->
+        <div class="lg:col-span-5 space-y-6">
+
+          <!-- Live JWT Token Inspector -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl space-y-4">
+            <div class="flex items-center justify-between">
+              <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+                <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                <span>Live JWT Token Inspector</span>
+              </h3>
+              <button onclick="copyAuthToken()" class="px-2.5 py-1 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-[11px] font-mono flex items-center gap-1.5 transition">
+                <i class="fa-solid fa-copy"></i>
+                <span>Copy Token</span>
+              </button>
+            </div>
+
+            <!-- Token Encoded Box -->
+            <div class="space-y-1.5">
+              <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Raw Encoded JWT (Bearer)</div>
+              <div id="iamRawTokenDisplay" class="p-3 rounded-xl bg-slate-950 font-mono text-[10px] text-emerald-400 break-all border border-slate-800/80 max-h-24 overflow-y-auto leading-relaxed">
+                jwt-saivatsal-eyJzdWIiOiJVU1ItMjUwMDA0MDIyNCIsInJvbGUiOiJBZG1pbmlzdHJhdG9yIiwic3R1ZGVudCI6IjI1MDAwNDAyMjQiLCJleHAiOjE3MzczNjY0MDB9
+              </div>
+            </div>
+
+            <!-- Decoded Payload Claims JSON -->
+            <div class="space-y-1.5">
+              <div class="text-[10px] font-mono text-slate-400 uppercase tracking-wider">Decoded Session Claims (Payload)</div>
+              <pre id="iamDecodedClaimsDisplay" class="p-3 rounded-xl bg-slate-950 font-mono text-[11px] text-indigo-300 border border-slate-800/80 overflow-x-auto leading-tight">{
+  "sub": "USR-2500040224",
+  "name": "Sai Vatsal (Lead Admin)",
+  "email": "admin@saivatsal.dev",
+  "role": "Administrator",
+  "studentId": "2500040224",
+  "college": "Full-Stack Software Engineering",
+  "permissions": [
+    "READ", "WRITE", "DELETE", "ADMIN", "EXPORT", "API_SANDBOX", "VIVA_DEFENSE"
+  ],
+  "sessionStatus": "ACTIVE_VERIFIED"
+}</pre>
+            </div>
+          </div>
+
+          <!-- RBAC Permission Matrix Reference -->
+          <div class="glass-card rounded-2xl p-6 border border-slate-800 shadow-xl space-y-3">
+            <h3 class="text-sm font-extrabold text-white flex items-center gap-2">
+              <i class="fa-solid fa-table-cells text-purple-400"></i>
+              <span>Role-Based Access Matrix</span>
+            </h3>
+            <div class="overflow-x-auto">
+              <table class="w-full text-[11px] text-left">
+                <thead>
+                  <tr class="border-b border-slate-800 text-slate-400 font-mono uppercase text-[9px]">
+                    <th class="pb-2">Role</th>
+                    <th class="pb-2 text-center">Read</th>
+                    <th class="pb-2 text-center">Write</th>
+                    <th class="pb-2 text-center">Delete</th>
+                    <th class="pb-2 text-center">Admin</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-slate-800/60 text-slate-300">
+                  <tr>
+                    <td class="py-2 font-bold text-white">Administrator</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-bold text-slate-300">Specialist</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-bold text-slate-300">Auditor</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                  </tr>
+                  <tr>
+                    <td class="py-2 font-bold text-slate-300">Guest</td>
+                    <td class="py-2 text-center text-emerald-400">✓</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                    <td class="py-2 text-center text-slate-600">—</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
     </div>
 
   </main>
@@ -860,6 +1226,101 @@
   </div>
 
   <!-- ========================================== -->
+  <!-- MODAL DIALOG (FAST PERSONA LOGIN / IAM)   -->
+  <!-- ========================================== -->
+  <div id="authModal" class="fixed inset-0 z-50 bg-black/75 backdrop-blur-md hidden flex items-center justify-center p-4">
+    <div class="glass-card rounded-2xl max-w-lg w-full max-h-[90vh] flex flex-col shadow-2xl border border-slate-700/80 overflow-hidden transform transition-all duration-200">
+
+      <!-- Modal Header -->
+      <div class="p-5 bg-slate-900/90 border-b border-slate-800 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center font-bold text-sm border border-indigo-500/30">
+            <i class="fa-solid fa-users-gear"></i>
+          </div>
+          <div>
+            <h3 class="text-sm font-extrabold text-white">Identity Access & Persona Login</h3>
+            <p class="text-[11px] text-slate-400">SaiVatsal (2500040224) IAM Gateway</p>
+          </div>
+        </div>
+        <button onclick="closeAuthModal()" class="w-8 h-8 rounded-xl bg-slate-800 text-slate-400 hover:text-white flex items-center justify-center transition">
+          <i class="fa-solid fa-xmark text-sm"></i>
+        </button>
+      </div>
+
+      <!-- Modal Content -->
+      <div class="p-6 overflow-y-auto space-y-5 text-xs">
+
+        <!-- 1-Click Fast Persona Cards -->
+        <div>
+          <div class="text-[11px] font-bold text-slate-300 uppercase tracking-wider mb-2.5 flex items-center justify-between">
+            <span>Select Active Persona Preset</span>
+            <span class="text-[10px] text-indigo-400 font-mono">1-Click Fast Auth</span>
+          </div>
+
+          <div class="space-y-2">
+            <!-- Persona 1: Admin -->
+            <div onclick="switchPersona('admin'); closeAuthModal();" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-indigo-500/40 cursor-pointer transition hover:scale-[1.01] flex items-center justify-between group">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80" alt="Admin" class="w-8 h-8 rounded-lg object-cover border border-emerald-400">
+                <div>
+                  <div class="font-bold text-white group-hover:text-indigo-400">Sai Vatsal (Lead Admin)</div>
+                  <div class="text-[10px] text-slate-400 font-mono">admin@saivatsal.dev • ID: 2500040224</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-emerald-500/20 text-emerald-400 text-[10px] font-bold">Admin</span>
+            </div>
+
+            <!-- Persona 2: Specialist -->
+            <div onclick="switchPersona('specialist'); closeAuthModal();" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/60 hover:border-purple-500/40 cursor-pointer transition hover:scale-[1.01] flex items-center justify-between group">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&q=80" alt="Specialist" class="w-8 h-8 rounded-lg object-cover border border-purple-400">
+                <div>
+                  <div class="font-bold text-white group-hover:text-purple-400">Alex Chen (Ops Specialist)</div>
+                  <div class="text-[10px] text-slate-400 font-mono">staff@saivatsal.dev</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-purple-500/20 text-purple-400 text-[10px] font-bold">Specialist</span>
+            </div>
+
+            <!-- Persona 3: Auditor -->
+            <div onclick="switchPersona('auditor'); closeAuthModal();" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/60 hover:border-cyan-500/40 cursor-pointer transition hover:scale-[1.01] flex items-center justify-between group">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80" alt="Auditor" class="w-8 h-8 rounded-lg object-cover border border-cyan-400">
+                <div>
+                  <div class="font-bold text-white group-hover:text-cyan-400">Dr. Evelyn Reed (Evaluator)</div>
+                  <div class="text-[10px] text-slate-400 font-mono">auditor@college.edu</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-cyan-500/20 text-cyan-400 text-[10px] font-bold">Auditor</span>
+            </div>
+
+            <!-- Persona 4: Guest -->
+            <div onclick="switchPersona('guest'); closeAuthModal();" class="p-3 rounded-xl bg-slate-900/90 hover:bg-slate-800/90 border border-slate-700/60 hover:border-amber-500/40 cursor-pointer transition hover:scale-[1.01] flex items-center justify-between group">
+              <div class="flex items-center gap-3">
+                <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80" alt="Guest" class="w-8 h-8 rounded-lg object-cover border border-amber-400">
+                <div>
+                  <div class="font-bold text-white group-hover:text-amber-400">Jordan Taylor (Demo Guest)</div>
+                  <div class="text-[10px] text-slate-400 font-mono">demo@saivatsal.dev</div>
+                </div>
+              </div>
+              <span class="px-2 py-0.5 rounded-full bg-amber-500/20 text-amber-400 text-[10px] font-bold">Guest</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="border-t border-slate-800 pt-3 flex items-center justify-between">
+          <button type="button" onclick="switchTab('auth'); closeAuthModal();" class="text-indigo-400 hover:text-indigo-300 font-semibold flex items-center gap-1.5 transition">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <span>Open Dedicated IAM View</span>
+          </button>
+          <button type="button" onclick="closeAuthModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl font-semibold transition">Close</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
   <!-- TOAST NOTIFICATION STACK                  -->
   <!-- ========================================== -->
   <div id="toast" class="fixed bottom-5 right-5 z-50 bg-slate-900/95 text-white px-4 py-3 rounded-2xl shadow-2xl text-xs font-medium transform translate-y-24 opacity-0 transition duration-300 flex items-center gap-3 border border-slate-700/80 backdrop-blur-xl">
@@ -956,25 +1417,217 @@
       playBeep(440);
     }
 
+    // Persona & IAM Session Architecture
+    const personas = {
+      admin: {
+        id: 'USR-2500040224',
+        name: 'Sai Vatsal (Lead Admin)',
+        email: 'admin@saivatsal.dev',
+        role: 'Administrator',
+        studentId: '2500040224',
+        clearance: 'Level 4 (Full Access)',
+        avatar: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80',
+        permissions: ['READ', 'WRITE', 'DELETE', 'ADMIN', 'EXPORT', 'API_SANDBOX', 'VIVA_DEFENSE']
+      },
+      specialist: {
+        id: 'USR-OPS-02',
+        name: 'Alex Chen (Specialist)',
+        email: 'staff@saivatsal.dev',
+        role: 'Specialist',
+        studentId: '2500040224',
+        clearance: 'Level 3 (CRUD Operations)',
+        avatar: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&q=80',
+        permissions: ['READ', 'WRITE', 'OPERATIONS', 'EXPORT']
+      },
+      auditor: {
+        id: 'USR-AUD-03',
+        name: 'Dr. Evelyn Reed (Evaluator)',
+        email: 'auditor@college.edu',
+        role: 'Auditor',
+        studentId: '2500040224',
+        clearance: 'Level 2 (Viva Audit)',
+        avatar: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80',
+        permissions: ['READ', 'VIVA_DEFENSE', 'AUDIT']
+      },
+      guest: {
+        id: 'USR-GST-04',
+        name: 'Jordan Taylor (Demo Guest)',
+        email: 'demo@saivatsal.dev',
+        role: 'Viewer',
+        studentId: '2500040224',
+        clearance: 'Level 1 (Public Read)',
+        avatar: 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80',
+        permissions: ['READ']
+      }
+    };
+
+    let currentAuthUser = personas.admin;
+    let currentAuthToken = 'jwt-saivatsal-' + btoa(JSON.stringify({ sub: currentAuthUser.id, role: currentAuthUser.role, student: '2500040224', exp: Date.now() + 86400000 }));
+
     // Tab Navigation Switcher
     function switchTab(tabId) {
       playBeep(520, 'sine', 0.05);
-      const tabs = ['overview', 'data', 'operations', 'api', 'architecture'];
+      const tabs = ['overview', 'data', 'operations', 'api', 'architecture', 'auth'];
       tabs.forEach(t => {
         const view = document.getElementById('view-' + t);
         const btn = document.getElementById('tab-btn-' + t);
-        if (t === tabId) {
-          view.classList.remove('hidden');
-          btn.classList.add('active', 'text-indigo-400', 'bg-indigo-500/10', 'border-indigo-500/30');
-          btn.classList.remove('text-slate-400', 'border-transparent');
-        } else {
-          view.classList.add('hidden');
-          btn.classList.remove('active', 'text-indigo-400', 'bg-indigo-500/10', 'border-indigo-500/30');
-          btn.classList.add('text-slate-400', 'border-transparent');
+        if (view && btn) {
+          if (t === tabId) {
+            view.classList.remove('hidden');
+            btn.classList.add('active', 'text-indigo-400', 'bg-indigo-500/10', 'border-indigo-500/30');
+            btn.classList.remove('text-slate-400', 'border-transparent');
+          } else {
+            view.classList.add('hidden');
+            btn.classList.remove('active', 'text-indigo-400', 'bg-indigo-500/10', 'border-indigo-500/30');
+            btn.classList.add('text-slate-400', 'border-transparent');
+          }
         }
       });
       if (tabId === 'overview') {
         renderCharts(allData);
+      }
+    }
+
+    function switchPersona(roleKey) {
+      if (!personas[roleKey]) return;
+      currentAuthUser = personas[roleKey];
+      currentAuthToken = 'jwt-saivatsal-' + btoa(JSON.stringify({
+        sub: currentAuthUser.id,
+        name: currentAuthUser.name,
+        role: currentAuthUser.role,
+        student: '2500040224',
+        exp: Date.now() + 86400000
+      }));
+      updateAuthUI();
+      playBeep(750, 'sine', 0.12);
+      showToast('Switched persona to: ' + currentAuthUser.name);
+    }
+
+    function updateAuthUI() {
+      // Top Navigation
+      const navAvatar = document.getElementById('navUserAvatar');
+      const navName = document.getElementById('navUserName');
+      const navRole = document.getElementById('navUserRole');
+      if (navAvatar) navAvatar.src = currentAuthUser.avatar;
+      if (navName) navName.textContent = currentAuthUser.name.split(' ')[0];
+      if (navRole) navRole.textContent = currentAuthUser.role;
+
+      // Dropdown
+      const ddName = document.getElementById('dropdownUserName');
+      const ddEmail = document.getElementById('dropdownUserEmail');
+      const ddBadge = document.getElementById('dropdownUserBadge');
+      if (ddName) ddName.textContent = currentAuthUser.name;
+      if (ddEmail) ddEmail.textContent = currentAuthUser.email;
+      if (ddBadge) ddBadge.textContent = currentAuthUser.role;
+
+      // Active IAM Banner in #view-auth
+      const iamAvatar = document.getElementById('iamActiveAvatar');
+      const iamName = document.getElementById('iamActiveName');
+      const iamEmail = document.getElementById('iamActiveEmail');
+      const iamBadge = document.getElementById('iamActiveRoleBadge');
+      const iamPerms = document.getElementById('iamActivePermissions');
+      if (iamAvatar) iamAvatar.src = currentAuthUser.avatar;
+      if (iamName) iamName.textContent = currentAuthUser.name;
+      if (iamEmail) iamEmail.textContent = currentAuthUser.email;
+      if (iamBadge) iamBadge.textContent = currentAuthUser.role;
+      if (iamPerms) {
+        iamPerms.innerHTML = currentAuthUser.permissions.map(p =>
+          '<span class="px-2 py-0.5 rounded-md bg-indigo-500/10 text-indigo-400 border border-indigo-500/30 text-[10px] font-mono font-bold">' + p + '</span>'
+        ).join('');
+      }
+
+      // Live JWT Inspector
+      const rawDisplay = document.getElementById('iamRawTokenDisplay');
+      const claimsDisplay = document.getElementById('iamDecodedClaimsDisplay');
+      if (rawDisplay) rawDisplay.textContent = currentAuthToken;
+      if (claimsDisplay) {
+        const claims = {
+          sub: currentAuthUser.id,
+          name: currentAuthUser.name,
+          email: currentAuthUser.email,
+          role: currentAuthUser.role,
+          studentId: '2500040224',
+          college: 'Full-Stack Software Engineering',
+          permissions: currentAuthUser.permissions,
+          sessionStatus: 'ACTIVE_VERIFIED',
+          issuedAt: new Date().toISOString()
+        };
+        claimsDisplay.textContent = JSON.stringify(claims, null, 2);
+      }
+    }
+
+    function toggleUserDropdown() {
+      const dd = document.getElementById('userDropdownMenu');
+      if (dd) dd.classList.toggle('hidden');
+    }
+
+    function openAuthModal() {
+      const modal = document.getElementById('authModal');
+      if (modal) modal.classList.remove('hidden');
+      playBeep(600, 'sine', 0.05);
+    }
+
+    function closeAuthModal() {
+      const modal = document.getElementById('authModal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function copyAuthToken() {
+      navigator.clipboard.writeText(currentAuthToken).then(() => {
+        playBeep(880, 'sine', 0.1);
+        showToast('JWT Bearer token copied to clipboard!');
+      }).catch(() => {
+        showToast('Session Token: ' + currentAuthToken.substring(0, 24) + '...');
+      });
+    }
+
+    async function handleDirectLogin(e) {
+      e.preventDefault();
+      const email = document.getElementById('directLoginEmail').value;
+      const role = document.getElementById('directLoginRole').value;
+      const password = document.getElementById('directLoginPassword').value;
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, role, password })
+        });
+        const data = await res.json();
+        if (data.success && data.user) {
+          currentAuthUser = {
+            ...data.user,
+            clearance: data.user.role === 'Administrator' ? 'Level 4 (Full Access)' : 'Custom Clearance'
+          };
+          currentAuthToken = data.token;
+          updateAuthUI();
+          closeAuthModal();
+          playBeep(900, 'sine', 0.15);
+          showToast('Authenticated as ' + data.user.name);
+        } else {
+          throw new Error(data.message || 'Login rejected');
+        }
+      } catch (err) {
+        playBeep(240, 'triangle', 0.2);
+        showToast(err.message, true);
+      }
+    }
+
+    function logoutUser() {
+      switchPersona('guest');
+      showToast('Logged out. Session reverted to Demo Guest.');
+    }
+
+    function togglePasswordVisibility(inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (!input || !icon) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.className = 'fa-solid fa-eye-slash text-xs';
+      } else {
+        input.type = 'password';
+        icon.className = 'fa-solid fa-eye text-xs';
       }
     }
 
@@ -1508,7 +2161,16 @@
         const icon = document.getElementById('themeIcon');
         if (icon) icon.className = 'fa-solid fa-sun text-xs text-amber-400';
       }
+      updateAuthUI();
       fetchData();
+    });
+
+    window.addEventListener('click', (e) => {
+      const userNavBtn = document.getElementById('userNavBtn');
+      const userDropdownMenu = document.getElementById('userDropdownMenu');
+      if (userNavBtn && userDropdownMenu && !userNavBtn.contains(e.target) && !userDropdownMenu.contains(e.target)) {
+        userDropdownMenu.classList.add('hidden');
+      }
     });
   </script>
 </body>

@@ -35,11 +35,25 @@ const server = app.listen(0, async () => {
     const health = await request('/api/health');
     console.log('✔ Health Check:', health.status === 200 ? 'PASSED' : 'FAILED');
 
-    // 2. GET all
+    // 2. Auth Endpoints Verification
+    const authMe = await request('/api/auth/me');
+    console.log('✔ GET /api/auth/me:', authMe.status === 200 && authMe.data.authenticated ? 'PASSED' : 'FAILED');
+
+    const authUsers = await request('/api/auth/users');
+    console.log('✔ GET /api/auth/users:', authUsers.status === 200 && authUsers.data.personas.length >= 4 ? 'PASSED' : 'FAILED');
+
+    const authLogin = await request('/api/auth/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: { email: 'admin@saivatsal.dev', role: 'Administrator' }
+    });
+    console.log('✔ POST /api/auth/login (JWT Issue):', authLogin.status === 200 && authLogin.data.token ? 'PASSED' : 'FAILED');
+
+    // 3. GET all
     const all = await request('/api/groceries');
     console.log(`✔ GET /api/groceries: PASSED (${all.data.length} records)`);
 
-    // 3. POST new item
+    // 4. POST new item
     const postRes = await request('/api/groceries', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -54,7 +68,7 @@ const server = app.listen(0, async () => {
     console.log('✔ POST Create Item:', postRes.status === 201 ? 'PASSED' : 'FAILED');
     const createdId = postRes.data.id;
 
-    // 4. PUT update item
+    // 5. PUT update item
     const putRes = await request(`/api/groceries/${createdId}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
@@ -62,7 +76,7 @@ const server = app.listen(0, async () => {
     });
     console.log('✔ PUT Update Item:', putRes.status === 200 ? 'PASSED' : 'FAILED');
 
-    // 5. DELETE item
+    // 6. DELETE item
     const delRes = await request(`/api/groceries/${createdId}`, {
       method: 'DELETE'
     });

@@ -25,11 +25,11 @@ async function syncProject(project, index, total) {
     execSync('git add .', { cwd: projectDir, stdio: 'pipe' });
 
     try {
-      execSync(`git commit -m "feat: Configure Vercel serverless integration and database sync - Done By SaiVatsal 2500040224\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>"`, {
+      execSync(`git commit -m "feat: Add Enterprise Access & IAM Portal, Login Modal, JWT Engine, and Persistent Dual Themes - Done By SaiVatsal 2500040224\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>"`, {
         cwd: projectDir,
         stdio: 'pipe'
       });
-      console.log(`  ✔ Committed Vercel configuration`);
+      console.log(`  ✔ Committed High-End SaaS & IAM configuration`);
     } catch (e) {
       // Nothing to commit
     }

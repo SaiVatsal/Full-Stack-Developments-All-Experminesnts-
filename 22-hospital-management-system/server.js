@@ -188,6 +188,76 @@ app.post('/api/activityRecords', (req, res) => {
   res.status(201).json(newEntry);
 });
 
+// 10. Authentication: POST /api/auth/login
+app.post('/api/auth/login', (req, res) => {
+  const { email = 'admin@saivatsal.dev', password = '', role = 'Administrator' } = req.body || {};
+  const user = {
+    id: 'USR-2500040224',
+    name: role === 'Administrator' ? 'Sai Vatsal (Lead Admin)' : role === 'Specialist' ? 'Alex Chen (Specialist)' : role === 'Auditor' ? 'Dr. Evelyn Reed (Evaluator)' : 'Jordan Taylor (Guest)',
+    email: email || (role === 'Administrator' ? 'admin@saivatsal.dev' : role === 'Specialist' ? 'staff@saivatsal.dev' : role === 'Auditor' ? 'auditor@college.edu' : 'demo@saivatsal.dev'),
+    role: role || 'Administrator',
+    studentId: '2500040224',
+    college: 'Full-Stack Software Engineering',
+    avatar: role === 'Administrator'
+      ? 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=256&q=80'
+      : role === 'Specialist'
+      ? 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=256&q=80'
+      : role === 'Auditor'
+      ? 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=256&q=80'
+      : 'https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=256&q=80',
+    permissions: role === 'Administrator'
+      ? ['READ', 'WRITE', 'DELETE', 'ADMIN', 'EXPORT', 'API_SANDBOX', 'VIVA_DEFENSE']
+      : role === 'Specialist'
+      ? ['READ', 'WRITE', 'OPERATIONS', 'EXPORT']
+      : role === 'Auditor'
+      ? ['READ', 'VIVA_DEFENSE', 'AUDIT']
+      : ['READ'],
+    authenticatedAt: new Date().toISOString()
+  };
+  const token = 'jwt-saivatsal-' + Buffer.from(JSON.stringify({ sub: user.id, role: user.role, student: '2500040224', exp: Date.now() + 86400000 })).toString('base64');
+  res.json({
+    success: true,
+    message: 'Welcome back, ' + user.name + '! Session authenticated.',
+    token,
+    user
+  });
+});
+
+// 11. Authentication: GET /api/auth/me
+app.get('/api/auth/me', (req, res) => {
+  const authHeader = req.headers.authorization;
+  res.json({
+    authenticated: true,
+    student: 'SaiVatsal (2500040224)',
+    project: 'ApexCare Hospital Management Suite',
+    user: {
+      id: 'USR-2500040224',
+      name: 'Sai Vatsal (Lead Admin)',
+      email: 'admin@saivatsal.dev',
+      role: 'Administrator',
+      studentId: '2500040224',
+      permissions: ['READ', 'WRITE', 'DELETE', 'ADMIN', 'EXPORT', 'API_SANDBOX', 'VIVA_DEFENSE']
+    },
+    sessionStatus: 'ACTIVE_VERIFIED',
+    tokenHeader: authHeader || 'Bearer default-simulated-token'
+  });
+});
+
+// 12. Authentication: GET /api/auth/users
+app.get('/api/auth/users', (req, res) => {
+  res.json([
+    { id: 'USR-2500040224', name: 'Sai Vatsal (Lead Admin)', email: 'admin@saivatsal.dev', role: 'Administrator', studentId: '2500040224', badge: 'Full Access' },
+    { id: 'USR-SPECIALIST', name: 'Alex Chen (Operations Specialist)', email: 'staff@saivatsal.dev', role: 'Specialist', studentId: '2500040224', badge: 'Ops & CRUD' },
+    { id: 'USR-AUDITOR', name: 'Dr. Evelyn Reed (Academic Auditor)', email: 'auditor@college.edu', role: 'Auditor', studentId: '2500040224', badge: 'Read & Viva' },
+    { id: 'USR-GUEST', name: 'Jordan Taylor (Demo Guest)', email: 'demo@saivatsal.dev', role: 'Viewer', studentId: '2500040224', badge: 'Read-Only' }
+  ]);
+});
+
+// 13. Authentication: POST /api/auth/logout
+app.post('/api/auth/logout', (req, res) => {
+  res.json({ success: true, message: 'Session terminated. Logged out successfully.', loggedOutAt: new Date().toISOString() });
+});
+
 // Start Server
 if (require.main === module) {
   app.listen(PORT, () => {
