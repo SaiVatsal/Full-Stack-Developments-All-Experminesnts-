@@ -1,7 +1,7 @@
 /**
  * 58 GitHub Repositories Syncer & Pusher
  * Pushes updated Vercel-ready files to the existing 58 repositories
- * Student: SaiVatsal (2500040224)
+ * Enterprise Full-Stack Modernization
  */
 
 const { execSync } = require('child_process');
@@ -25,7 +25,7 @@ async function syncProject(project, index, total) {
     execSync('git add .', { cwd: projectDir, stdio: 'pipe' });
 
     try {
-      execSync(`git commit -m "feat: Add Enterprise Access & IAM Portal, Login Modal, JWT Engine, and Persistent Dual Themes - Done By SaiVatsal 2500040224\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>"`, {
+      execSync(`git commit -m "feat: Implement Enterprise Access & IAM Portal, Login Modal, JWT Engine, and Persistent Dual Themes\n\nCo-Authored-By: Claude Code <noreply@anthropic.com>"`, {
         cwd: projectDir,
         stdio: 'pipe'
       });
@@ -47,7 +47,7 @@ async function syncProject(project, index, total) {
 async function run() {
   console.log(`================================================================`);
   console.log(`🚀 SYNCING 58 REPOSITORIES WITH VERCEL SERVERLESS INTEGRATION`);
-  console.log(`Student: SaiVatsal (2500040224)`);
+  console.log(`Enterprise Full-Stack Architecture`);
   console.log(`================================================================\n`);
 
   let passed = 0;

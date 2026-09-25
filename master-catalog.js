@@ -1,7 +1,6 @@
 /**
  * Full-Stack 58 Projects Complete Generator & Test Suite
- * Student: SaiVatsal
- * Roll / College ID: 2500040224
+ * Production-Ready Enterprise SaaS Architectures
  */
 
 const fs = require('fs');
@@ -117,7 +116,7 @@ const allProjects = [
     secondaryName: 'Stock Movement Ledger',
     secondaryKey: 'movements',
     secondaryData: [
-      { id: 'MV-901', item: 'Industrial Ball Bearings', type: 'RESTOCK IN', quantity: '+150 Units', warehouse: 'Warehouse North', operator: 'SaiVatsal (2500040224)', date: '2026-09-20' },
+      { id: 'MV-901', item: 'Industrial Ball Bearings', type: 'RESTOCK IN', quantity: '+150 Units', warehouse: 'Warehouse North', operator: 'Marcus Vance (Lead Ops)', date: '2026-09-20' },
       { id: 'MV-902', item: 'Heavy-Duty Hydraulic Fluid', type: 'DISPATCH OUT', quantity: '-10 Units', warehouse: 'Warehouse Central', operator: 'Shift Lead Mark', date: '2026-09-21' }
     ]
   },
@@ -139,10 +138,10 @@ const allProjects = [
       { key: 'status', label: 'Course Status', type: 'select', options: ['Active', 'Draft', 'Archived'], required: true }
     ],
     initialData: [
-      { id: '1', title: 'Advanced Full-Stack Web Engineering', instructor: 'Dr. SaiVatsal (2500040224)', level: 'Advanced', enrolled: 1420, modules: 12, rating: 4.9, status: 'Active' },
+      { id: '1', title: 'Advanced Full-Stack Web Engineering', instructor: 'Dr. Marcus Sterling, PhD', level: 'Advanced', enrolled: 1420, modules: 12, rating: 4.9, status: 'Active' },
       { id: '2', title: 'Modern Cloud Architecture & DevOps', instructor: 'Prof. Helen Vance', level: 'Intermediate', enrolled: 980, modules: 10, rating: 4.8, status: 'Active' },
       { id: '3', title: 'Cybersecurity Fundamentals & Threat Defense', instructor: 'Marcus Sterling, CISSP', level: 'Beginner', enrolled: 2150, modules: 8, rating: 4.9, status: 'Active' },
-      { id: '4', title: 'Microservices Design with Node.js & Docker', instructor: 'Dr. SaiVatsal (2500040224)', level: 'Advanced', enrolled: 850, modules: 14, rating: 4.7, status: 'Active' },
+      { id: '4', title: 'Microservices Design with Node.js & Docker', instructor: 'Dr. Evelyn Reed, DSc', level: 'Advanced', enrolled: 850, modules: 14, rating: 4.7, status: 'Active' },
       { id: '5', title: 'Database Design & High-Throughput SQL', instructor: 'Anita Rao, Data Architect', level: 'Intermediate', enrolled: 1120, modules: 9, rating: 4.8, status: 'Active' }
     ],
     statCards: [
@@ -177,7 +176,7 @@ const allProjects = [
       { key: 'time', label: 'Post Timestamp', type: 'text', required: true }
     ],
     initialData: [
-      { id: '1', author: 'SaiVatsal (2500040224)', handle: '@saivatsal_dev', content: 'Excited to announce the release of our 58 production-ready full-stack software suites! Clean architecture, zero boilerplate templates.', likes: 342, comments: 45, shares: 89, tag: 'Tech & Engineering', time: '2 hours ago' },
+      { id: '1', author: 'Enterprise Tech Staff', handle: '@tech_engineering', content: 'Excited to announce the release of our 58 production-ready full-stack software suites! Clean architecture, zero boilerplate templates.', likes: 342, comments: 45, shares: 89, tag: 'Tech & Engineering', time: '2 hours ago' },
       { id: '2', author: 'Dr. Maya Lin', handle: '@mayalin_ai', content: 'Deep learning breakthrough in multimodal reasoning models: benchmark accuracy up by 14% with 40% lower memory footprints.', likes: 580, comments: 72, shares: 120, tag: 'Artificial Intelligence', time: '4 hours ago' },
       { id: '3', author: 'DevOps Daily', handle: '@devops_daily', content: 'Best practice reminder: Immutable infrastructure patterns combined with declarative GitOps reduce production drift to almost zero.', likes: 215, comments: 18, shares: 64, tag: 'Cloud & Infrastructure', time: '6 hours ago' },
       { id: '4', author: 'Samantha Reed', handle: '@sam_designs', content: 'Great UI design is not about flashy animations; it is about cognitive clarity, accessible contrast, and effortless user journeys.', likes: 490, comments: 53, shares: 98, tag: 'UI/UX Design', time: '8 hours ago' }
@@ -191,7 +190,7 @@ const allProjects = [
     secondaryName: 'Recent Post Comments',
     secondaryKey: 'comments',
     secondaryData: [
-      { id: 'COM-101', postRef: 'Post #1 (SaiVatsal)', author: 'Alex Thorne', comment: 'Fantastic engineering structure! The separation of concerns is textbook perfect.', time: '1 hour ago' },
+      { id: 'COM-101', postRef: 'Post #1 (Enterprise Tech)', author: 'Alex Thorne', comment: 'Fantastic engineering structure! The separation of concerns is textbook perfect.', time: '1 hour ago' },
       { id: 'COM-102', postRef: 'Post #2 (Dr. Maya Lin)', author: 'Jordan Lee', comment: 'Are the benchmark replication papers available on arXiv yet?', time: '3 hours ago' }
     ]
   },
@@ -213,7 +212,7 @@ const allProjects = [
       { key: 'status', label: 'Current Availability', type: 'select', options: ['Available', 'On Leave', 'Fully Booked'], required: true }
     ],
     initialData: [
-      { id: '1', name: 'Dr. SaiVatsal (2500040224), MD', specialty: 'Neurology & Cognitive Health', clinic: 'Metropolitan Medical Tower', rating: 4.9, fee: 150, availability: 'Mon - Fri (09:00 - 17:00)', status: 'Available' },
+      { id: '1', name: 'Dr. Arthur Sterling, MD', specialty: 'Neurology & Cognitive Health', clinic: 'Metropolitan Medical Tower', rating: 4.9, fee: 150, availability: 'Mon - Fri (09:00 - 17:00)', status: 'Available' },
       { id: '2', name: 'Dr. Sarah Mitchell, MD', specialty: 'Cardiology', clinic: 'St. Jude Heart Institute', rating: 4.8, fee: 175, availability: 'Tue - Sat (10:00 - 18:00)', status: 'Available' },
       { id: '3', name: 'Dr. Robert Chen, MD', specialty: 'Orthopedic Surgery', clinic: 'Apex Sports & Joint Care', rating: 4.9, fee: 160, availability: 'Mon, Wed, Fri (08:00 - 16:00)', status: 'Available' },
       { id: '4', name: 'Dr. Emily Vance, MD', specialty: 'Pediatrics & Adolescent Care', clinic: 'Sunrise Children Health', rating: 4.9, fee: 120, availability: 'Mon - Sat (09:00 - 15:00)', status: 'Available' },
@@ -228,7 +227,7 @@ const allProjects = [
     secondaryName: 'Booked Patient Consultations',
     secondaryKey: 'appointments',
     secondaryData: [
-      { id: 'APT-801', patient: 'Arthur Pendelton', doctor: 'Dr. SaiVatsal (2500040224)', date: '2026-09-22', time: '10:30 AM', type: 'In-Clinic Followup', status: 'Confirmed' },
+      { id: 'APT-801', patient: 'Arthur Pendelton', doctor: 'Dr. Arthur Sterling, MD', date: '2026-09-22', time: '10:30 AM', type: 'In-Clinic Followup', status: 'Confirmed' },
       { id: 'APT-802', patient: 'Clara Oswald', doctor: 'Dr. Sarah Mitchell', date: '2026-09-23', time: '02:15 PM', type: 'Tele-Consultation', status: 'Confirmed' }
     ]
   },
@@ -251,7 +250,7 @@ const allProjects = [
       { key: 'joinDate', label: 'Joining Date', type: 'text', required: true }
     ],
     initialData: [
-      { id: '1', empId: 'EMP-101', name: 'SaiVatsal (2500040224)', role: 'Lead Full-Stack Architect', department: 'Engineering', salary: 145000, email: 'saivatsal@enterprise.org', status: 'Active', joinDate: '2024-01-15' },
+      { id: '1', empId: 'EMP-101', name: 'Alexander Hayes', role: 'Lead Full-Stack Architect', department: 'Engineering', salary: 145000, email: 'alex.hayes@enterprise.org', status: 'Active', joinDate: '2024-01-15' },
       { id: '2', empId: 'EMP-102', name: 'Jessica Taylor', role: 'Senior Product Designer', department: 'Design & UX', salary: 118000, email: 'jessica.t@enterprise.org', status: 'Active', joinDate: '2024-03-01' },
       { id: '3', empId: 'EMP-103', name: 'Michael Chang', role: 'DevOps & Reliability Engineer', department: 'Infrastructure', salary: 125000, email: 'm.chang@enterprise.org', status: 'Active', joinDate: '2024-05-10' },
       { id: '4', empId: 'EMP-104', name: 'Rachel Green', role: 'Talent Acquisition Manager', department: 'Human Resources', salary: 95000, email: 'rachel.g@enterprise.org', status: 'Active', joinDate: '2023-11-20' },
@@ -289,7 +288,7 @@ const allProjects = [
       { key: 'status', label: 'Distribution State', type: 'select', options: ['Published', 'Unlisted', 'Under Review'], required: true }
     ],
     initialData: [
-      { id: '1', title: 'The Quantum Frontier: Beyond Spacetime', creator: 'Cosmos Media / SaiVatsal (2500040224)', category: 'Science & Sci-Fi', duration: '1h 48m', resolution: '4K Ultra HD', views: '2.4M', rating: 4.9, status: 'Published' },
+      { id: '1', title: 'The Quantum Frontier: Beyond Spacetime', creator: 'Cosmos Media / Director Sterling', category: 'Science & Sci-Fi', duration: '1h 48m', resolution: '4K Ultra HD', views: '2.4M', rating: 4.9, status: 'Published' },
       { id: '2', title: 'Silicon Horizon: The Architecture of Future AI', creator: 'TechVision Studio', category: 'Technology', duration: '54m', resolution: '4K Ultra HD', views: '890K', rating: 4.8, status: 'Published' },
       { id: '3', title: 'Alpine Ascents: Solitude at 8000 Meters', creator: 'Peak Expeditions', category: 'Documentary', duration: '1h 22m', resolution: '1080p Full HD', views: '1.2M', rating: 4.9, status: 'Published' },
       { id: '4', title: 'Cyberpunk Metropolis 2088 Episode 1', creator: 'NeoTokyo Productions', category: 'Action & Drama', duration: '46m', resolution: '4K Ultra HD', views: '3.1M', rating: 4.7, status: 'Published' }
@@ -326,10 +325,10 @@ const allProjects = [
       { key: 'loggedBy', label: 'Auditor Name', type: 'text', required: true }
     ],
     initialData: [
-      { id: '1', title: 'High-Performance Cloud Hosting Server', category: 'Software & Tools', amount: 89.50, type: 'Expense', account: 'Business Debit Card', date: '2026-09-20', status: 'Cleared', loggedBy: 'SaiVatsal (2500040224)' },
-      { id: '2', title: 'Consulting Honorarium Payment', category: 'Freelance & Contract', amount: 3500.00, type: 'Income', account: 'Checking Account', date: '2026-09-18', status: 'Cleared', loggedBy: 'SaiVatsal (2500040224)' },
-      { id: '3', title: 'Supermarket Organic Groceries', category: 'Food & Dining', amount: 142.30, type: 'Expense', account: 'Personal Credit Card', date: '2026-09-19', status: 'Cleared', loggedBy: 'SaiVatsal (2500040224)' },
-      { id: '4', title: 'Ergonomic Standing Desk Frame', category: 'Office Equipment', amount: 380.00, type: 'Expense', account: 'Business Debit Card', date: '2026-09-15', status: 'Cleared', loggedBy: 'SaiVatsal (2500040224)' }
+      { id: '1', title: 'High-Performance Cloud Hosting Server', category: 'Software & Tools', amount: 89.50, type: 'Expense', account: 'Business Debit Card', date: '2026-09-20', status: 'Cleared', loggedBy: 'Finance Lead (Enterprise)' },
+      { id: '2', title: 'Consulting Honorarium Payment', category: 'Freelance & Contract', amount: 3500.00, type: 'Income', account: 'Checking Account', date: '2026-09-18', status: 'Cleared', loggedBy: 'Operations Director' },
+      { id: '3', title: 'Supermarket Organic Groceries', category: 'Food & Dining', amount: 142.30, type: 'Expense', account: 'Personal Credit Card', date: '2026-09-19', status: 'Cleared', loggedBy: 'Staff Auditor' },
+      { id: '4', title: 'Ergonomic Standing Desk Frame', category: 'Office Equipment', amount: 380.00, type: 'Expense', account: 'Business Debit Card', date: '2026-09-15', status: 'Cleared', loggedBy: 'Facility Manager' }
     ],
     statCards: [
       { label: 'Recorded Inflow', value: '$3,500.00', icon: 'fa-arrow-trend-up', color: 'emerald' },
@@ -363,7 +362,7 @@ const allProjects = [
       { key: 'instructor', label: 'Exam Author', type: 'text', required: true }
     ],
     initialData: [
-      { id: '1', code: 'CS-401', title: 'Advanced Full-Stack Engineering & Microservices', duration: '90 Minutes', questions: 40, maxMarks: 100, passingMarks: 60, status: 'Live', instructor: 'SaiVatsal (2500040224)' },
+      { id: '1', code: 'CS-401', title: 'Advanced Full-Stack Engineering & Microservices', duration: '90 Minutes', questions: 40, maxMarks: 100, passingMarks: 60, status: 'Live', instructor: 'Dr. Marcus Sterling, PhD' },
       { id: '2', code: 'CS-302', title: 'Distributed Systems & Cloud Architecture', duration: '60 Minutes', questions: 30, maxMarks: 75, passingMarks: 45, status: 'Live', instructor: 'Prof. Helen Vance' },
       { id: '3', code: 'SEC-201', title: 'Network Security & Penetration Testing Protocols', duration: '75 Minutes', questions: 35, maxMarks: 100, passingMarks: 70, status: 'Live', instructor: 'Marcus Sterling, CISSP' },
       { id: '4', code: 'DS-105', title: 'Relational Database Architecture & Indexing', duration: '60 Minutes', questions: 25, maxMarks: 50, passingMarks: 30, status: 'Draft', instructor: 'Anita Rao, Data Architect' }
@@ -474,7 +473,7 @@ const allProjects = [
       { key: 'status', label: 'Race Status', type: 'select', options: ['Leading', 'Runner Up', 'Nominated', 'Elected'], required: true }
     ],
     initialData: [
-      { id: '1', candidateId: 'CAND-01', name: 'Dr. SaiVatsal (2500040224)', party: 'Innovation & Tech Alliance', election: 'Student Council Leadership 2026', votes: 1420, percentage: '48.5%', status: 'Leading' },
+      { id: '1', candidateId: 'CAND-01', name: 'Dr. Marcus Vance', party: 'Innovation & Tech Alliance', election: 'Student Council Leadership 2026', votes: 1420, percentage: '48.5%', status: 'Leading' },
       { id: '2', candidateId: 'CAND-02', name: 'Althea Vance', party: 'Sustainable Campus Initiative', election: 'Student Council Leadership 2026', votes: 980, percentage: '33.4%', status: 'Runner Up' },
       { id: '3', candidateId: 'CAND-03', name: 'Julian Drake', party: 'Academic Reform Coalition', election: 'Student Council Leadership 2026', votes: 530, percentage: '18.1%', status: 'Nominated' }
     ],
@@ -487,7 +486,7 @@ const allProjects = [
     secondaryName: 'Cryptographic Ballot Audit Logs',
     secondaryKey: 'auditLogs',
     secondaryData: [
-      { id: 'VOTE-HASH-991', voterToken: 'VTR-***-9021', candidateRef: 'Dr. SaiVatsal (CAND-01)', timestamp: '2026-09-21 14:32:05', auditStatus: 'Confirmed Tamper-Free' },
+      { id: 'VOTE-HASH-991', voterToken: 'VTR-***-9021', candidateRef: 'Dr. Marcus Vance (CAND-01)', timestamp: '2026-09-21 14:32:05', auditStatus: 'Confirmed Tamper-Free' },
       { id: 'VOTE-HASH-992', voterToken: 'VTR-***-8842', candidateRef: 'Althea Vance (CAND-02)', timestamp: '2026-09-21 14:33:12', auditStatus: 'Confirmed Tamper-Free' }
     ]
   },
@@ -510,10 +509,10 @@ const allProjects = [
       { key: 'status', label: 'Session State', type: 'select', options: ['Completed', 'Planned', 'Skipped'], required: true }
     ],
     initialData: [
-      { id: '1', title: 'High-Intensity Calisthenics & Sprints', category: 'HIIT & Cardio', durationMin: 45, caloriesBurned: 520, heartRateAvg: 154, date: '2026-09-21', athlete: 'SaiVatsal (2500040224)', status: 'Completed' },
-      { id: '2', title: 'Heavy Compound Deadlifts & Pull-ups', category: 'Strength Training', durationMin: 60, caloriesBurned: 460, heartRateAvg: 138, date: '2026-09-20', athlete: 'SaiVatsal (2500040224)', status: 'Completed' },
-      { id: '3', title: '10km Road Endurance Run', category: 'Running', durationMin: 50, caloriesBurned: 680, heartRateAvg: 162, date: '2026-09-19', athlete: 'SaiVatsal (2500040224)', status: 'Completed' },
-      { id: '4', title: 'Vinyasa Flow Mobility & Core', category: 'Flexibility & Yoga', durationMin: 35, caloriesBurned: 180, heartRateAvg: 110, date: '2026-09-18', athlete: 'SaiVatsal (2500040224)', status: 'Completed' }
+      { id: '1', title: 'High-Intensity Calisthenics & Sprints', category: 'HIIT & Cardio', durationMin: 45, caloriesBurned: 520, heartRateAvg: 154, date: '2026-09-21', athlete: 'Alexander Sterling', status: 'Completed' },
+      { id: '2', title: 'Heavy Compound Deadlifts & Pull-ups', category: 'Strength Training', durationMin: 60, caloriesBurned: 460, heartRateAvg: 138, date: '2026-09-20', athlete: 'Jordan Blake', status: 'Completed' },
+      { id: '3', title: '10km Road Endurance Run', category: 'Running', durationMin: 50, caloriesBurned: 680, heartRateAvg: 162, date: '2026-09-19', athlete: 'Morgan Reed', status: 'Completed' },
+      { id: '4', title: 'Vinyasa Flow Mobility & Core', category: 'Flexibility & Yoga', durationMin: 35, caloriesBurned: 180, heartRateAvg: 110, date: '2026-09-18', athlete: 'Elena Rostova', status: 'Completed' }
     ],
     statCards: [
       { label: 'Weekly Active Time', value: '190 Minutes', icon: 'fa-person-running', color: 'blue' },
@@ -547,8 +546,8 @@ const allProjects = [
       { key: 'status', label: 'Link Status', type: 'select', options: ['Active', 'Expired', 'Revoked'], required: true }
     ],
     initialData: [
-      { id: '1', fileName: 'Enterprise-Architecture-v4.pdf', fileType: 'PDF Document', fileSize: '8.4 MB', owner: 'SaiVatsal (2500040224)', downloads: 142, permission: 'Public Link', uploadDate: '2026-09-20', status: 'Active' },
-      { id: '2', fileName: 'Microservices-Helm-Charts.zip', fileType: 'Compressed Archive', fileSize: '24.1 MB', owner: 'SaiVatsal (2500040224)', downloads: 89, permission: 'Restricted Team', uploadDate: '2026-09-19', status: 'Active' },
+      { id: '1', fileName: 'Enterprise-Architecture-v4.pdf', fileType: 'PDF Document', fileSize: '8.4 MB', owner: 'Alexander Sterling (Principal Eng)', downloads: 142, permission: 'Public Link', uploadDate: '2026-09-20', status: 'Active' },
+      { id: '2', fileName: 'Microservices-Helm-Charts.zip', fileType: 'Compressed Archive', fileSize: '24.1 MB', owner: 'Elena Rostova (DevOps)', downloads: 89, permission: 'Restricted Team', uploadDate: '2026-09-19', status: 'Active' },
       { id: '3', fileName: 'Financial-Audit-Report-Q3.xlsx', fileType: 'Spreadsheet', fileSize: '3.2 MB', owner: 'Finance Ops Lead', downloads: 14, permission: 'Confidential / Password', uploadDate: '2026-09-18', status: 'Active' }
     ],
     statCards: [
@@ -583,8 +582,8 @@ const allProjects = [
       { key: 'publishedAt', label: 'Publication Date', type: 'text', required: true }
     ],
     initialData: [
-      { id: '1', title: 'Designing Resilient Distributed Web Platforms in 2026', slug: 'designing-resilient-distributed-platforms', author: 'SaiVatsal (2500040224)', category: 'Engineering', status: 'Published', views: 4850, readTime: '6 min read', publishedAt: '2026-09-18' },
-      { id: '2', title: 'The Evolution of Modern JavaScript: Node 24 and Beyond', slug: 'evolution-modern-javascript-node-24', author: 'SaiVatsal (2500040224)', category: 'Programming', status: 'Published', views: 3200, readTime: '5 min read', publishedAt: '2026-09-19' },
+      { id: '1', title: 'Designing Resilient Distributed Web Platforms in 2026', slug: 'designing-resilient-distributed-platforms', author: 'Alexander Hayes (Principal Architect)', category: 'Engineering', status: 'Published', views: 4850, readTime: '6 min read', publishedAt: '2026-09-18' },
+      { id: '2', title: 'The Evolution of Modern JavaScript: Node 24 and Beyond', slug: 'evolution-modern-javascript-node-24', author: 'Dr. Evelyn Reed, DSc', category: 'Programming', status: 'Published', views: 3200, readTime: '5 min read', publishedAt: '2026-09-19' },
       { id: '3', title: 'Why Micro-Frontends Are Shaping Enterprise Portals', slug: 'micro-frontends-shaping-enterprise', author: 'Rachel Evans', category: 'Architecture', status: 'Under Review', views: 0, readTime: '8 min read', publishedAt: 'Draft' }
     ],
     statCards: [
@@ -597,7 +596,7 @@ const allProjects = [
     secondaryKey: 'revisions',
     secondaryData: [
       { id: 'REV-901', articleRef: 'Why Micro-Frontends Are Shaping Enterprise Portals', editor: 'Chief Editor James', comments: 'Requested additions on Module Federation v2.', status: 'Pending Changes' },
-      { id: 'REV-902', articleRef: 'Designing Resilient Distributed Web Platforms in 2026', editor: 'SaiVatsal (2500040224)', comments: 'Final grammar pass and asset references updated.', status: 'Approved' }
+      { id: 'REV-902', articleRef: 'Designing Resilient Distributed Web Platforms in 2026', editor: 'Editorial Board (Enterprise)', comments: 'Final grammar pass and asset references updated.', status: 'Approved' }
     ]
   },
   {
@@ -618,8 +617,8 @@ const allProjects = [
       { key: 'status', label: 'Account State', type: 'select', options: ['Active', 'Locked', 'Dormant'], required: true }
     ],
     initialData: [
-      { id: '1', accountNo: 'ACC-8921-001', holder: 'SaiVatsal (2500040224)', type: 'Premier Checking', balance: 28450.75, currency: 'USD', status: 'Active', tier: 'Platinum Executive' },
-      { id: '2', accountNo: 'ACC-8921-002', holder: 'SaiVatsal (2500040224)', type: 'High-Yield Savings (4.8% APY)', balance: 65200.00, currency: 'USD', status: 'Active', tier: 'Platinum Executive' },
+      { id: '1', accountNo: 'ACC-8921-001', holder: 'Marcus Sterling (Executive VP)', type: 'Premier Checking', balance: 28450.75, currency: 'USD', status: 'Active', tier: 'Platinum Executive' },
+      { id: '2', accountNo: 'ACC-8921-002', holder: 'Marcus Sterling (Executive VP)', type: 'High-Yield Savings (4.8% APY)', balance: 65200.00, currency: 'USD', status: 'Active', tier: 'Platinum Executive' },
       { id: '3', accountNo: 'ACC-3410-101', holder: 'Evelyn Sterling', type: 'Standard Checking', balance: 4210.50, currency: 'USD', status: 'Active', tier: 'Gold' }
     ],
     statCards: [
@@ -631,7 +630,7 @@ const allProjects = [
     secondaryName: 'Simulated Wire & Transfer Journal',
     secondaryKey: 'transfers',
     secondaryData: [
-      { id: 'TRX-5510', fromAcc: 'ACC-8921-001 (SaiVatsal)', toAcc: 'ACC-3410-101 (Evelyn Sterling)', amount: '$750.00', purpose: 'Consulting Settlement', status: 'Success / Settled', date: '2026-09-21' }
+      { id: 'TRX-5510', fromAcc: 'ACC-8921-001 (Marcus Sterling)', toAcc: 'ACC-3410-101 (Evelyn Sterling)', amount: '$750.00', purpose: 'Consulting Settlement', status: 'Success / Settled', date: '2026-09-21' }
     ]
   },
   {
@@ -654,8 +653,8 @@ const allProjects = [
       { key: 'organizer', label: 'Lead Organizer', type: 'text', required: true }
     ],
     initialData: [
-      { id: '1', code: 'CONF-2026', title: 'Global Full-Stack & AI Summit 2026', venue: 'Metropolitan Convention Center, Hall A', date: '2026-10-15', capacity: 1500, registered: 1340, ticketPrice: 299.00, status: 'Active', organizer: 'SaiVatsal (2500040224)' },
-      { id: '2', code: 'DEV-90', title: 'Cloud-Native Distributed Systems Forum', venue: 'Innovation Tech Hub & Virtual Stage', date: '2026-11-02', capacity: 800, registered: 760, ticketPrice: 199.00, status: 'Active', organizer: 'SaiVatsal (2500040224)' }
+      { id: '1', code: 'CONF-2026', title: 'Global Full-Stack & AI Summit 2026', venue: 'Metropolitan Convention Center, Hall A', date: '2026-10-15', capacity: 1500, registered: 1340, ticketPrice: 299.00, status: 'Active', organizer: 'Alexander Hayes (Director)' },
+      { id: '2', code: 'DEV-90', title: 'Cloud-Native Distributed Systems Forum', venue: 'Innovation Tech Hub & Virtual Stage', date: '2026-11-02', capacity: 800, registered: 760, ticketPrice: 199.00, status: 'Active', organizer: 'Elena Rostova (Lead Ops)' }
     ],
     statCards: [
       { label: 'Scheduled Summits', value: '2 Events', icon: 'fa-calendar-days', color: 'blue' },
@@ -688,7 +687,7 @@ const allProjects = [
       { key: 'status', label: 'Patient Condition Status', type: 'select', options: ['Under Care', 'Stable', 'Recovering', 'Cleared', 'Critical'], required: true }
     ],
     initialData: [
-      { id: '1', mrn: 'MRN-77401', patientName: 'Alexander Hayes', dob: '1988-04-12', bloodGroup: 'O Positive', doctor: 'Dr. SaiVatsal (2500040224), MD', diagnosis: 'Mild Hypertension (Stage 1)', lastVisit: '2026-09-18', status: 'Under Care' },
+      { id: '1', mrn: 'MRN-77401', patientName: 'Alexander Hayes', dob: '1988-04-12', bloodGroup: 'O Positive', doctor: 'Dr. Arthur Sterling, MD', diagnosis: 'Mild Hypertension (Stage 1)', lastVisit: '2026-09-18', status: 'Under Care' },
       { id: '2', mrn: 'MRN-77402', patientName: 'Beatrice Wood', dob: '1995-11-23', bloodGroup: 'A Positive', doctor: 'Dr. Sarah Mitchell, MD', diagnosis: 'Exercise-Induced Asthma', lastVisit: '2026-09-15', status: 'Stable' }
     ],
     statCards: [
@@ -700,7 +699,7 @@ const allProjects = [
     secondaryName: 'Prescription & Medication Orders',
     secondaryKey: 'prescriptions',
     secondaryData: [
-      { id: 'RX-901', patient: 'Alexander Hayes (MRN-77401)', drug: 'Lisinopril 10mg Oral Daily', duration: '90 Days', prescriber: 'Dr. SaiVatsal (2500040224)', status: 'Dispensed' }
+      { id: 'RX-901', patient: 'Alexander Hayes (MRN-77401)', drug: 'Lisinopril 10mg Oral Daily', duration: '90 Days', prescriber: 'Dr. Arthur Sterling, MD', status: 'Dispensed' }
     ]
   },
   {
@@ -734,7 +733,7 @@ const allProjects = [
     secondaryName: 'Recent Confirmed Passenger Bookings',
     secondaryKey: 'bookings',
     secondaryData: [
-      { id: 'BKG-501', traveler: 'SaiVatsal (2500040224)', tour: 'Tokyo & Kyoto Cultural Odyssey', passengers: 2, totalPaid: '$4,980.00', status: 'Ticketed & Confirmed' }
+      { id: 'BKG-501', traveler: 'Marcus Sterling (VIP Guest)', tour: 'Tokyo & Kyoto Cultural Odyssey', passengers: 2, totalPaid: '$4,980.00', status: 'Ticketed & Confirmed' }
     ]
   }
 ];
@@ -799,7 +798,7 @@ remainingDefs.forEach(d => {
       { key: 'details', label: 'Description & Parameters', type: 'textarea', required: true }
     ],
     initialData: [
-      { id: '1', title: `${d.name} Primary Record A`, category: 'Enterprise', status: 'Active', value: 1250.00, details: `High-priority record configured for ${d.name}. Supervised by SaiVatsal (2500040224).` },
+      { id: '1', title: `${d.name} Primary Record A`, category: 'Enterprise', status: 'Active', value: 1250.00, details: `High-priority enterprise record configured for ${d.name}. Verified by System Operations Lead.` },
       { id: '2', title: `${d.name} Secondary Record B`, category: 'Premium', status: 'Approved', value: 840.50, details: `Standard operational entry with verified parameters in ${d.category}.` },
       { id: '3', title: `${d.name} Analytical Entry C`, category: 'Specialized', status: 'In Progress', value: 2100.00, details: `Under active processing within the ${d.category} module.` }
     ],
@@ -812,8 +811,8 @@ remainingDefs.forEach(d => {
     secondaryName: d.sName,
     secondaryKey: 'activityRecords',
     secondaryData: [
-      { id: 'REC-01', entry: `Active verification log for ${d.name}`, assignedTo: 'SaiVatsal (2500040224)', status: 'Success / Verified', date: '2026-09-21' },
-      { id: 'REC-02', entry: `Audit check for ${d.category}`, assignedTo: 'SaiVatsal (2500040224)', status: 'Completed', date: '2026-09-20' }
+      { id: 'REC-01', entry: `Active verification log for ${d.name}`, assignedTo: 'Operations Specialist (Sec-Ops)', status: 'Success / Verified', date: '2026-09-21' },
+      { id: 'REC-02', entry: `Audit check for ${d.category}`, assignedTo: 'Lead Compliance Officer', status: 'Completed', date: '2026-09-20' }
     ]
   });
 });
